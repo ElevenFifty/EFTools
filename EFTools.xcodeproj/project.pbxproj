@@ -38,7 +38,7 @@
 		F177DFD21B68B25900E26B88 /* EFToolsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EFToolsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F177DFD81B68B25900E26B88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F177DFD91B68B25900E26B88 /* EFToolsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EFToolsTests.swift; sourceTree = "<group>"; };
-		F177DFE61B68B2FA00E26B88 /* EFTools.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = EFTools.podspec; path = EFTools/EFTools.podspec; sourceTree = "<group>"; };
+		F177DFE61B68B2FA00E26B88 /* EFTools.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EFTools.podspec; sourceTree = "<group>"; };
 		F177DFE81B68B30D00E26B88 /* EFCellAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EFCellAnimation.swift; path = Basic/EFCellAnimation.swift; sourceTree = "<group>"; };
 		F177DFE91B68B30D00E26B88 /* EFTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EFTableViewController.swift; path = Basic/EFTableViewController.swift; sourceTree = "<group>"; };
 		F177DFEC1B68B31600E26B88 /* EFQueryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EFQueryTableViewController.swift; path = Parse/EFQueryTableViewController.swift; sourceTree = "<group>"; };
