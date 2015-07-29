@@ -19,6 +19,15 @@ enum CellType {
     case None, Translate, TranslateFade, Fade
 }
 
+/// Type for when a cell is animated
+///
+/// - Always: Every time a cell becomes visible
+/// - Reload: The first time a cell becomes visible, and reset if tableview is reloaded
+/// - Once: The first time a cell becomes visible, does not reset on reload
+enum ShowType {
+    case Always, Reload, Once
+}
+
 class EFCellAnimation {
     /// How far the cell will travel on a Translate or TranslateFade effect
     ///
@@ -29,6 +38,11 @@ class EFCellAnimation {
     ///
     /// Default is .None
     private var CELL_TYPE = CellType.None
+    
+    /// When to show animations
+    ///
+    /// Default is .Reload
+    private var SHOW_TYPE = ShowType.Reload
     
     /// Duration for all effects, fade and slide in
     ///
@@ -56,6 +70,10 @@ class EFCellAnimation {
         CELL_TYPE = cellType
     }
     
+    func setShowType(showType : ShowType) {
+        SHOW_TYPE = showType
+    }
+    
     func setDuration(duration : Double) {
         DURATION = duration
     }
@@ -65,7 +83,9 @@ class EFCellAnimation {
     }
     
     func resetPrevIndexes() {
-        prevIndexes = []
+        if SHOW_TYPE != .Once {
+            prevIndexes = []
+        }
     }
     
     
@@ -80,7 +100,7 @@ class EFCellAnimation {
     
     
     func setupAnimation(indexPath: NSIndexPath, cell: UITableViewCell) {
-        if prevIndexes.contains(indexPath) {
+        if prevIndexes.contains(indexPath) || SHOW_TYPE == .Always {
             prevIndexes.insert(indexPath)
             let content = cell.contentView
             switch(CELL_TYPE) {
