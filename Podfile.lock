@@ -9,6 +9,7 @@ PODS:
   - Bolts/Tasks (1.2.0)
   - Facebook-iOS-SDK (3.23.2):
     - Bolts (~> 1.0)
+  - MBProgressHUD (0.9.1)
   - Parse (1.7.5.3):
     - Bolts/Tasks (>= 1.2.0)
   - ParseFacebookUtils (1.7.5.3):
@@ -23,6 +24,7 @@ PODS:
 DEPENDENCIES:
   - AFDateHelper
   - Alamofire
+  - MBProgressHUD (~> 0.9.1)
   - ParseFacebookUtils
   - ParseUI
   - SnapKit (~> 0.12.0)
@@ -33,6 +35,7 @@ SPEC CHECKSUMS:
   Alamofire: 220403a8d5840e0b4c946a6fbaf209dbca124282
   Bolts: d176cb1e0012175589e389a9db49b85e27787576
   Facebook-iOS-SDK: cd87f0b2f0c1d9574b44e8fa2baacc275524bac3
+  MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   Parse: 373adbb1ad2e34d383542c3b28f678c49ebe4881
   ParseFacebookUtils: 008a24dc35884519ed6a6750648beb5149f1fad9
   ParseUI: d1228541b02a36a7354c8f47747f5f7a89cf1ff0

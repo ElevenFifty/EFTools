@@ -101,19 +101,19 @@ spec.requires_arc = true
 
 # Finally, specify any Pods that this Pod depends on.
 #
+spec.dependency 'SnapKit', '~> 0.12.0'
+spec.dependency 'MBProgressHUD', '~> 0.9.1'
+spec.dependency 'AFDateHelper'
+
 spec.default_subspec = 'Everything'
 
 spec.subspec 'Basic' do |basic|
-    basic.dependency 'SnapKit', '~> 0.12.0'
-    basic.dependency 'AFDateHelper'
     basic.source_files = 'EFTools/Basic'
 end
 
 spec.subspec 'Parse' do |parsespec|
     parsespec.dependency 'ParseUI'
     parsespec.dependency 'ParseFacebookUtils'
-    parsespec.dependency 'SnapKit', '~> 0.12.0'
-    parsespec.dependency 'AFDateHelper'
     parsespec.source_files = 'EFTools/Parse', 'EFTools/Basic'
 end
 
@@ -121,8 +121,6 @@ spec.subspec 'Alamofire' do |afspec|
     afspec.dependency 'Alamofire'
     afspec.dependency 'Alamofire', '~> 1.3'
     afspec.dependency 'SwiftyJSON', '~> 2.2.1'
-    afspec.dependency 'SnapKit', '~> 0.12.0'
-    afspec.dependency 'AFDateHelper'
     afspec.source_files = 'EFTools/AF', 'EFTools/Basic'
 end
 
@@ -131,8 +129,6 @@ spec.subspec 'Everything' do |allspec|
     allspec.dependency 'ParseFacebookUtils'
     allspec.dependency 'Alamofire', '~> 1.3'
     allspec.dependency 'SwiftyJSON', '~> 2.2.1'
-    allspec.dependency 'SnapKit', '~> 0.12.0'
-    allspec.dependency 'AFDateHelper'
     allspec.source_files = 'EFTools/Parse', 'EFTools/AF', 'EFTools/Basic'
 end
 
