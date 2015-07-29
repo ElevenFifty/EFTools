@@ -77,9 +77,6 @@ class EFCellAnimation {
     
     //TODO: Readme file - CocoaPods 0.38 required?
     
-    //TODO: UIColor extension
-    
-    
     
     
     func setupAnimation(indexPath: NSIndexPath, cell: UITableViewCell) {

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2EB789E5B86908905C7C4A9D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FBEA59F284AE1F87782DDB3 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		F16968F01B6935DE0068E3CB /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16968EF1B6935DE0068E3CB /* UIColorExtension.swift */; };
 		F177DFCD1B68B25900E26B88 /* EFTools.h in Headers */ = {isa = PBXBuildFile; fileRef = F177DFCC1B68B25900E26B88 /* EFTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F177DFD31B68B25900E26B88 /* EFTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F177DFC71B68B25900E26B88 /* EFTools.framework */; };
 		F177DFDA1B68B25900E26B88 /* EFToolsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F177DFD91B68B25900E26B88 /* EFToolsTests.swift */; };
@@ -30,6 +31,7 @@
 		1E7B35BB6DACC00C02268C99 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		3FBEA59F284AE1F87782DDB3 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		940C68F2DD5B776D95421373 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		F16968EF1B6935DE0068E3CB /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColorExtension.swift; path = Basic/UIColorExtension.swift; sourceTree = "<group>"; };
 		F177DFC71B68B25900E26B88 /* EFTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EFTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F177DFCB1B68B25900E26B88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F177DFCC1B68B25900E26B88 /* EFTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EFTools.h; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 			children = (
 				F177DFE81B68B30D00E26B88 /* EFCellAnimation.swift */,
 				F177DFE91B68B30D00E26B88 /* EFTableViewController.swift */,
+				F16968EF1B6935DE0068E3CB /* UIColorExtension.swift */,
 			);
 			name = Basic;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				F177DFED1B68B31600E26B88 /* EFQueryTableViewController.swift in Sources */,
 				F177DFEB1B68B30D00E26B88 /* EFTableViewController.swift in Sources */,
 				F177DFEA1B68B30D00E26B88 /* EFCellAnimation.swift in Sources */,
+				F16968F01B6935DE0068E3CB /* UIColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
