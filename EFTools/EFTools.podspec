@@ -90,7 +90,7 @@ spec.platform     = :ios, '8.0'
 # spec.library   = 'iconv'
 # spec.libraries = 'iconv', 'xml2'
 
-# If this Pod uses ARC, specify it like so.
+# If this Pod uses ARC, specify it like so.z
 #
 spec.requires_arc = true
 
@@ -101,6 +101,29 @@ spec.requires_arc = true
 
 # Finally, specify any Pods that this Pod depends on.
 #
-    spec.source_files = 'EFTools/Parse', 'EFTools/AF', 'EFTools/Basic'
+spec.default_subspec = 'Everything'
+
+spec.subspec 'Basic' do |basic|
+    basic.source_files = 'EFTools/Basic'
+end
+
+spec.subspec 'Parse' do |parsespec|
+    parsespec.dependency 'ParseUI'
+    parsespec.dependency 'ParseFacebookUtils'
+    parsespec.source_files = 'EFTools/Parse', 'EFTools/Basic'
+end
+
+spec.subspec 'Alamofire' do |afspec|
+    afspec.dependency 'Alamofire'
+    afspec.source_files = 'EFTools/AF', 'EFTools/Basic'
+end
+
+spec.subspec 'Everything' do |allspec|
+    allspec.dependency 'ParseUI'
+    allspec.dependency 'ParseFacebookUtils'
+    allspec.dependency 'Alamofire'
+    allspec.source_files = 'EFTools/Parse', 'EFTools/AF', 'EFTools/Basic'
+end
+
 
 end
