@@ -107,7 +107,6 @@
 				F177DFE41B68B28A00E26B88 /* AF */,
 				F177DFE31B68B28100E26B88 /* Basic */,
 				F177DFE51B68B29300E26B88 /* Parse */,
-				F177DFCC1B68B25900E26B88 /* EFTools.h */,
 				F177DFCA1B68B25900E26B88 /* Supporting Files */,
 			);
 			path = EFTools;
@@ -141,6 +140,7 @@
 		F177DFE31B68B28100E26B88 /* Basic */ = {
 			isa = PBXGroup;
 			children = (
+				F177DFCC1B68B25900E26B88 /* EFTools.h */,
 				F177DFE81B68B30D00E26B88 /* EFCellAnimation.swift */,
 				F177DFE91B68B30D00E26B88 /* EFTableViewController.swift */,
 			);
