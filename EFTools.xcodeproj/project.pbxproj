@@ -11,7 +11,6 @@
 		F177DFCD1B68B25900E26B88 /* EFTools.h in Headers */ = {isa = PBXBuildFile; fileRef = F177DFCC1B68B25900E26B88 /* EFTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F177DFD31B68B25900E26B88 /* EFTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F177DFC71B68B25900E26B88 /* EFTools.framework */; };
 		F177DFDA1B68B25900E26B88 /* EFToolsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F177DFD91B68B25900E26B88 /* EFToolsTests.swift */; };
-		F177DFE71B68B2FA00E26B88 /* EFTools.podspec in Resources */ = {isa = PBXBuildFile; fileRef = F177DFE61B68B2FA00E26B88 /* EFTools.podspec */; };
 		F177DFEA1B68B30D00E26B88 /* EFCellAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F177DFE81B68B30D00E26B88 /* EFCellAnimation.swift */; };
 		F177DFEB1B68B30D00E26B88 /* EFTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F177DFE91B68B30D00E26B88 /* EFTableViewController.swift */; };
 		F177DFED1B68B31600E26B88 /* EFQueryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F177DFEC1B68B31600E26B88 /* EFQueryTableViewController.swift */; };
@@ -254,7 +253,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F177DFE71B68B2FA00E26B88 /* EFTools.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,6 +426,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$PODS_FRAMEWORK_BUILD_PATH\"",
+				);
 				INFOPLIST_FILE = EFTools/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -446,6 +448,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$PODS_FRAMEWORK_BUILD_PATH\"",
+				);
 				INFOPLIST_FILE = EFTools/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

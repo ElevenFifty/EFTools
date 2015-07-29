@@ -110,18 +110,18 @@ end
 spec.subspec 'Parse' do |parsespec|
     parsespec.dependency 'ParseUI'
     parsespec.dependency 'ParseFacebookUtils'
-    spec.source_files = 'EFTools/Parse', 'EFTools/Basic'
+    parsespec.source_files = 'EFTools/Parse', 'EFTools/Basic'
 end
 
 spec.subspec 'Alamofire' do |afspec|
     afspec.dependency 'Alamofire'
-    spec.source_files = 'EFTools/AF', 'EFTools/Basic'
+    afspec.source_files = 'EFTools/AF', 'EFTools/Basic'
 end
 
 spec.subspec 'Everything' do |allspec|
     allspec.dependency 'ParseUI'
     allspec.dependency 'ParseFacebookUtils'
     allspec.dependency 'Alamofire'
-    spec.source_files = 'EFTools/Parse', 'EFTools/AF', 'EFTools/Basic'
+    allspec.source_files = 'EFTools/Parse', 'EFTools/AF', 'EFTools/Basic'
 end
 end
