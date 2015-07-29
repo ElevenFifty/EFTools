@@ -1,4 +1,5 @@
 PODS:
+  - AFDateHelper (2.0.4)
   - Alamofire (1.3.0)
   - Bolts (1.2.0):
     - Bolts/AppLinks (= 1.2.0)
@@ -8,7 +9,6 @@ PODS:
   - Bolts/Tasks (1.2.0)
   - Facebook-iOS-SDK (3.23.2):
     - Bolts (~> 1.0)
-  - JNWSpringAnimation (0.7.1)
   - Parse (1.7.5.3):
     - Bolts/Tasks (>= 1.2.0)
   - ParseFacebookUtils (1.7.5.3):
@@ -17,20 +17,26 @@ PODS:
     - Parse (~> 1.7.5.3)
   - ParseUI (1.1.4):
     - Parse (~> 1.7)
+  - SnapKit (0.12.0)
+  - SwiftyJSON (2.2.1)
 
 DEPENDENCIES:
+  - AFDateHelper
   - Alamofire
-  - JNWSpringAnimation
   - ParseFacebookUtils
   - ParseUI
+  - SnapKit (~> 0.12.0)
+  - SwiftyJSON (~> 2.2.1)
 
 SPEC CHECKSUMS:
+  AFDateHelper: ea0c7c81dbadcc2585a700f552d323beaf10b98d
   Alamofire: 220403a8d5840e0b4c946a6fbaf209dbca124282
   Bolts: d176cb1e0012175589e389a9db49b85e27787576
   Facebook-iOS-SDK: cd87f0b2f0c1d9574b44e8fa2baacc275524bac3
-  JNWSpringAnimation: cd4c2f4464324f63f176c3624ffccf205211a100
   Parse: 373adbb1ad2e34d383542c3b28f678c49ebe4881
   ParseFacebookUtils: 008a24dc35884519ed6a6750648beb5149f1fad9
   ParseUI: d1228541b02a36a7354c8f47747f5f7a89cf1ff0
+  SnapKit: 00c388aa3bf1944c1b55472f31e841f75bd83882
+  SwiftyJSON: ae2d0a3d68025d136602a33c4ee215091ced3e33
 
 COCOAPODS: 0.38.2
