@@ -88,13 +88,6 @@ class EFCellAnimation {
         }
     }
     
-    
-    
-    
-    //TODO: make enums for keeping track of previous cells, emptying prevIndexes
-    
-    //TODO: animated custom alert dialogs
-    
     //TODO: Readme file - CocoaPods 0.38 required?
     
     
