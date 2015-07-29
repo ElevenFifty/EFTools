@@ -7,7 +7,7 @@
 Pod::Spec.new do |spec|
 spec.name         = "EFTools"
 spec.version      = "0.1"
-spec.summary      = "iOS ElevenFifty Toolkit."
+spec.summary      = "iOS ElevenFifty Toolkit"
 # spec.description  = <<-DESC
 #                   An optional longer description of EFTools
 #
@@ -19,7 +19,7 @@ spec.homepage     = "https://github.com/ElevenFifty/EFTools"
 
 # Specify the license type. CocoaPods detects automatically the license file if it is named
 # 'LICENCE*.*' or 'LICENSE*.*', however if the name is different, specify it.
-spec.license      = 'MIT'
+# spec.license      = 'MIT'
 # spec.license      = { :type => 'MIT (example)', :file => 'FILE_LICENSE' }
 
 # Specify the authors of the library, with email addresses. You can often find
