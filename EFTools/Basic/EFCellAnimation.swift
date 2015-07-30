@@ -64,6 +64,7 @@ class EFCellAnimation {
     
     func setTranslateDistance(distance : Int) {
         TRANSLATE_DISTANCE = CGFloat(distance)
+        translateTransform = CATransform3DTranslate(CATransform3DIdentity, TRANSLATE_DISTANCE, 0, 0)
     }
     
     func setCellType(cellType : CellType) {
