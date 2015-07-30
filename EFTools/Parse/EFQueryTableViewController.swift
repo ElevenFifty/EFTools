@@ -65,14 +65,14 @@ import ParseUI
 /// - Call this function to change the initial alpha value for any Fade or TranslateFade animation.  Ranges from 0.0 to 1.0, defaults to 0.0
 
 
-class EFQueryTableViewController: PFQueryTableViewController {
+public class EFQueryTableViewController: PFQueryTableViewController {
     let efCellAnimation = EFCellAnimation()
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
     }
 
-    override func didReceiveMemoryWarning() {
+    override public func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
@@ -122,12 +122,12 @@ class EFQueryTableViewController: PFQueryTableViewController {
     
     /// This function will be called by parse and will reset the previous index array.
     /// If you override this function, always call super.objectsWillLoad()
-    override func objectsWillLoad() {
+    override public func objectsWillLoad() {
         efCellAnimation.resetPrevIndexes()
         super.objectsWillLoad()
     }
     
-    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    override public func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         efCellAnimation.setupAnimation(indexPath, cell: cell)
     }
 }

@@ -47,14 +47,14 @@ import UIKit
 ///
 /// - Call this function any time you are reloading your tableView; e.g. when you call tableView.reloadData()
 
-class EFTableViewController: UITableViewController {
+public class EFTableViewController: UITableViewController {
     let efCellAnimation = EFCellAnimation()
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
     }
 
-    override func didReceiveMemoryWarning() {
+    override public func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
@@ -107,7 +107,7 @@ class EFTableViewController: UITableViewController {
         efCellAnimation.resetPrevIndexes()
     }
     
-    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    override public func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         efCellAnimation.setupAnimation(indexPath, cell: cell)
     }
 }
