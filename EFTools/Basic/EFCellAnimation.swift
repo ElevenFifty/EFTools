@@ -15,7 +15,7 @@ import UIKit
 /// - Translate: Cell slides in from the right, with no alpha fading
 /// - TranslateFade: Cell slides in from the right and fades in
 /// - Fade: Cell fades in with no motion effect
-enum CellType {
+public enum CellType {
     case None, Translate, TranslateFade, Fade
 }
 
@@ -24,7 +24,7 @@ enum CellType {
 /// - Always: Every time a cell becomes visible
 /// - Reload: The first time a cell becomes visible, and reset if tableview is reloaded
 /// - Once: The first time a cell becomes visible, does not reset on reload
-enum ShowType {
+public enum ShowType {
     case Always, Reload, Once
 }
 

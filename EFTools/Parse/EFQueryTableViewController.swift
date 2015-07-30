@@ -79,7 +79,7 @@ public class EFQueryTableViewController: PFQueryTableViewController {
     /// Call this function to change the Translate Distance for a Translate or TranslateFade animation
     ///
     /// Default is 50
-    internal func setTranslateDistance(distance : Int) {
+    public func setTranslateDistance(distance : Int) {
         efCellAnimation.setTranslateDistance(distance)
     }
     
@@ -91,7 +91,7 @@ public class EFQueryTableViewController: PFQueryTableViewController {
     /// - Fade: Cell fades in with no motion effect
     ///
     /// Default is .None
-    internal func setCellType(cellType : CellType) {
+    public func setCellType(cellType : CellType) {
         efCellAnimation.setCellType(cellType)
     }
     
@@ -102,21 +102,21 @@ public class EFQueryTableViewController: PFQueryTableViewController {
     /// - Once: The first time a cell becomes visible, does not reset on reload
     ///
     /// Default is .Reload
-    internal func setShowType(showType : ShowType) {
+    public func setShowType(showType : ShowType) {
         efCellAnimation.setShowType(showType)
     }
     
     /// Call this function to change the cell presentation animation time
     ///
     /// Default is 0.4
-    internal func setDuration(duration : Double) {
+    public func setDuration(duration : Double) {
         efCellAnimation.setDuration(duration)
     }
     
     /// Call this function to change the initial alpha value for any Fade or TranslateFade animation
     ///
     /// Ranges from 0.0 to 1.0, defaults to 0.0
-    internal func setInitialAlpha(alpha : Double) {
+    public func setInitialAlpha(alpha : Double) {
         efCellAnimation.setInitialAlpha(alpha)
     }
     
