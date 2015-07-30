@@ -93,7 +93,7 @@ class EFCellAnimation {
     
     
     func setupAnimation(indexPath: NSIndexPath, cell: UITableViewCell) {
-        if prevIndexes.contains(indexPath) || SHOW_TYPE == .Always {
+        if !prevIndexes.contains(indexPath) || SHOW_TYPE == .Always {
             prevIndexes.insert(indexPath)
             let content = cell.contentView
             switch(CELL_TYPE) {
