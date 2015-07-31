@@ -13,10 +13,13 @@ import UIKit
 ///
 /// - None: Normal loading of cell, no effects
 /// - Translate: Cell slides in from the right, with no alpha fading
-/// - TranslateFade: Cell slides in from the right and fades in
 /// - Fade: Cell fades in with no motion effect
-public enum CellType {
-    case None, Translate, TranslateFade, Fade
+/// - Scale: Cell scales from a larger or smaller size
+public enum CellType : Int {
+    case None
+    case Translate
+    case Fade
+    case Scale
 }
 
 /// Type for when a cell is animated
@@ -29,37 +32,44 @@ public enum ShowType {
 }
 
 class EFCellAnimation {
-    /// How far the cell will travel on a Translate or TranslateFade effect
+    /// How far the cell will travel on a Translate effect
     ///
     /// Default is 50
     private var TRANSLATE_DISTANCE : CGFloat = 50
     
     /// Type of cell presentation
     ///
-    /// Default is .None
-    private var CELL_TYPE = CellType.None
+    /// Default is [.None]
+    private var CELL_TYPE : Set<CellType> = [CellType.None]
     
     /// When to show animations
     ///
     /// Default is .Reload
     private var SHOW_TYPE = ShowType.Reload
     
-    /// Duration for all effects, fade and slide in
+    /// Duration for all effects
     ///
     /// Default is 0.4
     private var DURATION = 0.4
     
-    /// Initial alpha for Fade and TranslateFade effects
+    /// Initial scale for ScaleIn and ScaleOut effects
+    ///
+    /// Default is 0.8
+    private var INITIAL_SCALE = 0.8
+    
+    /// Initial alpha for Fade effects
     ///
     /// Ranges from 0.0 to 1.0, defaults to 0.0
     private var INITIAL_ALPHA : Float = 0.0
     
     private var translateTransform : CATransform3D!
+    private var scaleTransform : CATransform3D!
     
     private var prevIndexes : Set<NSIndexPath> = []
     
     init() {
         translateTransform = CATransform3DTranslate(CATransform3DIdentity, TRANSLATE_DISTANCE, 0, 0)
+        scaleTransform = CATransform3DScale(CATransform3DIdentity, 1.0, 1.0, 1.0)
     }
     
     func setTranslateDistance(distance : Int) {
@@ -67,8 +77,8 @@ class EFCellAnimation {
         translateTransform = CATransform3DTranslate(CATransform3DIdentity, TRANSLATE_DISTANCE, 0, 0)
     }
     
-    func setCellType(cellType : CellType) {
-        CELL_TYPE = cellType
+    func setCellType(cellTypes : Set<CellType>) {
+        CELL_TYPE = cellTypes
     }
     
     func setShowType(showType : ShowType) {
@@ -77,6 +87,11 @@ class EFCellAnimation {
     
     func setDuration(duration : Double) {
         DURATION = duration
+    }
+    
+    func setInitialScale(scale : Double) {
+        INITIAL_SCALE = scale
+        scaleTransform = CATransform3DScale(CATransform3DIdentity, CGFloat(scale), CGFloat(scale), 1)
     }
     
     func setInitialAlpha(alpha : Double) {
@@ -91,23 +106,26 @@ class EFCellAnimation {
     
     //TODO: Readme file - CocoaPods 0.38 required?
     
+    //TODO: Multiple CellType options
+    
+    //TODO: Scale transform
+    
     
     
     func setupAnimation(indexPath: NSIndexPath, cell: UITableViewCell) {
         if !prevIndexes.contains(indexPath) || SHOW_TYPE == .Always {
             prevIndexes.insert(indexPath)
             let content = cell.contentView
-            switch(CELL_TYPE) {
-            case .Translate:
+            if CELL_TYPE.contains(.Translate) {
                 content.layer.transform = translateTransform
-            case .Fade:
-                content.layer.opacity = INITIAL_ALPHA
-            case .TranslateFade:
-                content.layer.transform = translateTransform
-                content.layer.opacity = INITIAL_ALPHA
-            case .None:
-                break
             }
+            if CELL_TYPE.contains(.Fade) {
+                content.layer.opacity = INITIAL_ALPHA
+            }
+            if CELL_TYPE.contains(.Scale) {
+                content.layer.transform = scaleTransform
+            }
+            
             UIView.animateWithDuration(DURATION, animations: { () -> Void in
                 content.layer.transform = CATransform3DIdentity
                 content.layer.opacity = 1.0

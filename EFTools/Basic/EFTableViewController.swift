@@ -15,16 +15,16 @@ import UIKit
 ///
 /// setTranslateDistance(distance : Int)
 ///
-/// - Call this function to change the Translate Distance for a Translate or TranslateFade animation.  Default is 50.
+/// - Call this function to change the Translate Distance for a Translate animation.  Default is 50.
 ///
-/// setCellType(cellType : CellType)
+/// setCellType(cellTypes : Set<CellType>)
 ///
 /// - Call this function to change the cell presentation animation
 /// - None: Normal loading of cell, no effects
 /// - Translate: Cell slides in from the right, with no alpha fading
-/// - TranslateFade: Cell slides in from the right and fades in
 /// - Fade: Cell fades in with no motion effect
-/// - Default is .None
+/// - Scale: Cell scales from a larger or smaller size
+/// - Default is [.None]
 ///
 /// setShowType(showType : ShowType)
 ///
@@ -36,12 +36,18 @@ import UIKit
 ///
 /// setDuration(duration : Double)
 ///
-/// - Call this function to change the cell presentation animation time. Default is 0.4
+/// - Call this function to change the cell presentation animation time.
+/// - Default is 0.4
 ///
 /// setInitialAlpha(alpha : Double)
 ///
-/// - Call this function to change the initial alpha value for any Fade or TranslateFade animation.
+/// - Call this function to change the initial alpha value for any Fade animation.
 /// - Ranges from 0.0 to 1.0, defaults to 0.0
+///
+/// setInitialScale(scale : Double)
+///
+/// - Call this function to change the initial scale value for any Scale animation.
+/// - Default is 0.8
 ///
 /// resetCellAnimations()
 ///
@@ -58,7 +64,7 @@ public class EFTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
     }
     
-    /// Call this function to change the Translate Distance for a Translate or TranslateFade animation
+    /// Call this function to change the Translate Distance for a Translate animation
     ///
     /// Default is 50
     public func setTranslateDistance(distance : Int) {
@@ -69,12 +75,12 @@ public class EFTableViewController: UITableViewController {
     ///
     /// - None: Normal loading of cell, no effects
     /// - Translate: Cell slides in from the right, with no alpha fading
-    /// - TranslateFade: Cell slides in from the right and fades in
     /// - Fade: Cell fades in with no motion effect
+    /// - Scale: Cell scales from a larger or smaller size
     ///
-    /// Default is .None
-    public func setCellType(cellType : CellType) {
-        efCellAnimation.setCellType(cellType)
+    /// Default is [.None]
+    public func setCellType(cellTypes : Set<CellType>) {
+        efCellAnimation.setCellType(cellTypes)
     }
     
     /// Call this function to change when cells are animated
@@ -95,11 +101,18 @@ public class EFTableViewController: UITableViewController {
         efCellAnimation.setDuration(duration)
     }
     
-    /// Call this function to change the initial alpha value for any Fade or TranslateFade animation
+    /// Call this function to change the initial alpha value for any Fade animation
     ///
     /// Ranges from 0.0 to 1.0, defaults to 0.0
     public func setInitialAlpha(alpha : Double) {
         efCellAnimation.setInitialAlpha(alpha)
+    }
+    
+    /// Call this function to change the initial scale for Scale effects
+    ///
+    /// Default is 0.8
+    public func setInitialScale(scale : Double) {
+        efCellAnimation.setInitialScale(scale)
     }
     
     /// This function will need to be called any time a tableview is reloaded UNLESS you don't want the cells to rerun any animations
