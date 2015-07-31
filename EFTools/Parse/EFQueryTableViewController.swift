@@ -37,7 +37,7 @@ import ParseUI
 ///
 /// setTranslateDistance(distance : Int)
 ///
-/// - Call this function to change the Translate Distance for a Translate or TranslateFade animation.  Default is 50.
+/// - Call this function to change the Translate Distance for a Translate animation.  Default is 50.
 ///
 /// setCellType(cellTypes : Set<CellType>)
 ///
@@ -58,11 +58,17 @@ import ParseUI
 ///
 /// setDuration(duration : Double)
 ///
-/// - Call this function to change the cell presentation animation time. Default is 0.4
+/// - Call this function to change the cell presentation animation time.
+/// - Default is 0.4
 ///
 /// setInitialAlpha(alpha : Double)
 ///
-/// - Call this function to change the initial alpha value for any Fade or TranslateFade animation.  Ranges from 0.0 to 1.0, defaults to 0.0
+/// - Call this function to change the initial alpha value for any Fade animation.  Ranges from 0.0 to 1.0, defaults to 0.0
+///
+/// setInitialScale(scale : Double)
+///
+/// - Call this function to change the initial scale value for any Scale animation.
+/// - Default is 0.8
 
 
 public class EFQueryTableViewController: PFQueryTableViewController {
@@ -76,7 +82,7 @@ public class EFQueryTableViewController: PFQueryTableViewController {
         super.didReceiveMemoryWarning()
     }
     
-    /// Call this function to change the Translate Distance for a Translate or TranslateFade animation
+    /// Call this function to change the Translate Distance for a Translate animation
     ///
     /// Default is 50
     public func setTranslateDistance(distance : Int) {
@@ -113,11 +119,18 @@ public class EFQueryTableViewController: PFQueryTableViewController {
         efCellAnimation.setDuration(duration)
     }
     
-    /// Call this function to change the initial alpha value for any Fade or TranslateFade animation
+    /// Call this function to change the initial alpha value for any Fade animation
     ///
     /// Ranges from 0.0 to 1.0, defaults to 0.0
     public func setInitialAlpha(alpha : Double) {
         efCellAnimation.setInitialAlpha(alpha)
+    }
+    
+    /// Call this function to change the initial scale for Scale effects
+    ///
+    /// Default is 0.8
+    public func setInitialScale(scale : Double) {
+        efCellAnimation.setInitialScale(scale)
     }
     
     /// This function will be called by parse and will reset the previous index array.

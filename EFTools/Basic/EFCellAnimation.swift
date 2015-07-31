@@ -32,7 +32,7 @@ public enum ShowType {
 }
 
 class EFCellAnimation {
-    /// How far the cell will travel on a Translate or TranslateFade effect
+    /// How far the cell will travel on a Translate effect
     ///
     /// Default is 50
     private var TRANSLATE_DISTANCE : CGFloat = 50
@@ -57,7 +57,7 @@ class EFCellAnimation {
     /// Default is 0.8
     private var INITIAL_SCALE = 0.8
     
-    /// Initial alpha for Fade and TranslateFade effects
+    /// Initial alpha for Fade effects
     ///
     /// Ranges from 0.0 to 1.0, defaults to 0.0
     private var INITIAL_ALPHA : Float = 0.0
