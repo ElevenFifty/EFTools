@@ -17,14 +17,14 @@ import UIKit
 ///
 /// - Call this function to change the Translate Distance for a Translate or TranslateFade animation.  Default is 50.
 ///
-/// setCellType(cellType : CellType)
+/// setCellType(cellTypes : Set<CellType>)
 ///
 /// - Call this function to change the cell presentation animation
 /// - None: Normal loading of cell, no effects
 /// - Translate: Cell slides in from the right, with no alpha fading
-/// - TranslateFade: Cell slides in from the right and fades in
 /// - Fade: Cell fades in with no motion effect
-/// - Default is .None
+/// - Scale: Cell scales from a larger or smaller size
+/// - Default is [.None]
 ///
 /// setShowType(showType : ShowType)
 ///
@@ -69,12 +69,12 @@ public class EFTableViewController: UITableViewController {
     ///
     /// - None: Normal loading of cell, no effects
     /// - Translate: Cell slides in from the right, with no alpha fading
-    /// - TranslateFade: Cell slides in from the right and fades in
     /// - Fade: Cell fades in with no motion effect
+    /// - Scale: Cell scales from a larger or smaller size
     ///
-    /// Default is .None
-    public func setCellType(cellType : CellType) {
-        efCellAnimation.setCellType(cellType)
+    /// Default is [.None]
+    public func setCellType(cellTypes : Set<CellType>) {
+        efCellAnimation.setCellType(cellTypes)
     }
     
     /// Call this function to change when cells are animated
