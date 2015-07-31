@@ -108,10 +108,6 @@ class EFCellAnimation {
     
     //TODO: Readme file - CocoaPods 0.38 required?
     
-    //TODO: Multiple CellType options
-    
-    //TODO: Scale transform
-    
     func setupAnimation(indexPath: NSIndexPath, cell: UITableViewCell) {
         if !prevIndexes.contains(indexPath) || SHOW_TYPE == .Always {
             prevIndexes.insert(indexPath)
