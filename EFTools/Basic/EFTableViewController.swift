@@ -44,10 +44,10 @@ import UIKit
 /// - Call this function to change the initial alpha value for any Fade animation.
 /// - Ranges from 0.0 to 1.0, defaults to 0.0
 ///
-/// setInitialScale(scale : Double)
+/// setInitialScale(xscale : Double, yscale : Double)
 ///
 /// - Call this function to change the initial scale value for any Scale animation.
-/// - Default is 0.8
+/// - Default is for each is 0.8
 ///
 /// resetCellAnimations()
 ///
@@ -110,9 +110,9 @@ public class EFTableViewController: UITableViewController {
     
     /// Call this function to change the initial scale for Scale effects
     ///
-    /// Default is 0.8
-    public func setInitialScale(scale : Double) {
-        efCellAnimation.setInitialScale(scale)
+    /// Default for each is 0.8
+    public func setInitialScale(xscale : Double, yscale : Double) {
+        efCellAnimation.setInitialScale(xscale, yscale: yscale)
     }
     
     /// This function will need to be called any time a tableview is reloaded UNLESS you don't want the cells to rerun any animations

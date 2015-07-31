@@ -15,6 +15,7 @@
 		F177DFEA1B68B30D00E26B88 /* EFCellAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F177DFE81B68B30D00E26B88 /* EFCellAnimation.swift */; };
 		F177DFEB1B68B30D00E26B88 /* EFTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F177DFE91B68B30D00E26B88 /* EFTableViewController.swift */; };
 		F177DFED1B68B31600E26B88 /* EFQueryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F177DFEC1B68B31600E26B88 /* EFQueryTableViewController.swift */; };
+		F1CF7EC21B6BAE7800EBA6CA /* ProgressUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CF7EC11B6BAE7800EBA6CA /* ProgressUtilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		F177DFE81B68B30D00E26B88 /* EFCellAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EFCellAnimation.swift; path = Basic/EFCellAnimation.swift; sourceTree = "<group>"; };
 		F177DFE91B68B30D00E26B88 /* EFTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EFTableViewController.swift; path = Basic/EFTableViewController.swift; sourceTree = "<group>"; };
 		F177DFEC1B68B31600E26B88 /* EFQueryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EFQueryTableViewController.swift; path = Parse/EFQueryTableViewController.swift; sourceTree = "<group>"; };
+		F1CF7EC11B6BAE7800EBA6CA /* ProgressUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgressUtilities.swift; path = Basic/ProgressUtilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 				F177DFE81B68B30D00E26B88 /* EFCellAnimation.swift */,
 				F177DFE91B68B30D00E26B88 /* EFTableViewController.swift */,
 				F16968EF1B6935DE0068E3CB /* UIColorExtension.swift */,
+				F1CF7EC11B6BAE7800EBA6CA /* ProgressUtilities.swift */,
 			);
 			name = Basic;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				F177DFEB1B68B30D00E26B88 /* EFTableViewController.swift in Sources */,
 				F177DFEA1B68B30D00E26B88 /* EFCellAnimation.swift in Sources */,
 				F16968F01B6935DE0068E3CB /* UIColorExtension.swift in Sources */,
+				F1CF7EC21B6BAE7800EBA6CA /* ProgressUtilities.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

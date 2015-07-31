@@ -55,7 +55,8 @@ class EFCellAnimation {
     /// Initial scale for ScaleIn and ScaleOut effects
     ///
     /// Default is 0.8
-    private var INITIAL_SCALE = 0.8
+    private var INITIAL_X_SCALE = 0.8
+    private var INITIAL_Y_SCALE = 0.8
     
     /// Initial alpha for Fade effects
     ///
@@ -89,9 +90,10 @@ class EFCellAnimation {
         DURATION = duration
     }
     
-    func setInitialScale(scale : Double) {
-        INITIAL_SCALE = scale
-        scaleTransform = CATransform3DScale(CATransform3DIdentity, CGFloat(scale), CGFloat(scale), 1)
+    func setInitialScale(xscale : Double, yscale : Double) {
+        INITIAL_X_SCALE = xscale
+        INITIAL_Y_SCALE = yscale
+        scaleTransform = CATransform3DScale(CATransform3DIdentity, CGFloat(xscale), CGFloat(yscale), 1)
     }
     
     func setInitialAlpha(alpha : Double) {
@@ -106,23 +108,20 @@ class EFCellAnimation {
     
     //TODO: Readme file - CocoaPods 0.38 required?
     
-    //TODO: Multiple CellType options
-    
-    //TODO: Scale transform
-    
-    
-    
     func setupAnimation(indexPath: NSIndexPath, cell: UITableViewCell) {
         if !prevIndexes.contains(indexPath) || SHOW_TYPE == .Always {
             prevIndexes.insert(indexPath)
             let content = cell.contentView
             if CELL_TYPE.contains(.Translate) {
+                println("translate")
                 content.layer.transform = translateTransform
             }
             if CELL_TYPE.contains(.Fade) {
+                println("fade")
                 content.layer.opacity = INITIAL_ALPHA
             }
             if CELL_TYPE.contains(.Scale) {
+                println("scale")
                 content.layer.transform = scaleTransform
             }
             
