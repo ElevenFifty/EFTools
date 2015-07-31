@@ -65,10 +65,10 @@ import ParseUI
 ///
 /// - Call this function to change the initial alpha value for any Fade animation.  Ranges from 0.0 to 1.0, defaults to 0.0
 ///
-/// setInitialScale(scale : Double)
+/// setInitialScale(xscale : Double, yscale : Double)
 ///
 /// - Call this function to change the initial scale value for any Scale animation.
-/// - Default is 0.8
+/// - Default for each is 0.8
 
 
 public class EFQueryTableViewController: PFQueryTableViewController {
@@ -128,9 +128,9 @@ public class EFQueryTableViewController: PFQueryTableViewController {
     
     /// Call this function to change the initial scale for Scale effects
     ///
-    /// Default is 0.8
-    public func setInitialScale(scale : Double) {
-        efCellAnimation.setInitialScale(scale)
+    /// Default for each is 0.8
+    public func setInitialScale(xscale : Double, yscale : Double) {
+        efCellAnimation.setInitialScale(xscale, yscale: yscale)
     }
     
     /// This function will be called by parse and will reset the previous index array.
