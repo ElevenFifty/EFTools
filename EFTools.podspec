@@ -104,6 +104,7 @@ spec.requires_arc = true
 spec.dependency 'SnapKit', '~> 0.12.0'
 spec.dependency 'MBProgressHUD', '~> 0.9.1'
 spec.dependency 'AFDateHelper'
+spec.dependency 'Instabug'
 
 spec.default_subspec = 'Everything'
 
