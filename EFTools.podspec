@@ -105,6 +105,7 @@ spec.dependency 'SnapKit', '~> 0.12.0'
 spec.dependency 'MBProgressHUD', '~> 0.9.1'
 spec.dependency 'AFDateHelper'
 spec.dependency 'Instabug'
+spec.dependency 'TPKeyboardAvoiding'
 
 spec.default_subspec = 'Everything'
 

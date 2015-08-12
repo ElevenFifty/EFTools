@@ -113,15 +113,12 @@ class EFCellAnimation {
             prevIndexes.insert(indexPath)
             let content = cell.contentView
             if CELL_TYPE.contains(.Translate) {
-                println("translate")
                 content.layer.transform = translateTransform
             }
             if CELL_TYPE.contains(.Fade) {
-                println("fade")
                 content.layer.opacity = INITIAL_ALPHA
             }
             if CELL_TYPE.contains(.Scale) {
-                println("scale")
                 content.layer.transform = scaleTransform
             }
             
