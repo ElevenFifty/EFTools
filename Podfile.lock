@@ -1,6 +1,6 @@
 PODS:
   - AFDateHelper (2.0.4)
-  - Alamofire (1.3.0)
+  - Alamofire (2.0.0-beta.1)
   - Bolts (1.2.0):
     - Bolts/AppLinks (= 1.2.0)
     - Bolts/Tasks (= 1.2.0)
@@ -9,37 +9,77 @@ PODS:
   - Bolts/Tasks (1.2.0)
   - Facebook-iOS-SDK (3.23.2):
     - Bolts (~> 1.0)
+  - Instabug (4.1.4)
   - MBProgressHUD (0.9.1)
-  - Parse (1.7.5.3):
+  - Parse (1.8.0):
     - Bolts/Tasks (>= 1.2.0)
-  - ParseFacebookUtils (1.7.5.3):
+  - ParseFacebookUtils (1.8.0.1):
     - Bolts/Tasks (>= 1.2.0)
     - Facebook-iOS-SDK (~> 3.23)
-    - Parse (~> 1.7.5.3)
-  - ParseUI (1.1.4):
-    - Parse (~> 1.7)
-  - SnapKit (0.12.0)
+    - Parse (~> 1.8.0)
+  - ParseTwitterUtils (1.8.0.1):
+    - Bolts/Tasks (>= 1.2.0)
+    - Parse (~> 1.8.0)
+  - ParseUI (1.1.5):
+    - Bolts/Tasks (~> 1.2)
+    - Parse (~> 1.8)
+  - SnapKit (0.13.0)
   - SwiftyJSON (2.2.1)
+  - TPKeyboardAvoiding (1.2.9)
 
 DEPENDENCIES:
-  - AFDateHelper
-  - Alamofire
+  - AFDateHelper (from `https://github.com/melvitax/AFDateHelper`, branch `Swift2`)
+  - Alamofire (from `https://github.com/Alamofire/Alamofire.git`, branch `swift-2.0`)
+  - Instabug
   - MBProgressHUD (~> 0.9.1)
   - ParseFacebookUtils
+  - ParseTwitterUtils
   - ParseUI
-  - SnapKit (~> 0.12.0)
-  - SwiftyJSON (~> 2.2.1)
+  - SnapKit (from `https://github.com/SnapKit/SnapKit`, branch `swift-2.0`)
+  - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON`, branch `xcode7`)
+  - TPKeyboardAvoiding
+
+EXTERNAL SOURCES:
+  AFDateHelper:
+    :branch: Swift2
+    :git: https://github.com/melvitax/AFDateHelper
+  Alamofire:
+    :branch: swift-2.0
+    :git: https://github.com/Alamofire/Alamofire.git
+  SnapKit:
+    :branch: swift-2.0
+    :git: https://github.com/SnapKit/SnapKit
+  SwiftyJSON:
+    :branch: xcode7
+    :git: https://github.com/SwiftyJSON/SwiftyJSON
+
+CHECKOUT OPTIONS:
+  AFDateHelper:
+    :commit: a86459b24bfca2b417fc22bca5bfbefd4cdf1068
+    :git: https://github.com/melvitax/AFDateHelper
+  Alamofire:
+    :commit: 97531ad0137a335653c83bb911bae33c67621f1e
+    :git: https://github.com/Alamofire/Alamofire.git
+  SnapKit:
+    :commit: 4f19419528baa3dfaca20e26fea2be410ddc79e2
+    :git: https://github.com/SnapKit/SnapKit
+  SwiftyJSON:
+    :commit: d2455075224731f0449366c71e1a08d10d718e6d
+    :git: https://github.com/SwiftyJSON/SwiftyJSON
 
 SPEC CHECKSUMS:
-  AFDateHelper: ea0c7c81dbadcc2585a700f552d323beaf10b98d
-  Alamofire: 220403a8d5840e0b4c946a6fbaf209dbca124282
+  AFDateHelper: 775ce440914612410956d5e853f9013de50cec5e
+  Alamofire: 96feccc1e48a735edb92395cf023ba4ed52bdb45
   Bolts: d176cb1e0012175589e389a9db49b85e27787576
   Facebook-iOS-SDK: cd87f0b2f0c1d9574b44e8fa2baacc275524bac3
+  Instabug: de19c1b0f89c4e5deda6dd7f1dc3515e54238b08
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
-  Parse: 373adbb1ad2e34d383542c3b28f678c49ebe4881
-  ParseFacebookUtils: 008a24dc35884519ed6a6750648beb5149f1fad9
-  ParseUI: d1228541b02a36a7354c8f47747f5f7a89cf1ff0
-  SnapKit: 00c388aa3bf1944c1b55472f31e841f75bd83882
+  Parse: 6ea05adb378fbfd6f8726ab67ef74330d96fc903
+  ParseFacebookUtils: 5a4b02d12aa75a69ff02d7386c982b9dfef8279e
+  ParseTwitterUtils: 916cee86789aab7505d67294cecca0b1175b7790
+  ParseUI: 2c53621ed028ee793f5ab92a551b099689265525
+  SnapKit: 69fe274c71511df89a5591c11437a8b826bfa9eb
   SwiftyJSON: ae2d0a3d68025d136602a33c4ee215091ced3e33
+  TPKeyboardAvoiding: ff1ee4e5a5a0c119b965552af8f183868ea20207
 
 COCOAPODS: 0.38.2

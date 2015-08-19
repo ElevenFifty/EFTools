@@ -101,9 +101,9 @@ spec.requires_arc = true
 
 # Finally, specify any Pods that this Pod depends on.
 #
-spec.dependency 'SnapKit', '~> 0.12.0'
+spec.dependency 'SnapKit', :git => 'https://github.com/SnapKit/SnapKit', :branch => 'swift-2.0'
 spec.dependency 'MBProgressHUD', '~> 0.9.1'
-spec.dependency 'AFDateHelper'
+spec.dependency 'AFDateHelper', :git => 'https://github.com/melvitax/AFDateHelper', :branch => 'Swift2'
 spec.dependency 'Instabug'
 spec.dependency 'TPKeyboardAvoiding'
 
@@ -122,8 +122,8 @@ end
 
 spec.subspec 'Alamofire' do |afspec|
     afspec.dependency 'Alamofire'
-    afspec.dependency 'Alamofire', '~> 1.3'
-    afspec.dependency 'SwiftyJSON', '~> 2.2.1'
+    afspec.dependency 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire.git', :branch => 'swift-2.0'
+    afspec.dependency 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON', :branch => 'xcode7'
     afspec.source_files = 'EFTools/AF', 'EFTools/Basic'
 end
 
@@ -131,8 +131,8 @@ spec.subspec 'Everything' do |allspec|
     allspec.dependency 'ParseUI'
     allspec.dependency 'ParseFacebookUtils'
     allspec.dependency 'ParseTwitterUtils'
-    allspec.dependency 'Alamofire', '~> 1.3'
-    allspec.dependency 'SwiftyJSON', '~> 2.2.1'
+    allspec.dependency 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire.git', :branch => 'swift-2.0'
+    allspec.dependency 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON', :branch => 'xcode7'
     allspec.source_files = 'EFTools/Parse', 'EFTools/AF', 'EFTools/Basic'
 end
 
