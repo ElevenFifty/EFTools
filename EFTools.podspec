@@ -116,6 +116,7 @@ end
 spec.subspec 'Parse' do |parsespec|
     parsespec.dependency 'ParseUI'
     parsespec.dependency 'ParseFacebookUtils'
+    parsespec.dependency 'ParseTwitterUtils'
     parsespec.source_files = 'EFTools/Parse', 'EFTools/Basic'
 end
 
@@ -129,6 +130,7 @@ end
 spec.subspec 'Everything' do |allspec|
     allspec.dependency 'ParseUI'
     allspec.dependency 'ParseFacebookUtils'
+    allspec.dependency 'ParseTwitterUtils'
     allspec.dependency 'Alamofire', '~> 1.3'
     allspec.dependency 'SwiftyJSON', '~> 2.2.1'
     allspec.source_files = 'EFTools/Parse', 'EFTools/AF', 'EFTools/Basic'
