@@ -1,6 +1,6 @@
 PODS:
   - AFDateHelper (2.0.4)
-  - Alamofire (1.3.0)
+  - Alamofire (1.3.1)
   - Bolts (1.2.0):
     - Bolts/AppLinks (= 1.2.0)
     - Bolts/Tasks (= 1.2.0)
@@ -9,37 +9,56 @@ PODS:
   - Bolts/Tasks (1.2.0)
   - Facebook-iOS-SDK (3.23.2):
     - Bolts (~> 1.0)
+  - IJReachability (0.1.0)
+  - Instabug (4.1.4)
   - MBProgressHUD (0.9.1)
-  - Parse (1.7.5.3):
+  - Parse (1.8.1):
     - Bolts/Tasks (>= 1.2.0)
-  - ParseFacebookUtils (1.7.5.3):
+  - ParseFacebookUtils (1.8.1):
     - Bolts/Tasks (>= 1.2.0)
     - Facebook-iOS-SDK (~> 3.23)
-    - Parse (~> 1.7.5.3)
-  - ParseUI (1.1.4):
-    - Parse (~> 1.7)
+    - Parse (~> 1.8.0)
+  - ParseUI (1.1.5):
+    - Bolts/Tasks (~> 1.2)
+    - Parse (~> 1.8)
   - SnapKit (0.12.0)
   - SwiftyJSON (2.2.1)
+  - TPKeyboardAvoiding (1.2.9)
 
 DEPENDENCIES:
   - AFDateHelper
   - Alamofire
+  - IJReachability (from `https://github.com/Isuru-Nanayakkara/IJReachability.git`)
+  - Instabug
   - MBProgressHUD (~> 0.9.1)
   - ParseFacebookUtils
   - ParseUI
   - SnapKit (~> 0.12.0)
   - SwiftyJSON (~> 2.2.1)
+  - TPKeyboardAvoiding
+
+EXTERNAL SOURCES:
+  IJReachability:
+    :git: https://github.com/Isuru-Nanayakkara/IJReachability.git
+
+CHECKOUT OPTIONS:
+  IJReachability:
+    :commit: da69c8f4bed9f82203bb49180fb36091b4cd0d28
+    :git: https://github.com/Isuru-Nanayakkara/IJReachability.git
 
 SPEC CHECKSUMS:
   AFDateHelper: ea0c7c81dbadcc2585a700f552d323beaf10b98d
-  Alamofire: 220403a8d5840e0b4c946a6fbaf209dbca124282
+  Alamofire: e4ab637e3195b645c814b87a652373439e59f2a4
   Bolts: d176cb1e0012175589e389a9db49b85e27787576
   Facebook-iOS-SDK: cd87f0b2f0c1d9574b44e8fa2baacc275524bac3
+  IJReachability: 3eff33caca50869df09b257bcf712031a56a8575
+  Instabug: de19c1b0f89c4e5deda6dd7f1dc3515e54238b08
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
-  Parse: 373adbb1ad2e34d383542c3b28f678c49ebe4881
-  ParseFacebookUtils: 008a24dc35884519ed6a6750648beb5149f1fad9
-  ParseUI: d1228541b02a36a7354c8f47747f5f7a89cf1ff0
+  Parse: 2155953b1565494095d5fa5c83b3c77f2c677c09
+  ParseFacebookUtils: f3e670d3f8edd0cfb8429ac39b30959d4ab13f0b
+  ParseUI: 2c53621ed028ee793f5ab92a551b099689265525
   SnapKit: 00c388aa3bf1944c1b55472f31e841f75bd83882
   SwiftyJSON: ae2d0a3d68025d136602a33c4ee215091ced3e33
+  TPKeyboardAvoiding: ff1ee4e5a5a0c119b965552af8f183868ea20207
 
 COCOAPODS: 0.38.2
