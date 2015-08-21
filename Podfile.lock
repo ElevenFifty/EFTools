@@ -9,7 +9,6 @@ PODS:
   - Bolts/Tasks (1.2.0)
   - Facebook-iOS-SDK (3.23.2):
     - Bolts (~> 1.0)
-  - IJReachability (0.1.0)
   - Instabug (4.1.4)
   - MBProgressHUD (0.9.1)
   - Parse (1.8.1):
@@ -28,7 +27,6 @@ PODS:
 DEPENDENCIES:
   - AFDateHelper
   - Alamofire
-  - IJReachability (from `https://github.com/Isuru-Nanayakkara/IJReachability.git`)
   - Instabug
   - MBProgressHUD (~> 0.9.1)
   - ParseFacebookUtils
@@ -37,21 +35,11 @@ DEPENDENCIES:
   - SwiftyJSON (~> 2.2.1)
   - TPKeyboardAvoiding
 
-EXTERNAL SOURCES:
-  IJReachability:
-    :git: https://github.com/Isuru-Nanayakkara/IJReachability.git
-
-CHECKOUT OPTIONS:
-  IJReachability:
-    :commit: da69c8f4bed9f82203bb49180fb36091b4cd0d28
-    :git: https://github.com/Isuru-Nanayakkara/IJReachability.git
-
 SPEC CHECKSUMS:
   AFDateHelper: ea0c7c81dbadcc2585a700f552d323beaf10b98d
   Alamofire: e4ab637e3195b645c814b87a652373439e59f2a4
   Bolts: d176cb1e0012175589e389a9db49b85e27787576
   Facebook-iOS-SDK: cd87f0b2f0c1d9574b44e8fa2baacc275524bac3
-  IJReachability: 3eff33caca50869df09b257bcf712031a56a8575
   Instabug: de19c1b0f89c4e5deda6dd7f1dc3515e54238b08
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   Parse: 2155953b1565494095d5fa5c83b3c77f2c677c09
