@@ -122,7 +122,6 @@ spec.subspec 'Parse' do |parsespec|
 end
 
 spec.subspec 'Alamofire' do |afspec|
-    afspec.dependency 'Alamofire'
     afspec.dependency 'Alamofire', '~> 1.3'
     afspec.dependency 'SwiftyJSON', '~> 2.2.1'
     afspec.source_files = 'EFTools/AF', 'EFTools/Basic'
