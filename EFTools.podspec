@@ -106,7 +106,6 @@ spec.dependency 'MBProgressHUD', '~> 0.9.1'
 spec.dependency 'AFDateHelper'
 spec.dependency 'Instabug'
 spec.dependency 'TPKeyboardAvoiding'
-spec.dependency 'IJReachability', :git => 'https://github.com/Isuru-Nanayakkara/IJReachability.git'
 
 spec.default_subspec = 'Everything'
 
