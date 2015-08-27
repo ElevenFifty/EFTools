@@ -6,7 +6,7 @@
 #
 Pod::Spec.new do |spec|
 spec.name         = "EFTools"
-spec.version      = "0.1"
+spec.version      = "0.2"
 spec.summary      = "iOS ElevenFifty Toolkit"
 # spec.description  = <<-DESC
 #                   An optional longer description of EFTools
