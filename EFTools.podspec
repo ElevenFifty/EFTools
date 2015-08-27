@@ -101,9 +101,9 @@ spec.requires_arc = true
 
 # Finally, specify any Pods that this Pod depends on.
 #
-spec.dependency 'SnapKit', :git => 'https://github.com/SnapKit/SnapKit', :branch => 'swift-2.0'
+#spec.dependency 'SnapKit', :git => 'https://github.com/SnapKit/SnapKit', :branch => 'swift-2.0'
 spec.dependency 'MBProgressHUD', '~> 0.9.1'
-spec.dependency 'AFDateHelper', :git => 'https://github.com/melvitax/AFDateHelper', :branch => 'Swift2'
+#spec.dependency 'AFDateHelper', :git => 'https://github.com/melvitax/AFDateHelper', :branch => 'Swift2'
 spec.dependency 'Instabug'
 spec.dependency 'TPKeyboardAvoiding'
 
