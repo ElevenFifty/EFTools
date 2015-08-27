@@ -34,7 +34,7 @@ spec.author       = 'ElevenFifty Consulting'
 
 # Specify the location from where the source should be retrieved.
 #
-spec.source       = { :git => "https://barryllium@github.com/ElevenFifty/EFTools.git", :tag => "0.2" }
+spec.source       = { :git => "https://barryllium@github.com/ElevenFifty/EFTools.git", :branch => "0.2" }
 
 
 # If this Pod runs only on iOS or OS X, then specify the platform and
