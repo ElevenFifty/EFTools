@@ -34,7 +34,7 @@ spec.author       = 'ElevenFifty Consulting'
 
 # Specify the location from where the source should be retrieved.
 #
-spec.source       = { :git => "https://barryllium@github.com/ElevenFifty/EFTools.git", :tag => "0.1" }
+spec.source       = { :git => "https://barryllium@github.com/ElevenFifty/EFTools.git", :tag => "0.2" }
 
 
 # If this Pod runs only on iOS or OS X, then specify the platform and
@@ -103,7 +103,7 @@ spec.requires_arc = true
 #
 spec.dependency 'SnapKit', :git => 'https://github.com/SnapKit/SnapKit', :branch => 'swift-2.0'
 spec.dependency 'MBProgressHUD', '~> 0.9.1'
-#spec.dependency 'AFDateHelper', :git => 'https://github.com/melvitax/AFDateHelper', :branch => 'Swift2'
+spec.dependency 'AFDateHelper', :git => 'https://github.com/melvitax/AFDateHelper', :branch => 'Swift2'
 spec.dependency 'Instabug'
 spec.dependency 'TPKeyboardAvoiding'
 
