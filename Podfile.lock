@@ -1,85 +1,68 @@
 PODS:
-  - AFDateHelper (2.0.4)
-  - Alamofire (2.0.0-beta.1)
-  - Bolts (1.2.0):
-    - Bolts/AppLinks (= 1.2.0)
-    - Bolts/Tasks (= 1.2.0)
-  - Bolts/AppLinks (1.2.0):
+  - AFDateHelper (3.1.0)
+  - Alamofire (2.0.2)
+  - Bolts (1.2.2):
+    - Bolts/AppLinks (= 1.2.2)
+    - Bolts/Tasks (= 1.2.2)
+  - Bolts/AppLinks (1.2.2):
     - Bolts/Tasks
-  - Bolts/Tasks (1.2.0)
-  - Facebook-iOS-SDK (3.23.2):
-    - Bolts (~> 1.0)
-  - Instabug (4.1.4)
+  - Bolts/Tasks (1.2.2)
+  - FBSDKCoreKit (4.6.0):
+    - Bolts (~> 1.1)
+    - FBSDKCoreKit/arc (= 4.6.0)
+    - FBSDKCoreKit/no-arc (= 4.6.0)
+  - FBSDKCoreKit/arc (4.6.0):
+    - Bolts (~> 1.1)
+  - FBSDKCoreKit/no-arc (4.6.0):
+    - Bolts (~> 1.1)
+    - FBSDKCoreKit/arc
+  - FBSDKLoginKit (4.6.0):
+    - FBSDKCoreKit
+  - Instabug (4.1.6)
   - MBProgressHUD (0.9.1)
-  - Parse (1.8.0):
-    - Bolts/Tasks (>= 1.2.0)
-  - ParseFacebookUtils (1.8.0.1):
-    - Bolts/Tasks (>= 1.2.0)
-    - Facebook-iOS-SDK (~> 3.23)
-    - Parse (~> 1.8.0)
-  - ParseTwitterUtils (1.8.0.1):
-    - Bolts/Tasks (>= 1.2.0)
-    - Parse (~> 1.8.0)
-  - ParseUI (1.1.5):
+  - Parse (1.8.5):
+    - Bolts/Tasks (>= 1.2.2)
+  - ParseFacebookUtilsV4 (1.8.5):
+    - Bolts/Tasks (>= 1.2.2)
+    - FBSDKCoreKit (~> 4.0)
+    - FBSDKLoginKit (~> 4.0)
+    - Parse (~> 1.8.4)
+  - ParseTwitterUtils (1.8.5):
+    - Bolts/Tasks (>= 1.2.2)
+    - Parse (~> 1.8.5)
+  - ParseUI (1.1.6):
     - Bolts/Tasks (~> 1.2)
     - Parse (~> 1.8)
-  - SnapKit (0.13.0)
-  - SwiftyJSON (2.2.1)
+  - SnapKit (0.14.0)
+  - SwiftyJSON (2.3.0)
   - TPKeyboardAvoiding (1.2.9)
 
 DEPENDENCIES:
-  - AFDateHelper (from `https://github.com/melvitax/AFDateHelper`, branch `Swift2`)
-  - Alamofire (from `https://github.com/Alamofire/Alamofire.git`, branch `swift-2.0`)
+  - AFDateHelper
+  - Alamofire (~> 2.0)
   - Instabug
   - MBProgressHUD (~> 0.9.1)
-  - ParseFacebookUtils
+  - ParseFacebookUtilsV4
   - ParseTwitterUtils
   - ParseUI
-  - SnapKit (from `https://github.com/SnapKit/SnapKit`, branch `swift-2.0`)
-  - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON`, branch `xcode7`)
+  - SnapKit
+  - SwiftyJSON
   - TPKeyboardAvoiding
 
-EXTERNAL SOURCES:
-  AFDateHelper:
-    :branch: Swift2
-    :git: https://github.com/melvitax/AFDateHelper
-  Alamofire:
-    :branch: swift-2.0
-    :git: https://github.com/Alamofire/Alamofire.git
-  SnapKit:
-    :branch: swift-2.0
-    :git: https://github.com/SnapKit/SnapKit
-  SwiftyJSON:
-    :branch: xcode7
-    :git: https://github.com/SwiftyJSON/SwiftyJSON
-
-CHECKOUT OPTIONS:
-  AFDateHelper:
-    :commit: a86459b24bfca2b417fc22bca5bfbefd4cdf1068
-    :git: https://github.com/melvitax/AFDateHelper
-  Alamofire:
-    :commit: 97531ad0137a335653c83bb911bae33c67621f1e
-    :git: https://github.com/Alamofire/Alamofire.git
-  SnapKit:
-    :commit: 4f19419528baa3dfaca20e26fea2be410ddc79e2
-    :git: https://github.com/SnapKit/SnapKit
-  SwiftyJSON:
-    :commit: d2455075224731f0449366c71e1a08d10d718e6d
-    :git: https://github.com/SwiftyJSON/SwiftyJSON
-
 SPEC CHECKSUMS:
-  AFDateHelper: 775ce440914612410956d5e853f9013de50cec5e
-  Alamofire: 96feccc1e48a735edb92395cf023ba4ed52bdb45
-  Bolts: d176cb1e0012175589e389a9db49b85e27787576
-  Facebook-iOS-SDK: cd87f0b2f0c1d9574b44e8fa2baacc275524bac3
-  Instabug: de19c1b0f89c4e5deda6dd7f1dc3515e54238b08
+  AFDateHelper: 346694fc5861bdef77d8115e3825182a3fc697d2
+  Alamofire: 8edbab00802a752bb5240cc2abe70e7e881488ad
+  Bolts: 20a2bd788273360cb1e31530dc19b8544eef2544
+  FBSDKCoreKit: 9954492d90c5fd65ae831395697a1660360d61f1
+  FBSDKLoginKit: 3d07febbfa884b9878cacba54f705bb41f07d4b6
+  Instabug: 6f87a52937b449c03e9f99b81ee85b13eea0cf25
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
-  Parse: 6ea05adb378fbfd6f8726ab67ef74330d96fc903
-  ParseFacebookUtils: 5a4b02d12aa75a69ff02d7386c982b9dfef8279e
-  ParseTwitterUtils: 916cee86789aab7505d67294cecca0b1175b7790
-  ParseUI: 2c53621ed028ee793f5ab92a551b099689265525
-  SnapKit: 69fe274c71511df89a5591c11437a8b826bfa9eb
-  SwiftyJSON: ae2d0a3d68025d136602a33c4ee215091ced3e33
+  Parse: 17ad8e0677ed682f7f00503860fcda0f4eb74168
+  ParseFacebookUtilsV4: cc51857cf984c6fc743e7f17c2ddebdb6f02f963
+  ParseTwitterUtils: 408a2a9220b051c18fe45797db3f272d548e51f1
+  ParseUI: 8a22e448c03f825203d8c379c80523517f68baa3
+  SnapKit: f42352ef34953866da0de1e1009c2ff82588a95e
+  SwiftyJSON: 8d6b61a70277ef2a5d710d372e06e7e2d87fb9e4
   TPKeyboardAvoiding: ff1ee4e5a5a0c119b965552af8f183868ea20207
 
 COCOAPODS: 0.38.2
