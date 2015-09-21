@@ -9,7 +9,7 @@ spec.source       = { :git => "https://barryllium@github.com/ElevenFifty/EFTools
 spec.platform     = :ios, '8.0'
 spec.requires_arc = true
 
-#spec.dependency 'SnapKit'
+spec.dependency 'SnapKit'
 spec.dependency 'MBProgressHUD', '~> 0.9.1'
 spec.dependency 'AFDateHelper'
 spec.dependency 'Instabug'
