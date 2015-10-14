@@ -29,11 +29,11 @@ EFTools has many dependencies that will be pulled down for you.  They are as fol
 
 By default, EFTools pulls down all of these.  You can also pull down subsets with the following Podfile lines:
 
-1. pod 'EFTools/Basic', :git => 'https://github\.com/ElevenFifty/EFTools.git', :branch => '0.1'
+1. pod 'EFTools/Basic', :git => 'https://github\.com/ElevenFifty/EFTools.git', :branch => '0.2'
   * pulls down AFDateHelper, Instabug, MBProgressHUD, SnapKit, and TPKeyboardAvoiding
-2. pod 'EFTools/Parse', :git => 'https://github\.com/ElevenFifty/EFTools.git', :branch => '0.1'
+2. pod 'EFTools/Parse', :git => 'https://github\.com/ElevenFifty/EFTools.git', :branch => '0.2'
   * pulls down ParseUI/Parse, ParseFacebookUtils, ParseTwitterUtils, and everything that "Basic" pulls down
-3. pod 'EFTools/Alamofire', :git => 'https://github\.com/ElevenFifty/EFTools.git', :branch => '0.1'
+3. pod 'EFTools/Alamofire', :git => 'https://github\.com/ElevenFifty/EFTools.git', :branch => '0.2'
   * pulls down Alamofire, SwiftyJSON, and everything that "Basic" pulls down
 
 
