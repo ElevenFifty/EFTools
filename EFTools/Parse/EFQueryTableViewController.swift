@@ -7,7 +7,7 @@
 //
 
 import UIKit
-//import ParseUI
+import ParseUI
 
 /// This class subclasses PFQueryTableViewController. Important functions to override are as follows:
 ///
