@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2EB789E5B86908905C7C4A9D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FBEA59F284AE1F87782DDB3 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		2EB789E5B86908905C7C4A9D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FBEA59F284AE1F87782DDB3 /* Pods.framework */; };
 		F10EF1481B87E86B00182C78 /* IJReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10EF1471B87E86B00182C78 /* IJReachability.swift */; };
 		F16968F01B6935DE0068E3CB /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16968EF1B6935DE0068E3CB /* UIColorExtension.swift */; };
 		F177DFCD1B68B25900E26B88 /* EFTools.h in Headers */ = {isa = PBXBuildFile; fileRef = F177DFCC1B68B25900E26B88 /* EFTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -229,7 +229,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Brett Keck";
 				TargetAttributes = {
 					F177DFC61B68B25900E26B88 = {
@@ -363,6 +363,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -446,6 +447,7 @@
 				INFOPLIST_FILE = EFTools/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.elevenfifty.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -469,6 +471,7 @@
 				INFOPLIST_FILE = EFTools/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.elevenfifty.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -488,6 +491,7 @@
 				);
 				INFOPLIST_FILE = EFToolsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.elevenfifty.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -501,6 +505,7 @@
 				);
 				INFOPLIST_FILE = EFToolsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.elevenfifty.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
