@@ -18,3 +18,5 @@ FOUNDATION_EXPORT const unsigned char EFToolsVersionString[];
 
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <ParseUI/ParseUI.h>
+#import <Parse/Parse.h>
+#import <Bolts/Bolts.h>
