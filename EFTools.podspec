@@ -23,7 +23,7 @@ end
 
 spec.subspec 'Parse' do |parsespec|
     parsespec.dependency 'ParseUI'
-    parsespec.dependency 'Bolts', 1.3.0
+    parsespec.dependency 'Bolts', '1.3.0'
     parsespec.dependency 'Parse', '1.8.5'
     parsespec.dependency 'ParseFacebookUtilsV4', '1.8.5'
     parsespec.dependency 'ParseTwitterUtils', '1.8.5'
@@ -38,7 +38,7 @@ end
 
 spec.subspec 'Everything' do |allspec|
     allspec.dependency 'ParseUI'
-    allspec.dependency 'Bolts', 1.3.0
+    allspec.dependency 'Bolts', '1.3.0'
     allspec.dependency 'Parse', '1.8.5'
     allspec.dependency 'ParseFacebookUtilsV4', '1.8.5'
     allspec.dependency 'ParseTwitterUtils', '1.8.5'
