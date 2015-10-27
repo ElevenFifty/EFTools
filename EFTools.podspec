@@ -35,7 +35,7 @@ spec.subspec 'Alamofire' do |afspec|
 end
 
 spec.subspec 'Everything' do |allspec|
-#    allspec.dependency 'ParseUI'
+    allspec.dependency 'ParseUI'
     allspec.dependency 'ParseFacebookUtilsV4'
     allspec.dependency 'ParseTwitterUtils'
     allspec.dependency 'Alamofire', '< 3.0'
