@@ -2,7 +2,7 @@
 iOS Tools for ElevenFifty
 
 ## How to use EFTools
-If you are already using Cocoapods, this is easy. If you aren't - then start!  Here's a sample Podfile that uses EFTools:
+If you are already using Cocoapods, this is easy. If you aren't - then start!  Here's a sample Podfile that uses EFTools in Xcode 7:
 
 ```
 source 'https://github.com/CocoaPods/Specs.git'
@@ -10,8 +10,10 @@ platform :ios, '8.0'
 use_frameworks!
 xcodeproj 'testapp.xcodeproj'
 
-pod 'EFTools', :git => 'https://github.com/ElevenFifty/EFTools.git', :branch => '0.1'
+pod 'EFTools', :git => 'https://github.com/ElevenFifty/EFTools.git', :branch => '0.2'
 ```
+
+**You will use branch 0.1 for any projects still building in Xcode 6.4**
 
 EFTools has many dependencies that will be pulled down for you.  They are as follows:
 * AFDateHelper (https://github.com/melvitax/AFDateHelper)
@@ -27,11 +29,11 @@ EFTools has many dependencies that will be pulled down for you.  They are as fol
 
 By default, EFTools pulls down all of these.  You can also pull down subsets with the following Podfile lines:
 
-1. pod 'EFTools/Basic', :git => 'https://github\.com/ElevenFifty/EFTools.git', :branch => '0.1'
+1. pod 'EFTools/Basic', :git => 'https://github\.com/ElevenFifty/EFTools.git', :branch => '0.2'
   * pulls down AFDateHelper, Instabug, MBProgressHUD, SnapKit, and TPKeyboardAvoiding
-2. pod 'EFTools/Parse', :git => 'https://github\.com/ElevenFifty/EFTools.git', :branch => '0.1'
+2. pod 'EFTools/Parse', :git => 'https://github\.com/ElevenFifty/EFTools.git', :branch => '0.2'
   * pulls down ParseUI/Parse, ParseFacebookUtils, ParseTwitterUtils, and everything that "Basic" pulls down
-3. pod 'EFTools/Alamofire', :git => 'https://github\.com/ElevenFifty/EFTools.git', :branch => '0.1'
+3. pod 'EFTools/Alamofire', :git => 'https://github\.com/ElevenFifty/EFTools.git', :branch => '0.2'
   * pulls down Alamofire, SwiftyJSON, and everything that "Basic" pulls down
 
 
