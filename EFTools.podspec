@@ -22,7 +22,7 @@ spec.subspec 'Basic' do |basic|
 end
 
 spec.subspec 'Parse' do |parsespec|
-    parsespec.dependency 'ParseUI'
+#parsespec.dependency 'ParseUI'
     parsespec.dependency 'ParseFacebookUtilsV4'
     parsespec.dependency 'ParseTwitterUtils'
     parsespec.source_files = 'EFTools/Parse', 'EFTools/Basic'
@@ -35,7 +35,7 @@ spec.subspec 'Alamofire' do |afspec|
 end
 
 spec.subspec 'Everything' do |allspec|
-#    allspec.dependency 'ParseUI'
+#allspec.dependency 'ParseUI'
     allspec.dependency 'ParseFacebookUtilsV4'
     allspec.dependency 'ParseTwitterUtils'
     allspec.dependency 'Alamofire', '< 3.0'
