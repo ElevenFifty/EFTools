@@ -23,12 +23,8 @@ end
 
 spec.subspec 'Parse' do |parsespec|
     parsespec.dependency 'ParseUI'
-    parsespec.dependency 'Bolts', '1.3.0'
-    parsespec.dependency 'Parse', '1.8.5'
-    parsespec.dependency 'ParseFacebookUtilsV4', '1.8.5'
-    parsespec.dependency 'ParseTwitterUtils', '1.8.5'
-    parsespec.dependency 'FBSDKCoreKit', '4.6.0'
-    parsespec.dependency 'FBSDKLoginKit', '4.6.0'
+    parsespec.dependency 'ParseFacebookUtilsV4'
+    parsespec.dependency 'ParseTwitterUtils'
     parsespec.source_files = 'EFTools/Parse', 'EFTools/Basic'
 end
 
@@ -40,12 +36,8 @@ end
 
 spec.subspec 'Everything' do |allspec|
     allspec.dependency 'ParseUI'
-    allspec.dependency 'Bolts', '1.3.0'
-    allspec.dependency 'Parse', '1.8.5'
-    allspec.dependency 'ParseFacebookUtilsV4', '1.8.5'
-    allspec.dependency 'ParseTwitterUtils', '1.8.5'
-    allspec.dependency 'FBSDKCoreKit', '4.6.0'
-    allspec.dependency 'FBSDKLoginKit', '4.6.0'
+    allspec.dependency 'ParseFacebookUtilsV4'
+    allspec.dependency 'ParseTwitterUtils'
     allspec.dependency 'Alamofire', '< 3.0'
     allspec.dependency 'SwiftyJSON'
     allspec.source_files = 'EFTools/Parse', 'EFTools/AF', 'EFTools/Basic'
