@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 Brett Keck. All rights reserved.
 //
 
-import UIKit
-import ParseUI
+//import UIKit
+//import ParseUI
 
 /// This class subclasses PFQueryTableViewController. Important functions to override are as follows:
 ///
@@ -71,76 +71,76 @@ import ParseUI
 /// - Default for each is 0.8
 
 
-public class EFQueryTableViewController: PFQueryTableViewController {
-    let efCellAnimation = EFCellAnimation()
-    
-    override public func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
-    override public func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-    /// Call this function to change the Translate Distance for a Translate animation
-    ///
-    /// Default is 50
-    public func setTranslateDistance(distance : Int) {
-        efCellAnimation.setTranslateDistance(distance)
-    }
-    
-    /// Call this function to change the cell presentation animation
-    ///
-    /// - None: Normal loading of cell, no effects
-    /// - Translate: Cell slides in from the right, with no alpha fading
-    /// - Fade: Cell fades in with no motion effect
-    /// - Scale: Cell scales from a larger or smaller size
-    ///
-    /// Default is [.None]
-    public func setCellType(cellTypes : Set<CellType>) {
-        efCellAnimation.setCellType(cellTypes)
-    }
-    
-    /// Call this function to change when cells are animated
-    ///
-    /// - Always: Every time a cell becomes visible
-    /// - Reload: The first time a cell becomes visible, and reset if tableview is reloaded
-    /// - Once: The first time a cell becomes visible, does not reset on reload
-    ///
-    /// Default is .Reload
-    public func setShowType(showType : ShowType) {
-        efCellAnimation.setShowType(showType)
-    }
-    
-    /// Call this function to change the cell presentation animation time
-    ///
-    /// Default is 0.4
-    public func setDuration(duration : Double) {
-        efCellAnimation.setDuration(duration)
-    }
-    
-    /// Call this function to change the initial alpha value for any Fade animation
-    ///
-    /// Ranges from 0.0 to 1.0, defaults to 0.0
-    public func setInitialAlpha(alpha : Double) {
-        efCellAnimation.setInitialAlpha(alpha)
-    }
-    
-    /// Call this function to change the initial scale for Scale effects
-    ///
-    /// Default for each is 0.8
-    public func setInitialScale(xscale : Double, yscale : Double) {
-        efCellAnimation.setInitialScale(xscale, yscale: yscale)
-    }
-    
-    /// This function will be called by parse and will reset the previous index array.
-    /// If you override this function, always call super.objectsWillLoad()
-    override public func objectsWillLoad() {
-        efCellAnimation.resetPrevIndexes()
-        super.objectsWillLoad()
-    }
-    
-    override public func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        efCellAnimation.setupAnimation(indexPath, cell: cell)
-    }
-}
+//public class EFQueryTableViewController: PFQueryTableViewController {
+//    let efCellAnimation = EFCellAnimation()
+//    
+//    override public func viewDidLoad() {
+//        super.viewDidLoad()
+//    }
+//
+//    override public func didReceiveMemoryWarning() {
+//        super.didReceiveMemoryWarning()
+//    }
+//    
+//    /// Call this function to change the Translate Distance for a Translate animation
+//    ///
+//    /// Default is 50
+//    public func setTranslateDistance(distance : Int) {
+//        efCellAnimation.setTranslateDistance(distance)
+//    }
+//    
+//    /// Call this function to change the cell presentation animation
+//    ///
+//    /// - None: Normal loading of cell, no effects
+//    /// - Translate: Cell slides in from the right, with no alpha fading
+//    /// - Fade: Cell fades in with no motion effect
+//    /// - Scale: Cell scales from a larger or smaller size
+//    ///
+//    /// Default is [.None]
+//    public func setCellType(cellTypes : Set<CellType>) {
+//        efCellAnimation.setCellType(cellTypes)
+//    }
+//    
+//    /// Call this function to change when cells are animated
+//    ///
+//    /// - Always: Every time a cell becomes visible
+//    /// - Reload: The first time a cell becomes visible, and reset if tableview is reloaded
+//    /// - Once: The first time a cell becomes visible, does not reset on reload
+//    ///
+//    /// Default is .Reload
+//    public func setShowType(showType : ShowType) {
+//        efCellAnimation.setShowType(showType)
+//    }
+//    
+//    /// Call this function to change the cell presentation animation time
+//    ///
+//    /// Default is 0.4
+//    public func setDuration(duration : Double) {
+//        efCellAnimation.setDuration(duration)
+//    }
+//    
+//    /// Call this function to change the initial alpha value for any Fade animation
+//    ///
+//    /// Ranges from 0.0 to 1.0, defaults to 0.0
+//    public func setInitialAlpha(alpha : Double) {
+//        efCellAnimation.setInitialAlpha(alpha)
+//    }
+//    
+//    /// Call this function to change the initial scale for Scale effects
+//    ///
+//    /// Default for each is 0.8
+//    public func setInitialScale(xscale : Double, yscale : Double) {
+//        efCellAnimation.setInitialScale(xscale, yscale: yscale)
+//    }
+//    
+//    /// This function will be called by parse and will reset the previous index array.
+//    /// If you override this function, always call super.objectsWillLoad()
+//    override public func objectsWillLoad() {
+//        efCellAnimation.resetPrevIndexes()
+//        super.objectsWillLoad()
+//    }
+//    
+//    override public func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+//        efCellAnimation.setupAnimation(indexPath, cell: cell)
+//    }
+//}
