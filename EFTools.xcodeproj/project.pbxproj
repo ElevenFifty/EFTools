@@ -46,6 +46,7 @@
 		F177DFE91B68B30D00E26B88 /* EFTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EFTableViewController.swift; path = Basic/EFTableViewController.swift; sourceTree = "<group>"; };
 		F177DFEC1B68B31600E26B88 /* EFQueryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EFQueryTableViewController.swift; path = Parse/EFQueryTableViewController.swift; sourceTree = "<group>"; };
 		F1CF7EC11B6BAE7800EBA6CA /* ProgressUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgressUtilities.swift; path = Basic/ProgressUtilities.swift; sourceTree = "<group>"; };
+		F1E3F4051BE023DE0094E228 /* EFTools-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EFTools-Swift.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +115,7 @@
 				F177DFE31B68B28100E26B88 /* Basic */,
 				F177DFE51B68B29300E26B88 /* Parse */,
 				F177DFCA1B68B25900E26B88 /* Supporting Files */,
+				F1E3F4051BE023DE0094E228 /* EFTools-Swift.h */,
 			);
 			path = EFTools;
 			sourceTree = "<group>";
@@ -436,7 +438,7 @@
 			baseConfigurationReference = 940C68F2DD5B776D95421373 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -462,7 +464,7 @@
 			baseConfigurationReference = 1E7B35BB6DACC00C02268C99 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
