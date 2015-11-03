@@ -12,7 +12,7 @@ import SwiftyJSON
 import SwiftKeychainWrapper
 
 protocol EFWebProtocol {
-    init(baseURL: String)
+    var baseURL : String {get set}
 }
 
 class EFWebServices: NSObject {
