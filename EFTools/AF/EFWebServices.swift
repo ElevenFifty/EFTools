@@ -13,14 +13,27 @@ import SwiftKeychainWrapper
 
 /// EFWebProtocol - used to assure adherence to required and optional properties of EFWebServices
 @objc public protocol EFWebProtocol {
-    /// Send in the baseURL for your app - do before making any calls
+    /// Send in the baseURL for your app - do before making any network calls
+    /// 
+    /// Example method body:
+    /// self.shared.baseURL = "http://test.com
     static func setBaseURL(url: String)
+    
     /// Used to change from the default "Authorization" header when sending an auth token
+    ///
+    /// Example method body:
+    /// self.shared.authHeader = "Token"
     optional static func setAuthHeader(headerName: String)
+    
     /// Used to change from the default "Bearer " prefix before the token
+    ///
+    /// Example method body:
+    /// self.shared.authHeader = "token="
     optional static func setAuthPrefix(headerPrefix: String)
 }
 
+/// EFWebServices - subclass this to use Alamofire with a built-in AuthRouter
+/// Use in concert with the EFNetworkModel protocol
 public class EFWebServices: NSObject {
     public static let shared = EFWebServices()
     private var _baseURL = ""
