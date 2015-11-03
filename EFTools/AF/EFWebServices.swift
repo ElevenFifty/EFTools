@@ -20,7 +20,7 @@ public protocol EFWebProtocol {
 }
 
 public class EFWebServices: NSObject {
-    public static let shared = EFWebServices()
+//    public static let shared = EFWebServices()
     private var _baseURL = ""
     
     var baseURL : String {
@@ -108,7 +108,7 @@ public class EFWebServices: NSObject {
         print(_baseURL)
     }
     
-    enum AuthRouter: URLRequestConvertible {
+    public enum AuthRouter: URLRequestConvertible {
         static var baseURLString = EFWebServices.shared._baseURL
         static var OAuthToken: String?
         
