@@ -17,10 +17,15 @@ public protocol EFWebProtocol {
 
 public class EFWebServices: NSObject {
     static let shared = EFWebServices()
-    private var baseURL = ""
+    private var _baseURL = ""
     
-    func setBaseURL(url: String) {
-        self.baseURL = url
+    var baseURL : String {
+        get {
+            return _baseURL
+        }
+        set {
+            _baseURL = newValue
+        }
     }
     
     private var authToken: String? {
@@ -96,7 +101,7 @@ public class EFWebServices: NSObject {
     }
     
     enum AuthRouter: URLRequestConvertible {
-        static var baseURLString = EFWebServices.shared.baseURL
+        static var baseURLString = EFWebServices.shared._baseURL
         static var OAuthToken: String?
         
         case EFRequest(EFNetworkModel)
