@@ -11,9 +11,21 @@ import Alamofire
 import SwiftyJSON
 import SwiftKeychainWrapper
 
+/// EFWebProtocol - used to assure adherence to required and optional properties of EFWebServices
+@objc public protocol EFWebProtocol {
+    /// Send in the baseURL for your app - do before making any calls
+    static func setBaseURL(url: String)
+    /// Used to change from the default "Authorization" header when sending an auth token
+    optional static func setAuthHeader(headerName: String)
+    /// Used to change from the default "Bearer " prefix before the token
+    optional static func setAuthPrefix(headerPrefix: String)
+}
+
 public class EFWebServices: NSObject {
     public static let shared = EFWebServices()
     private var _baseURL = ""
+    private var _authHeader = "Authorization"
+    private var _authPrefix = "Bearer "
     
     public var baseURL : String {
         get {
@@ -21,6 +33,24 @@ public class EFWebServices: NSObject {
         }
         set {
             _baseURL = newValue
+        }
+    }
+    
+    public var authHeader : String {
+        get {
+            return _authHeader
+        }
+        set {
+            _authHeader = newValue
+        }
+    }
+    
+    public var authPrefix : String {
+        get {
+            return _authPrefix
+        }
+        set {
+            _authPrefix = newValue
         }
     }
     
@@ -102,6 +132,8 @@ public class EFWebServices: NSObject {
     
     public enum AuthRouter: URLRequestConvertible {
         static var baseURLString = EFWebServices.shared._baseURL
+        static var authHeader = EFWebServices.shared._authHeader
+        static var authPrefix = EFWebServices.shared._authPrefix
         static var OAuthToken: String?
         
         case EFRequest(EFNetworkModel)
@@ -115,7 +147,7 @@ public class EFWebServices: NSObject {
                 mutableURLRequest.HTTPMethod = model.method().rawValue
                 
                 if let token = EFWebServices.shared.authToken {
-                    mutableURLRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+                    mutableURLRequest.setValue("\(AuthRouter.authPrefix)\(token)", forHTTPHeaderField: AuthRouter.authHeader)
                 }
                 
                 if let params = model.toDictionary() {
