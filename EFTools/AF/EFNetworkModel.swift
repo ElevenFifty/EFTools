@@ -23,7 +23,7 @@ import SwiftyJSON
 ///
 /// func toDictionary() -> [String : AnyObject]?
 /// - Returns nil for requests without parameters (like .GET requests), returns Dictionary of parameters otherwise
-protocol EFNetworkModel {
+public protocol EFNetworkModel {
     /// init method that takes in JSON data to initialize the model instance
     init(json: JSON)
     

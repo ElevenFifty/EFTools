@@ -11,11 +11,11 @@ import Alamofire
 import SwiftyJSON
 import SwiftKeychainWrapper
 
-protocol EFWebProtocol {
+public protocol EFWebProtocol {
     var baseURL : String {get set}
 }
 
-class EFWebServices: NSObject {
+public class EFWebServices: NSObject {
     static let shared = EFWebServices()
     private var baseURL = ""
     
@@ -58,7 +58,7 @@ class EFWebServices: NSObject {
         }
     }
     
-    func userAuthTokenExists() -> Bool {
+    public func userAuthTokenExists() -> Bool {
         if self.authToken != nil {
             return true
         }
@@ -67,7 +67,7 @@ class EFWebServices: NSObject {
         }
     }
     
-    func userAuthTokenExpired() -> Bool {
+    public func userAuthTokenExpired() -> Bool {
         if self.authTokenExpireDate != nil {
             
             let dateFormatter = NSDateFormatter()
@@ -89,7 +89,7 @@ class EFWebServices: NSObject {
         }
     }
     
-    func clearUserAuthToken() -> Void {
+    public func clearUserAuthToken() -> Void {
         if self.userAuthTokenExists() {
             self.authToken = nil
         }
