@@ -41,6 +41,7 @@ spec.subspec 'Everything' do |allspec|
     allspec.dependency 'ParseTwitterUtils'
     allspec.dependency 'Alamofire', '~> 3.1'
     allspec.dependency 'SwiftyJSON'
+    allspec.dependency 'SwiftKeychainWrapper'
     allspec.source_files = 'EFTools/Parse', 'EFTools/AF', 'EFTools/Basic'
 end
 
