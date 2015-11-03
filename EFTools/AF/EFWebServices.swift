@@ -20,7 +20,7 @@ public protocol EFWebProtocol {
 }
 
 public class EFWebServices: NSObject {
-//    public static let shared = EFWebServices()
+    public static let shared = EFWebServices()
     private var _baseURL = ""
     
     var baseURL : String {
@@ -114,7 +114,7 @@ public class EFWebServices: NSObject {
         
         case EFRequest(EFNetworkModel)
         
-        var URLRequest: NSMutableURLRequest {
+        public var URLRequest: NSMutableURLRequest {
             
             switch self {
             case .EFRequest(let model):
