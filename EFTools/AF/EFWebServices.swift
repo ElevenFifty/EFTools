@@ -104,6 +104,10 @@ public class EFWebServices: NSObject {
         }
     }
     
+    public func urlTest() {
+        print(_baseURL)
+    }
+    
     enum AuthRouter: URLRequestConvertible {
         static var baseURLString = EFWebServices.shared._baseURL
         static var OAuthToken: String?
