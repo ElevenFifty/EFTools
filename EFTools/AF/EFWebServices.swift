@@ -11,19 +11,11 @@ import Alamofire
 import SwiftyJSON
 import SwiftKeychainWrapper
 
-/// Requires:
-///
-/// var baseURL : String
-/// - this will set the base url for all network operations
-public protocol EFWebProtocol {
-    var baseURL : String {get set}
-}
-
 public class EFWebServices: NSObject {
     public static let shared = EFWebServices()
     private var _baseURL = ""
     
-    var baseURL : String {
+    public var baseURL : String {
         get {
             return _baseURL
         }
