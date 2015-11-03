@@ -29,8 +29,9 @@ spec.subspec 'Parse' do |parsespec|
 end
 
 spec.subspec 'Alamofire' do |afspec|
-    afspec.dependency 'Alamofire', '< 3.0'
+    afspec.dependency 'Alamofire', '~> 3.1'
     afspec.dependency 'SwiftyJSON'
+    afspec.dependency 'SwiftKeychainWrapper'
     afspec.source_files = 'EFTools/AF', 'EFTools/Basic'
 end
 
@@ -38,7 +39,7 @@ spec.subspec 'Everything' do |allspec|
     allspec.dependency 'ParseUI'
     allspec.dependency 'ParseFacebookUtilsV4'
     allspec.dependency 'ParseTwitterUtils'
-    allspec.dependency 'Alamofire', '< 3.0'
+    allspec.dependency 'Alamofire', '~> 3.1'
     allspec.dependency 'SwiftyJSON'
     allspec.source_files = 'EFTools/Parse', 'EFTools/AF', 'EFTools/Basic'
 end

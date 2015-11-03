@@ -1,6 +1,6 @@
 PODS:
   - AFDateHelper (3.1.0)
-  - Alamofire (2.0.2)
+  - Alamofire (3.1.1)
   - Bolts (1.4.0):
     - Bolts/AppLinks (= 1.4.0)
     - Bolts/Tasks (= 1.4.0)
@@ -34,24 +34,26 @@ PODS:
     - Bolts/Tasks (~> 1.2)
     - Parse (~> 1.8)
   - SnapKit (0.16.0)
+  - SwiftKeychainWrapper (1.0.11)
   - SwiftyJSON (2.3.1)
   - TPKeyboardAvoiding (1.2.10)
 
 DEPENDENCIES:
   - AFDateHelper
-  - Alamofire (< 3.0)
+  - Alamofire (~> 3.1)
   - Instabug
   - MBProgressHUD (~> 0.9.1)
   - ParseFacebookUtilsV4
   - ParseTwitterUtils
   - ParseUI
   - SnapKit
+  - SwiftKeychainWrapper
   - SwiftyJSON
   - TPKeyboardAvoiding
 
 SPEC CHECKSUMS:
   AFDateHelper: 346694fc5861bdef77d8115e3825182a3fc697d2
-  Alamofire: 8edbab00802a752bb5240cc2abe70e7e881488ad
+  Alamofire: 9b0a7188b961a03914a99304488bd226b0e46c0e
   Bolts: 0e9bce58b9b9f5e8a7a4d47b16d2fabec289072b
   FBSDKCoreKit: 9141b70960a37930850370495fe565f4a27ac141
   FBSDKLoginKit: c11ed3c2833472db3bb4a4aecf27af4a6f69b173
@@ -62,6 +64,7 @@ SPEC CHECKSUMS:
   ParseTwitterUtils: 0155d1a4e388690aa5d80405a586474e66606968
   ParseUI: 8a22e448c03f825203d8c379c80523517f68baa3
   SnapKit: ddac6b339d571f9d80dbb733585b172ee9eed3cb
+  SwiftKeychainWrapper: 011a6946923948ffa49708014dd691164d7621d1
   SwiftyJSON: 592b53bee5ef3dd9b3bebc6b9cb7ee35426ae8c3
   TPKeyboardAvoiding: 614ebec846ec28b83d548769297fa5fb56468904
 
