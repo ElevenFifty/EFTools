@@ -23,6 +23,9 @@ import SwiftyJSON
 ///
 /// func toDictionary() -> [String : AnyObject]?
 /// - Returns nil for requests without parameters (like .GET requests), returns Dictionary of parameters otherwise
+///
+/// func headers() -> [String : AnyObject]?
+/// - Returns nil for requests without added headers, returns Dictionary of headers otherwise
 public protocol EFNetworkModel {
     /// init method that takes in JSON data to initialize the model instance
     init(json: JSON)
@@ -35,4 +38,7 @@ public protocol EFNetworkModel {
     
     /// Returns nil for requests without parameters (like .GET requests), returns Dictionary of parameters otherwise
     func toDictionary() -> [String : AnyObject]?
+    
+    /// Returns nil for requests without added headers, returns Dictionary of headers otherwise
+    func headers() -> [String : AnyObject]?
 }

@@ -30,6 +30,12 @@ import SwiftKeychainWrapper
     /// Example method body:
     /// self.shared.authHeader = "token="
     optional static func setAuthPrefix(headerPrefix: String)
+    
+    /// Used to add headers to all calls
+    ///
+    /// Example method body:
+    /// self.shared.headers = ["apiKey" : "12345", "userID" : 1]
+    optional static func addHeaders(headers: [String : AnyObject])
 }
 
 /// EFWebServices - subclass this to use Alamofire with a built-in AuthRouter
@@ -39,6 +45,7 @@ public class EFWebServices: NSObject {
     private var _baseURL = ""
     private var _authHeader = "Authorization"
     private var _authPrefix = "Bearer "
+    private var _headers : [String : AnyObject]?
     
     public var baseURL : String {
         get {
@@ -64,6 +71,15 @@ public class EFWebServices: NSObject {
         }
         set {
             _authPrefix = newValue
+        }
+    }
+    
+    public var headers : [String : AnyObject]? {
+        get {
+            return _headers
+        }
+        set {
+            _headers = newValue
         }
     }
     
@@ -161,6 +177,18 @@ public class EFWebServices: NSObject {
                 
                 if let token = EFWebServices.shared.authToken {
                     mutableURLRequest.setValue("\(AuthRouter.authPrefix)\(token)", forHTTPHeaderField: AuthRouter.authHeader)
+                }
+                
+                if let headers = EFWebServices.shared.headers {
+                    for header in headers {
+                        mutableURLRequest.setValue("\(header.1)", forKey: header.0)
+                    }
+                }
+                
+                if let headers = model.headers() {
+                    for header in headers {
+                        mutableURLRequest.setValue("\(header.1)", forKey: header.0)
+                    }
                 }
                 
                 if let params = model.toDictionary() {
