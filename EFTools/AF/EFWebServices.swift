@@ -12,6 +12,26 @@ import SwiftyJSON
 import SwiftKeychainWrapper
 
 /// EFWebProtocol - used to assure adherence to required and optional properties of EFWebServices
+///
+/// static func setBaseURL(url: String)
+/// - Send in the baseURL for your app - do before making any network calls
+/// - Example method body:
+/// - self.shared.baseURL = "http://test.com
+///
+/// static func setAuthHeader(headerName: String) (optional)
+/// - Used to change from the default "Authorization" header when sending an auth token
+/// - Example method body:
+/// - self.shared.authHeader = "Token"
+///
+/// static func setAuthPrefix(headerPrefix: String)  (optional)
+/// - Used to change from the default "Bearer " prefix before the token
+/// - Example method body:
+/// - self.shared.authHeader = "token="
+///
+/// static func addHeaders(headers: [String : AnyObject])  (optional)
+/// - Used to add headers to all calls
+/// - Example method body:
+/// - self.shared.headers = ["apiKey" : "12345", "userID" : 1]
 @objc public protocol EFWebProtocol {
     /// Send in the baseURL for your app - do before making any network calls
     /// 
