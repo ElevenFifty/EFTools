@@ -138,6 +138,11 @@ public class EFWebServices: NSObject {
         }
     }
     
+    public func setAuthToken(token: String?, expiration: String?) {
+        authToken = token
+        authTokenExpireDate = expiration
+    }
+    
     public func userAuthTokenExists() -> Bool {
         if self.authToken != nil {
             return true
