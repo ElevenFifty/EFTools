@@ -206,13 +206,13 @@ public class EFWebServices: NSObject {
                 
                 if let headers = EFWebServices.shared.headers {
                     for header in headers {
-                        mutableURLRequest.setValue("\(header.1)", forKey: "\(header.0)")
+                        mutableURLRequest.addValue("\(header.1)", forHTTPHeaderField: "\(header.0)")
                     }
                 }
                 
                 if let headers = model.headers() {
                     for header in headers {
-                        mutableURLRequest.setValue("\(header.1)", forKey: "\(header.0)")
+                        mutableURLRequest.addValue("\(header.1)", forHTTPHeaderField: "\(header.0)")
                     }
                 }
                 
