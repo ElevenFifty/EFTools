@@ -67,7 +67,7 @@ import SwiftKeychainWrapper
     ///
     /// Example method body:
     /// self.shared.queries = ["searchterm" : "test", "page" : 1]
-    optional static func addQueries(queries: [String : AnyObject])
+    optional static func addQueries(queries: [String : String])
 }
 
 /// EFWebServices - subclass this to use Alamofire with a built-in AuthRouter
@@ -78,7 +78,7 @@ public class EFWebServices: NSObject {
     private var _authHeader = "Authorization"
     private var _authPrefix = "Bearer "
     private var _headers : [String : AnyObject]?
-    private var _queries : [String : AnyObject]?
+    private var _queries : [String : String]?
     
     public var baseURL : String {
         get {
@@ -116,7 +116,7 @@ public class EFWebServices: NSObject {
         }
     }
     
-    public var queries : [String : AnyObject]? {
+    public var queries : [String : String]? {
         get {
             return _queries
         }
@@ -219,7 +219,22 @@ public class EFWebServices: NSObject {
             switch self {
             case .EFRequest(let model):
                 let URL = NSURL(string: AuthRouter.baseURLString)!
-                var mutableURLRequest = NSMutableURLRequest(URL: URL.URLByAppendingPathComponent(model.path()))
+                var encoded = false
+                
+                let mutableURLRequest : NSMutableURLRequest
+                if let queries = EFWebServices.shared.queries, params = model.toDictionary() {
+                    encoded = true
+                    let tempURLRequest = NSURLRequest(URL: URL.URLByAppendingPathComponent(model.path()))
+                    let urlRequest = ParameterEncoding.URL.encode(tempURLRequest, parameters: queries)
+                    let bodyRequest = ParameterEncoding.JSON.encode(tempURLRequest, parameters: params)
+                    
+                    mutableURLRequest = urlRequest.0.mutableCopy() as! NSMutableURLRequest
+                    mutableURLRequest.HTTPBody = bodyRequest.0.HTTPBody
+                    mutableURLRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                } else {
+                    mutableURLRequest = NSMutableURLRequest(URL: URL.URLByAppendingPathComponent(model.path()))
+                }
+                
                 mutableURLRequest.HTTPMethod = model.method().rawValue
                 
                 if let token = EFWebServices.shared.authToken {
@@ -238,13 +253,16 @@ public class EFWebServices: NSObject {
                     }
                 }
                 
-                if let queries = EFWebServices.shared.queries {
-                    mutableURLRequest = ParameterEncoding.URL.encode(mutableURLRequest, parameters: queries).0
+                if !encoded {
+                    if let queries = EFWebServices.shared.queries {
+                        return ParameterEncoding.URL.encode(mutableURLRequest, parameters: queries).0
+                    }
+                    
+                    if let params = model.toDictionary() {
+                        return ParameterEncoding.JSON.encode(mutableURLRequest, parameters: params).0
+                    }
                 }
                 
-                if let params = model.toDictionary() {
-                    return ParameterEncoding.JSON.encode(mutableURLRequest, parameters: params).0
-                }
                 return mutableURLRequest
             }
         }
