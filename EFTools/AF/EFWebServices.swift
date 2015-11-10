@@ -32,6 +32,12 @@ import SwiftKeychainWrapper
 /// - Used to add headers to all calls
 /// - Example method body:
 /// - self.shared.headers = ["apiKey" : "12345", "userID" : 1]
+
+///
+/// static func addQueries(queries: [String : AnyObject])  (optional)
+/// - Used to add headers to all calls
+/// - Example method body:
+/// - self.shared.queries = ["searchterm" : "test", "page" : 1]
 @objc public protocol EFWebProtocol {
     /// Send in the baseURL for your app - do before making any network calls
     /// 
@@ -57,11 +63,11 @@ import SwiftKeychainWrapper
     /// self.shared.headers = ["apiKey" : "12345", "userID" : 1]
     optional static func addHeaders(headers: [String : AnyObject])
     
-    /// Used to add headers to all calls
+    /// Used to add queries to all calls
     ///
     /// Example method body:
-    /// self.shared.headers = ["searchterm" : "test", "page" : 1]
-    optional static func addQueries(headers: [String : AnyObject])
+    /// self.shared.queries = ["searchterm" : "test", "page" : 1]
+    optional static func addQueries(queries: [String : AnyObject])
 }
 
 /// EFWebServices - subclass this to use Alamofire with a built-in AuthRouter
