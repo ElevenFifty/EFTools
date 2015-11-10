@@ -56,6 +56,12 @@ import SwiftKeychainWrapper
     /// Example method body:
     /// self.shared.headers = ["apiKey" : "12345", "userID" : 1]
     optional static func addHeaders(headers: [String : AnyObject])
+    
+    /// Used to add headers to all calls
+    ///
+    /// Example method body:
+    /// self.shared.headers = ["searchterm" : "test", "page" : 1]
+    optional static func addQueries(headers: [String : AnyObject])
 }
 
 /// EFWebServices - subclass this to use Alamofire with a built-in AuthRouter
@@ -66,6 +72,7 @@ public class EFWebServices: NSObject {
     private var _authHeader = "Authorization"
     private var _authPrefix = "Bearer "
     private var _headers : [String : AnyObject]?
+    private var _queries : [String : AnyObject]?
     
     public var baseURL : String {
         get {
@@ -100,6 +107,15 @@ public class EFWebServices: NSObject {
         }
         set {
             _headers = newValue
+        }
+    }
+    
+    public var queries : [String : AnyObject]? {
+        get {
+            return _queries
+        }
+        set {
+            _queries = newValue
         }
     }
     
@@ -197,7 +213,7 @@ public class EFWebServices: NSObject {
             switch self {
             case .EFRequest(let model):
                 let URL = NSURL(string: AuthRouter.baseURLString)!
-                let mutableURLRequest = NSMutableURLRequest(URL: URL.URLByAppendingPathComponent(model.path()))
+                var mutableURLRequest = NSMutableURLRequest(URL: URL.URLByAppendingPathComponent(model.path()))
                 mutableURLRequest.HTTPMethod = model.method().rawValue
                 
                 if let token = EFWebServices.shared.authToken {
@@ -214,6 +230,10 @@ public class EFWebServices: NSObject {
                     for header in headers {
                         mutableURLRequest.addValue("\(header.1)", forHTTPHeaderField: "\(header.0)")
                     }
+                }
+                
+                if let queries = EFWebServices.shared.queries {
+                    mutableURLRequest = ParameterEncoding.URL.encode(mutableURLRequest, parameters: queries).0
                 }
                 
                 if let params = model.toDictionary() {
