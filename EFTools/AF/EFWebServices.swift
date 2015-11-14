@@ -246,6 +246,7 @@ public class EFWebServices: NSObject {
                 
                 if let params = model.patches() {
                     mutableURLRequest.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(params, options: [])
+                    mutableURLRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
                 }
                 
                 if let params = model.toDictionary() {
