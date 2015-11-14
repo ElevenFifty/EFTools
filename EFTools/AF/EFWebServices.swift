@@ -219,21 +219,8 @@ public class EFWebServices: NSObject {
             switch self {
             case .EFRequest(let model):
                 let URL = NSURL(string: AuthRouter.baseURLString)!
-                var encoded = false
                 
-                let mutableURLRequest : NSMutableURLRequest
-                if let queries = EFWebServices.shared.queries, params = model.toDictionary() {
-                    encoded = true
-                    let tempURLRequest = NSURLRequest(URL: URL.URLByAppendingPathComponent(model.path()))
-                    let urlRequest = ParameterEncoding.URL.encode(tempURLRequest, parameters: queries)
-                    let bodyRequest = ParameterEncoding.JSON.encode(tempURLRequest, parameters: params)
-                    
-                    mutableURLRequest = urlRequest.0.mutableCopy() as! NSMutableURLRequest
-                    mutableURLRequest.HTTPBody = bodyRequest.0.HTTPBody
-                    mutableURLRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-                } else {
-                    mutableURLRequest = NSMutableURLRequest(URL: URL.URLByAppendingPathComponent(model.path()))
-                }
+                let mutableURLRequest = NSMutableURLRequest(URL: URL.URLByAppendingPathComponent(model.path()))
                 
                 mutableURLRequest.HTTPMethod = model.method().rawValue
                 
@@ -253,14 +240,16 @@ public class EFWebServices: NSObject {
                     }
                 }
                 
-                if !encoded {
-                    if let queries = EFWebServices.shared.queries {
-                        return ParameterEncoding.URL.encode(mutableURLRequest, parameters: queries).0
-                    }
-                    
-                    if let params = model.toDictionary() {
-                        return ParameterEncoding.JSON.encode(mutableURLRequest, parameters: params).0
-                    }
+                if let queries = EFWebServices.shared.queries {
+                    return ParameterEncoding.URL.encode(mutableURLRequest, parameters: queries).0
+                }
+                
+                if let params = model.patches() {
+                    mutableURLRequest.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(params, options: [])
+                }
+                
+                if let params = model.toDictionary() {
+                    return ParameterEncoding.JSON.encode(mutableURLRequest, parameters: params).0
                 }
                 
                 return mutableURLRequest
