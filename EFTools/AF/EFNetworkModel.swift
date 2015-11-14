@@ -22,7 +22,7 @@ import SwiftyJSON
 /// - returns endpoint subpath, e.g. /api/user
 ///
 /// func toDictionary() -> [String : AnyObject]?
-/// - Returns nil for requests without parameters (like .GET requests), returns Dictionary of parameters otherwise
+/// - Returns nil for requests without parameters (like .GET requests), returns Dictionary or Array of parameters otherwise
 ///
 /// func headers() -> [String : AnyObject]?
 /// - Returns nil for requests without added headers, returns Dictionary of headers otherwise
@@ -36,8 +36,8 @@ public protocol EFNetworkModel {
     /// Returns endpoint subpath, e.g. /api/user
     func path() -> String
     
-    /// Returns nil for requests without parameters (like .GET requests), returns Dictionary of parameters otherwise
-    func toDictionary() -> [String : AnyObject]?
+    /// Returns nil for requests without parameters (like .GET requests), returns Dictionary or Array of parameters otherwise
+    func toDictionary() -> AnyObject?
     
     /// Returns nil for requests without added headers, returns Dictionary of headers otherwise
     func headers() -> [String : AnyObject]?
