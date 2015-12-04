@@ -40,7 +40,7 @@ import SwiftKeychainWrapper
 /// - self.shared.queries = ["searchterm" : "test", "page" : 1]
 @objc public protocol EFWebProtocol {
     /// Send in the baseURL for your app - do before making any network calls
-    /// 
+    ///
     /// Example method body:
     /// self.shared.baseURL = "http://test.com
     static func setBaseURL(url: String)
@@ -125,7 +125,7 @@ public class EFWebServices: NSObject {
         }
     }
     
-    private var authToken: String? {
+    public var authToken: String? {
         get {
             if let authTokenString:String = KeychainWrapper.stringForKey("authToken") {
                 return authTokenString
@@ -218,11 +218,13 @@ public class EFWebServices: NSObject {
             
             switch self {
             case .EFRequest(let model):
-                let URL = NSURL(string: AuthRouter.baseURLString)!
+                let URL = NSURL(string: AuthRouter.baseURLString + model.path())!
                 
-                let mutableURLRequest = NSMutableURLRequest(URL: URL.URLByAppendingPathComponent(model.path()))
+                let mutableURLRequest = NSMutableURLRequest(URL: URL)
                 
                 mutableURLRequest.HTTPMethod = model.method().rawValue
+                
+                mutableURLRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
                 
                 if let token = EFWebServices.shared.authToken {
                     mutableURLRequest.setValue("\(AuthRouter.authPrefix)\(token)", forHTTPHeaderField: AuthRouter.authHeader)
@@ -246,7 +248,6 @@ public class EFWebServices: NSObject {
                 
                 if let params = model.patches() {
                     mutableURLRequest.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(params, options: [])
-                    mutableURLRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
                 }
                 
                 if let params = model.toDictionary() {
