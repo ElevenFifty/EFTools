@@ -74,6 +74,7 @@ import SwiftKeychainWrapper
 /// Use in concert with the EFNetworkModel protocol
 public class EFWebServices: NSObject {
     public static let shared = EFWebServices()
+    private let allowCellularUserDefault = "allowCellularUserDefault"
     private var _baseURL = ""
     private var _authHeader = "Authorization"
     private var _authPrefix = "Bearer "
@@ -86,6 +87,18 @@ public class EFWebServices: NSObject {
         }
         set {
             _baseURL = newValue
+        }
+    }
+    
+    public var allowCellular : Bool {
+        get {
+            if let allowCellular = NSUserDefaults.standardUserDefaults().valueForKey(allowCellularUserDefault) as? Bool {
+                return allowCellular
+            }
+            return true
+        }
+        set {
+            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: allowCellularUserDefault)
         }
     }
     
@@ -221,6 +234,8 @@ public class EFWebServices: NSObject {
                 let URL = NSURL(string: AuthRouter.baseURLString + model.path())!
                 
                 let mutableURLRequest = NSMutableURLRequest(URL: URL)
+                
+                mutableURLRequest.allowsCellularAccess = allowCellular
                 
                 mutableURLRequest.HTTPMethod = model.method().rawValue
                 
