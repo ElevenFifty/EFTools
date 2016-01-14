@@ -10,10 +10,10 @@ platform :ios, '8.0'
 use_frameworks!
 xcodeproj 'testapp.xcodeproj'
 
-pod 'EFTools', :git => 'https://github.com/ElevenFifty/EFTools.git', :branch => '0.2'
+pod 'EFTools', :git => 'https://github.com/ElevenFifty/EFTools.git', :tag => '0.3.1'
 ```
 
-**You will use branch 0.1 for any projects still building in Xcode 6.4**
+**You will use tag 0.1 for any projects still building in Xcode 6.4**
 
 EFTools has many dependencies that will be pulled down for you.  They are as follows:
 * AFDateHelper (https://github.com/melvitax/AFDateHelper)
