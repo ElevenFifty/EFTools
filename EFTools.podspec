@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
 spec.name         = "EFTools"
-spec.version      = "0.3.1"
+spec.version      = "0.3.2"
 spec.summary      = "iOS ElevenFifty Toolkit"
 spec.homepage     = "https://github.com/ElevenFifty/EFTools"
 spec.author       = { "Brett Keck" => "bkeck@elevenfiftyconsulting.com" }
@@ -10,7 +10,7 @@ spec.platform     = :ios, '8.0'
 spec.requires_arc = true
 
 spec.dependency 'SnapKit'
-spec.dependency 'MBProgressHUD', '~> 0.9.1'
+spec.dependency 'MBProgressHUD', '~> 0.9.2'
 spec.dependency 'AFDateHelper'
 spec.dependency 'Instabug'
 spec.dependency 'TPKeyboardAvoiding'
@@ -29,7 +29,7 @@ spec.subspec 'Parse' do |parsespec|
 end
 
 spec.subspec 'Alamofire' do |afspec|
-    afspec.dependency 'Alamofire', '~> 3.1'
+    afspec.dependency 'Alamofire', '~> 3.2'
     afspec.dependency 'SwiftyJSON'
     afspec.dependency 'SwiftKeychainWrapper'
     afspec.source_files = 'EFTools/AF', 'EFTools/Basic'
@@ -39,7 +39,7 @@ spec.subspec 'Everything' do |allspec|
     allspec.dependency 'ParseUI'
     allspec.dependency 'ParseFacebookUtilsV4'
     allspec.dependency 'ParseTwitterUtils'
-    allspec.dependency 'Alamofire', '~> 3.1'
+    allspec.dependency 'Alamofire', '~> 3.2'
     allspec.dependency 'SwiftyJSON'
     allspec.dependency 'SwiftKeychainWrapper'
     allspec.source_files = 'EFTools/Parse', 'EFTools/AF', 'EFTools/Basic'
