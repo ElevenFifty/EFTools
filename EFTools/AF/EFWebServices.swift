@@ -250,7 +250,11 @@ public class EFWebServices: NSObject {
                 }
                 
                 if let params = model.toDictionary() {
-                    return ParameterEncoding.JSON.encode(mutableURLRequest, parameters: params).0
+                    if model.method() == .GET {
+                        return ParameterEncoding.URL.encode(mutableURLRequest, parameters: params).0
+                    } else {
+                        return ParameterEncoding.JSON.encode(mutableURLRequest, parameters: params).0
+                    }
                 }
                 
                 return mutableURLRequest

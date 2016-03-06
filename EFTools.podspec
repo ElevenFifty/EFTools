@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
 spec.name         = "EFTools"
-spec.version      = "0.3.2"
+spec.version      = "0.3.3"
 spec.summary      = "iOS ElevenFifty Toolkit"
 spec.homepage     = "https://github.com/ElevenFifty/EFTools"
 spec.author       = { "Brett Keck" => "bkeck@elevenfiftyconsulting.com" }

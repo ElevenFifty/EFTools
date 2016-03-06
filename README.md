@@ -10,7 +10,7 @@ platform :ios, '8.0'
 use_frameworks!
 xcodeproj 'testapp.xcodeproj'
 
-pod 'EFTools', :git => 'https://github.com/ElevenFifty/EFTools.git', :tag => '0.3.2'
+pod 'EFTools', :git => 'https://github.com/ElevenFifty/EFTools.git', :tag => '0.3.3'
 ```
 
 **You will use tag 0.1 for any projects still building in Xcode 6.4**
@@ -29,11 +29,11 @@ EFTools has many dependencies that will be pulled down for you.  They are as fol
 
 By default, EFTools pulls down all of these.  You can also pull down subsets with the following Podfile lines:
 
-1. pod 'EFTools/Basic', :git => 'https://github\.com/ElevenFifty/EFTools.git', :branch => '0.2'
+1. pod 'EFTools/Basic', :git => 'https://github\.com/ElevenFifty/EFTools.git', :tag => '0.3.3'
   * pulls down AFDateHelper, Instabug, MBProgressHUD, SnapKit, and TPKeyboardAvoiding
-2. pod 'EFTools/Parse', :git => 'https://github\.com/ElevenFifty/EFTools.git', :branch => '0.2'
+2. pod 'EFTools/Parse', :git => 'https://github\.com/ElevenFifty/EFTools.git', :tag => '0.3.3'
   * pulls down ParseUI/Parse, ParseFacebookUtils, ParseTwitterUtils, and everything that "Basic" pulls down
-3. pod 'EFTools/Alamofire', :git => 'https://github\.com/ElevenFifty/EFTools.git', :branch => '0.2'
+3. pod 'EFTools/Alamofire', :git => 'https://github\.com/ElevenFifty/EFTools.git', :tag => '0.3.3'
   * pulls down Alamofire, SwiftyJSON, and everything that "Basic" pulls down
 
 
