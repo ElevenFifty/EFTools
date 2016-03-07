@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
 spec.name         = "EFTools"
-spec.version      = "0.3.3"
+spec.version      = "1.0"
 spec.summary      = "iOS ElevenFifty Toolkit"
 spec.homepage     = "https://github.com/ElevenFifty/EFTools"
 spec.author       = { "Brett Keck" => "bkeck@elevenfiftyconsulting.com" }
@@ -14,6 +14,7 @@ spec.dependency 'MBProgressHUD', '~> 0.9.2'
 spec.dependency 'AFDateHelper'
 spec.dependency 'Instabug'
 spec.dependency 'TPKeyboardAvoiding'
+spec.dependency 'SCLAlertView'
 
 spec.default_subspec = 'Everything'
 

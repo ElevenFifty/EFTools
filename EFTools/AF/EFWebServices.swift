@@ -74,6 +74,7 @@ import SwiftKeychainWrapper
 /// Use in concert with the EFNetworkModel protocol
 public class EFWebServices: NSObject {
     public static let shared = EFWebServices()
+    
     private var _baseURL = ""
     private var _authHeader = "Authorization"
     private var _authPrefix = "Bearer "
@@ -202,10 +203,6 @@ public class EFWebServices: NSObject {
         }
     }
     
-    public func urlTest() {
-        print(_baseURL)
-    }
-    
     public enum AuthRouter: URLRequestConvertible {
         static var baseURLString = EFWebServices.shared._baseURL
         static var authHeader = EFWebServices.shared._authHeader
@@ -260,5 +257,229 @@ public class EFWebServices: NSObject {
                 return mutableURLRequest
             }
         }
+    }
+    
+    
+    // MARK: - Network Check
+    func networkCheck() -> Bool {
+        return IJReachability.isConnectedToNetwork()
+    }
+    
+    
+    // MARK: - Auth methods
+    public func authenticateUser<T: EFNetworkModel>(user: T, completion:(user: T?, error: String?) -> ()) {
+        if !networkCheck() {
+            completion(user: nil, error: EFConstants.noInternetConnection)
+            return
+        }
+        
+        request(user.method(), EFWebServices.shared._baseURL + user.path(), parameters: user.toDictionary(), encoding: .URL)
+            .response { (request, response, jsonObject, error) in
+                EFWebServices.processResponse(response, jsonObject: jsonObject, error: error, completion: completion)
+        }
+    }
+    
+    public func registerUser<T: EFNetworkModel>(user: T, completion:(user: T?, error: String?) -> ()) {
+        if !networkCheck() {
+            completion(user: nil, error: EFConstants.noInternetConnection)
+            return
+        }
+        
+        request(user.method(), EFWebServices.shared._baseURL + user.path(), parameters: user.toDictionary(), encoding: .URL)
+            .response { (request, response, jsonObject, error) in
+                EFWebServices.processResponse(response, jsonObject: jsonObject, error: error, completion: completion)
+        }
+    }
+    
+    public func resetPassword<T: EFNetworkModel>(user: T, completion: (success: Bool, error: String?) -> ()) {
+        if !networkCheck() {
+            completion(success: false, error: EFConstants.noInternetConnection)
+            return
+        }
+        
+        request(user.method(), EFWebServices.shared.baseURL + user.path(), parameters: user.toDictionary(), encoding: .URL)
+            .response { (request, response, jsonObject, error) in
+                var success = false
+                var errorString: String?
+                if let status = response?.statusCode {
+                    switch status {
+                    case 200:
+                        success = true
+                    case 400:
+                        if let json = jsonObject, string = String(data: json, encoding: NSUTF8StringEncoding) {
+                            errorString = string
+                        } else {
+                            errorString = EFConstants.objectNotFound
+                        }
+                    case 500:
+                        errorString = EFConstants.internalError
+                    default:
+                        errorString = EFConstants.unknownError
+                    }
+                } else {
+                    errorString = EFConstants.unknownError
+                }
+                completion(success: success, error: errorString)
+        }
+    }
+    
+    // MARK: - Generic Methods
+    public func postObject<T: EFNetworkModel>(newObject: T, completion:(object: T?, error: String?) -> Void) {
+        if !networkCheck() {
+            completion(object: nil, error: EFConstants.noInternetConnection)
+            return
+        }
+        request(AuthRouter.EFRequest(newObject)).response { (request, response, jsonObject, error) -> Void in
+            EFWebServices.processResponse(response, jsonObject: jsonObject, error: error, completion: completion)
+        }
+    }
+    
+    public func deleteObject<T: EFNetworkModel>(newObject: T, completion:(success: Bool, error: String?) -> Void) {
+        if !networkCheck() {
+            completion(success: false, error: EFConstants.noInternetConnection)
+            return
+        }
+        request(AuthRouter.EFRequest(newObject)).response { (request, response, jsonObject, error) -> Void in
+            var errorString: String?
+            var success = false
+            if let status = response?.statusCode {
+                switch status {
+                case 200:
+                    success = true
+                case 400:
+                    if let json = jsonObject, let string = String(data: json, encoding: NSUTF8StringEncoding) {
+                        errorString = string
+                    } else {
+                        errorString = EFConstants.badRequest
+                    }
+                case 500:
+                    if let json = jsonObject, string = String(data: json, encoding: NSUTF8StringEncoding) {
+                        errorString = string
+                    } else {
+                        errorString = EFConstants.internalError
+                    }
+                default:
+                    errorString = error?.description ?? EFConstants.unknownError
+                }
+            } else {
+                errorString = error?.description ?? EFConstants.unknownError
+            }
+            
+            completion(success: success, error: errorString)
+        }
+    }
+    
+    public func getObject<T: EFNetworkModel>(newObject: T, completion: (object: T?, error: String?) -> Void) {
+        if !networkCheck() {
+            completion(object: nil, error: EFConstants.noInternetConnection)
+            return
+        }
+        request(AuthRouter.EFRequest(newObject)).response { (request, response, jsonObject, error) -> Void in
+            EFWebServices.processResponse(response, jsonObject: jsonObject, error: error, completion: completion)
+        }
+    }
+    
+    public func getObjects<T: EFNetworkModel>(object: T, completion: (objects: [T]?, error: String?) -> Void) {
+        if !networkCheck() {
+            completion(objects: nil, error: EFConstants.noInternetConnection)
+            return
+        }
+        
+        request(AuthRouter.EFRequest(object)).response { (request, response, jsonObject, error) -> Void in
+            var errorString: String?
+            var objects: [T]?
+            
+            if let status = response?.statusCode {
+                switch status {
+                case 200:
+                    if let json = jsonObject {
+                        let jsonArray = JSON(data:json)
+                        objects = []
+                        if let array = jsonArray.array {
+                            for object in array {
+                                objects?.append(T(json: object))
+                            }
+                        }
+                    } else {
+                        objects = []
+                    }
+                case 400:
+                    if let json = jsonObject, string = String(data: json, encoding: NSUTF8StringEncoding) {
+                        errorString = string
+                    } else {
+                        errorString = EFConstants.objectNotFound
+                    }
+                case 500:
+                    if let json = jsonObject, string = String(data: json, encoding: NSUTF8StringEncoding) {
+                        errorString = string
+                    } else {
+                        errorString = EFConstants.internalError
+                    }
+                default:
+                    errorString = EFConstants.unknownError
+                }
+            } else {
+                errorString = EFConstants.unknownError
+            }
+            
+            completion(objects: objects, error: errorString)
+        }
+    }
+    
+    class func processResponse<T: EFNetworkModel>(response: NSHTTPURLResponse?, jsonObject: NSData?, error: NSError?, completion: (object: T?, error: String?) -> Void) {
+        var errorString: String?
+        var object: T?
+        if let status = response?.statusCode {
+            switch status {
+            case 200:
+                if let json = jsonObject {
+                    object = T(json: JSON(data: json))
+                } else {
+                    errorString = EFConstants.unknownError
+                }
+            case 201:
+                if let json = jsonObject {
+                    object = T(json: JSON(data: json))
+                } else {
+                    errorString = EFConstants.unknownError
+                }
+            case 400:
+                if let json = jsonObject, let string = String(data: json, encoding: NSUTF8StringEncoding) {
+                    errorString = string
+                } else {
+                    errorString = EFConstants.badRequest
+                }
+            case 402:
+                if let json = jsonObject, string = String(data: json, encoding: NSUTF8StringEncoding) {
+                    errorString = string
+                } else {
+                    errorString = EFConstants.badUsernamePassword
+                }
+            case 403:
+                if let json = jsonObject, string = String(data: json, encoding: NSUTF8StringEncoding) {
+                    errorString = string
+                } else {
+                    errorString = EFConstants.unauthorized
+                }
+            case 404:
+                if let json = jsonObject, string = String(data: json, encoding: NSUTF8StringEncoding) {
+                    errorString = string
+                } else {
+                    errorString = EFConstants.objectNotFound
+                }
+            case 500:
+                if let json = jsonObject, string = String(data: json, encoding: NSUTF8StringEncoding) {
+                    errorString = string
+                } else {
+                    errorString = EFConstants.internalError
+                }
+            default:
+                errorString = error?.description ?? EFConstants.unknownError
+            }
+        } else {
+            errorString = error?.description ?? EFConstants.unknownError
+        }
+        
+        completion(object: object, error: errorString)
     }
 }

@@ -17,6 +17,8 @@
 		F177DFEB1B68B30D00E26B88 /* EFTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F177DFE91B68B30D00E26B88 /* EFTableViewController.swift */; };
 		F177DFED1B68B31600E26B88 /* EFQueryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F177DFEC1B68B31600E26B88 /* EFQueryTableViewController.swift */; };
 		F1A069DB1C48298D00597C6B /* SegueHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A069DA1C48298D00597C6B /* SegueHandlerType.swift */; };
+		F1A64EE41C8DD597006C0659 /* EFUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A64EE31C8DD597006C0659 /* EFUtils.swift */; };
+		F1A64EE61C8E0093006C0659 /* EFConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A64EE51C8E0093006C0659 /* EFConstants.swift */; };
 		F1C0C8831BE92BB400DDEEE4 /* EFWebServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C0C8821BE92BB400DDEEE4 /* EFWebServices.swift */; };
 		F1C0C8851BE92BDA00DDEEE4 /* EFNetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C0C8841BE92BDA00DDEEE4 /* EFNetworkModel.swift */; };
 		F1CF7EC21B6BAE7800EBA6CA /* ProgressUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CF7EC11B6BAE7800EBA6CA /* ProgressUtilities.swift */; };
@@ -49,6 +51,8 @@
 		F177DFE91B68B30D00E26B88 /* EFTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EFTableViewController.swift; path = Basic/EFTableViewController.swift; sourceTree = "<group>"; };
 		F177DFEC1B68B31600E26B88 /* EFQueryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EFQueryTableViewController.swift; path = Parse/EFQueryTableViewController.swift; sourceTree = "<group>"; };
 		F1A069DA1C48298D00597C6B /* SegueHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SegueHandlerType.swift; path = Basic/SegueHandlerType.swift; sourceTree = "<group>"; };
+		F1A64EE31C8DD597006C0659 /* EFUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EFUtils.swift; path = Basic/EFUtils.swift; sourceTree = "<group>"; };
+		F1A64EE51C8E0093006C0659 /* EFConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EFConstants.swift; path = Basic/EFConstants.swift; sourceTree = "<group>"; };
 		F1C0C8821BE92BB400DDEEE4 /* EFWebServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EFWebServices.swift; path = AF/EFWebServices.swift; sourceTree = "<group>"; };
 		F1C0C8841BE92BDA00DDEEE4 /* EFNetworkModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EFNetworkModel.swift; path = AF/EFNetworkModel.swift; sourceTree = "<group>"; };
 		F1CF7EC11B6BAE7800EBA6CA /* ProgressUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgressUtilities.swift; path = Basic/ProgressUtilities.swift; sourceTree = "<group>"; };
@@ -158,6 +162,8 @@
 				F16968EF1B6935DE0068E3CB /* UIColorExtension.swift */,
 				F1CF7EC11B6BAE7800EBA6CA /* ProgressUtilities.swift */,
 				F1A069DA1C48298D00597C6B /* SegueHandlerType.swift */,
+				F1A64EE31C8DD597006C0659 /* EFUtils.swift */,
+				F1A64EE51C8E0093006C0659 /* EFConstants.swift */,
 			);
 			name = Basic;
 			sourceTree = "<group>";
@@ -323,11 +329,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F177DFED1B68B31600E26B88 /* EFQueryTableViewController.swift in Sources */,
+				F1A64EE61C8E0093006C0659 /* EFConstants.swift in Sources */,
 				F177DFEB1B68B30D00E26B88 /* EFTableViewController.swift in Sources */,
 				F1C0C8831BE92BB400DDEEE4 /* EFWebServices.swift in Sources */,
 				F177DFEA1B68B30D00E26B88 /* EFCellAnimation.swift in Sources */,
 				F10EF1481B87E86B00182C78 /* IJReachability.swift in Sources */,
 				F1C0C8851BE92BDA00DDEEE4 /* EFNetworkModel.swift in Sources */,
+				F1A64EE41C8DD597006C0659 /* EFUtils.swift in Sources */,
 				F16968F01B6935DE0068E3CB /* UIColorExtension.swift in Sources */,
 				F1A069DB1C48298D00597C6B /* SegueHandlerType.swift in Sources */,
 				F1CF7EC21B6BAE7800EBA6CA /* ProgressUtilities.swift in Sources */,
