@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct EFConstants {
+public struct EFConstants {
     static let noInternetConnection = "This operation requires an active internet connection"
     static let objectNotFound = "Object Not Found"
     static let badRequest = "Bad Request"

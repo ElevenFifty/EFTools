@@ -261,7 +261,7 @@ public class EFWebServices: NSObject {
     
     
     // MARK: - Network Check
-    func networkCheck() -> Bool {
+    public func networkCheck() -> Bool {
         return IJReachability.isConnectedToNetwork()
     }
     
