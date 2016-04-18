@@ -36,9 +36,7 @@ public class EFUtils {
     class func showBasicError(title: String, message: String, closeButton: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: closeButton, style: .Default, handler: nil))
-        if let rootVC = UIApplication.sharedApplication().keyWindow?.rootViewController {
-            rootVC.presentViewController(alert, animated: true, completion: nil)
-        }
+        presentBasicAlert(alert)
     }
     
     class func showSCLError(title: String, message: String, closeButton: String) {
@@ -62,9 +60,7 @@ public class EFUtils {
         }))
         alert.addAction(UIAlertAction(title: cancelButton, style: .Cancel, handler: nil))
         alert.addTextFieldWithConfigurationHandler(nil)
-        if let rootVC = UIApplication.sharedApplication().keyWindow?.rootViewController {
-            rootVC.presentViewController(alert, animated: true, completion: nil)
-        }
+        presentBasicAlert(alert)
     }
     
     class func showSCLTextFieldAlert(title: String, message: String, defaultButton: String, cancelButton: String, completion: (String) -> Void) {
@@ -74,5 +70,19 @@ public class EFUtils {
             completion(textfield.text ?? "")
         }
         alert.showNotice(title, subTitle: message, closeButtonTitle: cancelButton, duration: 0, colorStyle: 0xC1272D, colorTextButton: 0xFFFFFF, circleIconImage: nil)
+    }
+    
+    class func presentBasicAlert(alert: UIAlertController) {
+        if let rootVC = UIApplication.sharedApplication().keyWindow?.rootViewController {
+            if let navVC = rootVC as? UINavigationController, topVC = navVC.topViewController {
+                if let modalVC = topVC.presentedViewController {
+                    modalVC.presentViewController(alert, animated: true, completion: nil)
+                } else {
+                    topVC.presentViewController(alert, animated: true, completion: nil)
+                }
+            } else {
+                rootVC.presentViewController(alert, animated: true, completion: nil)
+            }
+        }
     }
 }
