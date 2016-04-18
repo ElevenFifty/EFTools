@@ -9,12 +9,12 @@
 import Foundation
 
 public struct EFConstants {
-    static let noInternetConnection = "This operation requires an active internet connection"
-    static let objectNotFound = "Object Not Found"
-    static let badRequest = "Bad Request"
-    static let badUsernamePassword = "Incorrect Username or Password"
-    static let badLogin = "There was an error logging you in"
-    static let unknownError = "An unknown error occurred with your request"
-    static let internalError = "An internal server error occurred"
-    static let unauthorized = "Unauthorized"
+    public static let noInternetConnection = "This operation requires an active internet connection"
+    public static let objectNotFound = "Object Not Found"
+    public static let badRequest = "Bad Request"
+    public static let badUsernamePassword = "Incorrect Username or Password"
+    public static let badLogin = "There was an error logging you in"
+    public static let unknownError = "An unknown error occurred with your request"
+    public static let internalError = "An internal server error occurred"
+    public static let unauthorized = "Unauthorized"
 }
