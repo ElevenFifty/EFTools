@@ -5,7 +5,7 @@ spec.summary = "iOS ElevenFifty Toolkit"
 spec.homepage = "https://github.com/ElevenFifty/EFTools"
 spec.author = { "Brett Keck" => "bkeck@elevenfiftyconsulting.com" }
 spec.author = 'ElevenFifty Consulting'
-spec.source = { :git => "https://barryllium@github.com/ElevenFifty/EFTools.git", :tag => spec.version }
+spec.source = { :git => "https://github.com/ElevenFifty/EFTools.git", :tag => spec.version }
 spec.platform = :ios, '8.0'
 spec.requires_arc = true
 
