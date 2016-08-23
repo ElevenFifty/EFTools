@@ -1,5 +1,5 @@
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '8.0'
+platform :ios, '9.3'
 use_frameworks!
 project 'EFTools.xcodeproj'
 
@@ -7,7 +7,7 @@ target 'EFTools' do
     pod 'ParseUI'
     pod 'ParseFacebookUtilsV4'
     pod 'ParseTwitterUtils'
-    pod 'Alamofire', '~>3.1'
+    pod 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire.git', :branch => 'swift3'
     pod 'SwiftyJSON'
     pod 'SnapKit'
     pod 'AFDateHelper'

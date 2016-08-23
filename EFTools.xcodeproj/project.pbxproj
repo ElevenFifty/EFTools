@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4F0469918FCECB92EB5730B9 /* Pods_EFTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BBEB0C85ED09F579E54A65 /* Pods_EFTools.framework */; };
+		C8D00FD27FD3D4D8534949BD /* Pods_EFTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C980065058F832905903778E /* Pods_EFTools.framework */; };
 		F10EF1481B87E86B00182C78 /* IJReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10EF1471B87E86B00182C78 /* IJReachability.swift */; };
 		F16968F01B6935DE0068E3CB /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16968EF1B6935DE0068E3CB /* UIColorExtension.swift */; };
 		F177DFCD1B68B25900E26B88 /* EFTools.h in Headers */ = {isa = PBXBuildFile; fileRef = F177DFCC1B68B25900E26B88 /* EFTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -36,9 +36,9 @@
 
 /* Begin PBXFileReference section */
 		3FBEA59F284AE1F87782DDB3 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		71BBEB0C85ED09F579E54A65 /* Pods_EFTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EFTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		71FCE9B14F23C503A1DC40A9 /* Pods-EFTools.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EFTools.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EFTools/Pods-EFTools.debug.xcconfig"; sourceTree = "<group>"; };
-		EA2462B0B3EF940F3C0EF3CD /* Pods-EFTools.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EFTools.release.xcconfig"; path = "Pods/Target Support Files/Pods-EFTools/Pods-EFTools.release.xcconfig"; sourceTree = "<group>"; };
+		5A5857B0DFAF3824D6A65DD6 /* Pods-EFTools.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EFTools.release.xcconfig"; path = "Pods/Target Support Files/Pods-EFTools/Pods-EFTools.release.xcconfig"; sourceTree = "<group>"; };
+		C980065058F832905903778E /* Pods_EFTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EFTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EEF78B6BDE273535D433A8EB /* Pods-EFTools.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EFTools.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EFTools/Pods-EFTools.debug.xcconfig"; sourceTree = "<group>"; };
 		F10EF1471B87E86B00182C78 /* IJReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IJReachability.swift; path = Basic/IJReachability.swift; sourceTree = "<group>"; };
 		F16968EF1B6935DE0068E3CB /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColorExtension.swift; path = Basic/UIColorExtension.swift; sourceTree = "<group>"; };
 		F177DFC71B68B25900E26B88 /* EFTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EFTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,7 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F0469918FCECB92EB5730B9 /* Pods_EFTools.framework in Frameworks */,
+				C8D00FD27FD3D4D8534949BD /* Pods_EFTools.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,16 +83,16 @@
 			isa = PBXGroup;
 			children = (
 				3FBEA59F284AE1F87782DDB3 /* Pods.framework */,
-				71BBEB0C85ED09F579E54A65 /* Pods_EFTools.framework */,
+				C980065058F832905903778E /* Pods_EFTools.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		DACEB24016BAA4D5232BDD3C /* Pods */ = {
+		CA36D1C04BFDB737FCB4FF91 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				71FCE9B14F23C503A1DC40A9 /* Pods-EFTools.debug.xcconfig */,
-				EA2462B0B3EF940F3C0EF3CD /* Pods-EFTools.release.xcconfig */,
+				EEF78B6BDE273535D433A8EB /* Pods-EFTools.debug.xcconfig */,
+				5A5857B0DFAF3824D6A65DD6 /* Pods-EFTools.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -105,7 +105,7 @@
 				F177DFD61B68B25900E26B88 /* EFToolsTests */,
 				F177DFC81B68B25900E26B88 /* Products */,
 				16623EC1FFC89305451BD6EA /* Frameworks */,
-				DACEB24016BAA4D5232BDD3C /* Pods */,
+				CA36D1C04BFDB737FCB4FF91 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -246,14 +246,18 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0710;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Brett Keck";
 				TargetAttributes = {
 					F177DFC61B68B25900E26B88 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = 37WW5FD94G;
+						LastSwiftMigration = 0800;
 					};
 					F177DFD11B68B25900E26B88 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = 37WW5FD94G;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -377,8 +381,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -402,7 +408,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -427,8 +433,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -445,9 +453,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -457,12 +466,15 @@
 		};
 		F177DFDE1B68B25900E26B88 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 71FCE9B14F23C503A1DC40A9 /* Pods-EFTools.debug.xcconfig */;
+			baseConfigurationReference = EEF78B6BDE273535D433A8EB /* Pods-EFTools.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 37WW5FD94G;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -478,17 +490,21 @@
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		F177DFDF1B68B25900E26B88 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EA2462B0B3EF940F3C0EF3CD /* Pods-EFTools.release.xcconfig */;
+			baseConfigurationReference = 5A5857B0DFAF3824D6A65DD6 /* Pods-EFTools.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 37WW5FD94G;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -503,12 +519,14 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 		F177DFE11B68B25900E26B88 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 37WW5FD94G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -521,12 +539,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.elevenfifty.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		F177DFE21B68B25900E26B88 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 37WW5FD94G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -535,6 +555,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.elevenfifty.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

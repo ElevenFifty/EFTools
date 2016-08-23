@@ -1,6 +1,6 @@
 PODS:
   - AFDateHelper (3.4.2)
-  - Alamofire (3.4.1)
+  - Alamofire (4.0.0-beta.1)
   - Bolts (1.8.4):
     - Bolts/AppLinks (= 1.8.4)
     - Bolts/Tasks (= 1.8.4)
@@ -35,7 +35,7 @@ PODS:
 
 DEPENDENCIES:
   - AFDateHelper
-  - Alamofire (~> 3.1)
+  - Alamofire (from `https://github.com/Alamofire/Alamofire.git`, branch `swift3`)
   - Instabug
   - MBProgressHUD (~> 0.9.1)
   - ParseFacebookUtilsV4
@@ -47,9 +47,19 @@ DEPENDENCIES:
   - SwiftyJSON
   - TPKeyboardAvoiding
 
+EXTERNAL SOURCES:
+  Alamofire:
+    :branch: swift3
+    :git: https://github.com/Alamofire/Alamofire.git
+
+CHECKOUT OPTIONS:
+  Alamofire:
+    :commit: 3cc5b4e8453bec9fd6b973d60e6b0605a38e4cf4
+    :git: https://github.com/Alamofire/Alamofire.git
+
 SPEC CHECKSUMS:
   AFDateHelper: aecee6bb264d6531795649f4ebac47783d2bab74
-  Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
+  Alamofire: 698bf56c9e48d3248168e4a3a90588ac2e23836a
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   FBSDKCoreKit: 6e020b5db0b5bd1e01f5fb0902131befd129a502
   FBSDKLoginKit: da563567a108050ef83739c8c8c001ee9e25fa13
@@ -65,6 +75,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   TPKeyboardAvoiding: a5138f318c06fb3e151f886e18ce4a72695d9cbe
 
-PODFILE CHECKSUM: 48263aed92c415da4f674a53594715836da423e2
+PODFILE CHECKSUM: 9fcdfe7f7e7441e308b91cf72b9c3a9d2caa5fc5
 
 COCOAPODS: 1.0.1

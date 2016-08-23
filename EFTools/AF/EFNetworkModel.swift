@@ -57,10 +57,10 @@ public protocol EFNetworkModel {
 }
 
 extension EFNetworkModel {
-    public mutating func patchItem<T: Comparable>(key: String, oldValue: T?, newValue: T?) {
+    public mutating func patchItem<T: Comparable>(_ key: String, oldValue: T?, newValue: T?) {
         if oldValue != nil && newValue == nil {
             patchRemoves?.insert(key)
-            patchAds?.removeValueForKey(key)
+            patchAds?.removeValue(forKey: key)
             return
         }
         
