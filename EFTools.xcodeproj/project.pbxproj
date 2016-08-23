@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A091DDD76F15B27B2E0ECA75 /* Pods_EFTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CEA373E1650BDB10A840BCD /* Pods_EFTools.framework */; };
+		4F0469918FCECB92EB5730B9 /* Pods_EFTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BBEB0C85ED09F579E54A65 /* Pods_EFTools.framework */; };
 		F10EF1481B87E86B00182C78 /* IJReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10EF1471B87E86B00182C78 /* IJReachability.swift */; };
 		F16968F01B6935DE0068E3CB /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16968EF1B6935DE0068E3CB /* UIColorExtension.swift */; };
 		F177DFCD1B68B25900E26B88 /* EFTools.h in Headers */ = {isa = PBXBuildFile; fileRef = F177DFCC1B68B25900E26B88 /* EFTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -35,10 +35,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3CEA373E1650BDB10A840BCD /* Pods_EFTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EFTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FBEA59F284AE1F87782DDB3 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		589C59383C6AD10D9E88AA70 /* Pods-EFTools.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EFTools.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EFTools/Pods-EFTools.debug.xcconfig"; sourceTree = "<group>"; };
-		B203B6726D8DFAFC121FAB82 /* Pods-EFTools.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EFTools.release.xcconfig"; path = "Pods/Target Support Files/Pods-EFTools/Pods-EFTools.release.xcconfig"; sourceTree = "<group>"; };
+		71BBEB0C85ED09F579E54A65 /* Pods_EFTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EFTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		71FCE9B14F23C503A1DC40A9 /* Pods-EFTools.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EFTools.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EFTools/Pods-EFTools.debug.xcconfig"; sourceTree = "<group>"; };
+		EA2462B0B3EF940F3C0EF3CD /* Pods-EFTools.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EFTools.release.xcconfig"; path = "Pods/Target Support Files/Pods-EFTools/Pods-EFTools.release.xcconfig"; sourceTree = "<group>"; };
 		F10EF1471B87E86B00182C78 /* IJReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IJReachability.swift; path = Basic/IJReachability.swift; sourceTree = "<group>"; };
 		F16968EF1B6935DE0068E3CB /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColorExtension.swift; path = Basic/UIColorExtension.swift; sourceTree = "<group>"; };
 		F177DFC71B68B25900E26B88 /* EFTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EFTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,7 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A091DDD76F15B27B2E0ECA75 /* Pods_EFTools.framework in Frameworks */,
+				4F0469918FCECB92EB5730B9 /* Pods_EFTools.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,16 +83,16 @@
 			isa = PBXGroup;
 			children = (
 				3FBEA59F284AE1F87782DDB3 /* Pods.framework */,
-				3CEA373E1650BDB10A840BCD /* Pods_EFTools.framework */,
+				71BBEB0C85ED09F579E54A65 /* Pods_EFTools.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		349A3B0B38B24B7EEDFD1B57 /* Pods */ = {
+		DACEB24016BAA4D5232BDD3C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				589C59383C6AD10D9E88AA70 /* Pods-EFTools.debug.xcconfig */,
-				B203B6726D8DFAFC121FAB82 /* Pods-EFTools.release.xcconfig */,
+				71FCE9B14F23C503A1DC40A9 /* Pods-EFTools.debug.xcconfig */,
+				EA2462B0B3EF940F3C0EF3CD /* Pods-EFTools.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -105,7 +105,7 @@
 				F177DFD61B68B25900E26B88 /* EFToolsTests */,
 				F177DFC81B68B25900E26B88 /* Products */,
 				16623EC1FFC89305451BD6EA /* Frameworks */,
-				349A3B0B38B24B7EEDFD1B57 /* Pods */,
+				DACEB24016BAA4D5232BDD3C /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -457,7 +457,7 @@
 		};
 		F177DFDE1B68B25900E26B88 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 589C59383C6AD10D9E88AA70 /* Pods-EFTools.debug.xcconfig */;
+			baseConfigurationReference = 71FCE9B14F23C503A1DC40A9 /* Pods-EFTools.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
@@ -483,7 +483,7 @@
 		};
 		F177DFDF1B68B25900E26B88 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B203B6726D8DFAFC121FAB82 /* Pods-EFTools.release.xcconfig */;
+			baseConfigurationReference = EA2462B0B3EF940F3C0EF3CD /* Pods-EFTools.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;

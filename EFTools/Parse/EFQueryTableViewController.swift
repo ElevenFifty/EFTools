@@ -35,11 +35,11 @@
 ///
 /// The following are important functions to use for cell animations:
 ///
-/// setTranslateDistance(distance : Int)
+/// setTranslateDistance(distance: Int)
 ///
 /// - Call this function to change the Translate Distance for a Translate animation.  Default is 50.
 ///
-/// setCellType(cellTypes : Set<CellType>)
+/// setCellType(cellTypes: Set<CellType>)
 ///
 /// - Call this function to change the cell presentation animation
 /// - None: Normal loading of cell, no effects
@@ -48,7 +48,7 @@
 /// - Scale: Cell scales from a larger or smaller size
 /// - Default is [.None]
 ///
-/// setShowType(showType : ShowType)
+/// setShowType(showType: ShowType)
 ///
 /// - Call this function to change when cells are animated
 /// - Always: Every time a cell becomes visible
@@ -56,16 +56,16 @@
 /// - Once: The first time a cell becomes visible, does not reset on reload
 /// - Default is .Reload
 ///
-/// setDuration(duration : Double)
+/// setDuration(duration: Double)
 ///
 /// - Call this function to change the cell presentation animation time.
 /// - Default is 0.4
 ///
-/// setInitialAlpha(alpha : Double)
+/// setInitialAlpha(alpha: Double)
 ///
 /// - Call this function to change the initial alpha value for any Fade animation.  Ranges from 0.0 to 1.0, defaults to 0.0
 ///
-/// setInitialScale(xscale : Double, yscale : Double)
+/// setInitialScale(xscale: Double, yscale: Double)
 ///
 /// - Call this function to change the initial scale value for any Scale animation.
 /// - Default for each is 0.8
@@ -85,7 +85,7 @@
 //    /// Call this function to change the Translate Distance for a Translate animation
 //    ///
 //    /// Default is 50
-//    public func setTranslateDistance(distance : Int) {
+//    public func setTranslateDistance(distance: Int) {
 //        efCellAnimation.setTranslateDistance(distance)
 //    }
 //    
@@ -97,7 +97,7 @@
 //    /// - Scale: Cell scales from a larger or smaller size
 //    ///
 //    /// Default is [.None]
-//    public func setCellType(cellTypes : Set<CellType>) {
+//    public func setCellType(cellTypes: Set<CellType>) {
 //        efCellAnimation.setCellType(cellTypes)
 //    }
 //    
@@ -108,28 +108,28 @@
 //    /// - Once: The first time a cell becomes visible, does not reset on reload
 //    ///
 //    /// Default is .Reload
-//    public func setShowType(showType : ShowType) {
+//    public func setShowType(showType: ShowType) {
 //        efCellAnimation.setShowType(showType)
 //    }
 //    
 //    /// Call this function to change the cell presentation animation time
 //    ///
 //    /// Default is 0.4
-//    public func setDuration(duration : Double) {
+//    public func setDuration(duration: Double) {
 //        efCellAnimation.setDuration(duration)
 //    }
 //    
 //    /// Call this function to change the initial alpha value for any Fade animation
 //    ///
 //    /// Ranges from 0.0 to 1.0, defaults to 0.0
-//    public func setInitialAlpha(alpha : Double) {
+//    public func setInitialAlpha(alpha: Double) {
 //        efCellAnimation.setInitialAlpha(alpha)
 //    }
 //    
 //    /// Call this function to change the initial scale for Scale effects
 //    ///
 //    /// Default for each is 0.8
-//    public func setInitialScale(xscale : Double, yscale : Double) {
+//    public func setInitialScale(xscale: Double, yscale: Double) {
 //        efCellAnimation.setInitialScale(xscale, yscale: yscale)
 //    }
 //    
