@@ -140,7 +140,7 @@ public class EFWebServices: NSObject {
     
     public var authToken: String? {
         get {
-            if let authTokenString:String = KeychainWrapper.stringForKey("authToken") {
+            if let authTokenString:String = KeychainWrapper.defaultKeychainWrapper().stringForKey("authToken") {
                 return authTokenString
             } else {
                 return nil
@@ -148,9 +148,9 @@ public class EFWebServices: NSObject {
         }
         set {
             if newValue != nil {
-                KeychainWrapper.setString(newValue!, forKey: "authToken")
+                KeychainWrapper.defaultKeychainWrapper().setString(newValue!, forKey: "authToken")
             } else {
-                KeychainWrapper.removeObjectForKey("authToken")
+                KeychainWrapper.defaultKeychainWrapper().removeObjectForKey("authToken")
             }
         }
     }
@@ -158,17 +158,17 @@ public class EFWebServices: NSObject {
     private var authTokenExpireDate: String? {
         // Storing in the iOS Keychain (for security purposes).
         get {
-            if let authExpireDate:String = KeychainWrapper.stringForKey("authTokenExpireDate") {
+            if let authExpireDate:String = KeychainWrapper.defaultKeychainWrapper().stringForKey("authTokenExpireDate") {
                 return authExpireDate
             } else {
                 return nil
             }
         } set {
             if newValue != nil {
-                KeychainWrapper.setString(newValue!, forKey: "authTokenExpireDate")
+                KeychainWrapper.defaultKeychainWrapper().setString(newValue!, forKey: "authTokenExpireDate")
             }
             else {
-                KeychainWrapper.removeObjectForKey("authTokenExpireDate")
+                KeychainWrapper.defaultKeychainWrapper().removeObjectForKey("authTokenExpireDate")
             }
         }
     }
