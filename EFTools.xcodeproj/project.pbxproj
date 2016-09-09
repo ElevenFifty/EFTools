@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2EB789E5B86908905C7C4A9D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FBEA59F284AE1F87782DDB3 /* Pods.framework */; };
+		D4C6693B059D09AEBAFCF1D5 /* Pods_EFTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D357E9498FFE6A4A8E69E5 /* Pods_EFTools.framework */; };
 		F10EF1481B87E86B00182C78 /* IJReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10EF1471B87E86B00182C78 /* IJReachability.swift */; };
 		F16968F01B6935DE0068E3CB /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16968EF1B6935DE0068E3CB /* UIColorExtension.swift */; };
 		F177DFCD1B68B25900E26B88 /* EFTools.h in Headers */ = {isa = PBXBuildFile; fileRef = F177DFCC1B68B25900E26B88 /* EFTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -32,9 +32,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1E7B35BB6DACC00C02268C99 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		3FBEA59F284AE1F87782DDB3 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		940C68F2DD5B776D95421373 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		48D357E9498FFE6A4A8E69E5 /* Pods_EFTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EFTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A464FFDB5094FEFAF2F1F9A1 /* Pods-EFTools.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EFTools.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EFTools/Pods-EFTools.debug.xcconfig"; sourceTree = "<group>"; };
+		ABFEF3AB60C03529C7A969D3 /* Pods-EFTools.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EFTools.release.xcconfig"; path = "Pods/Target Support Files/Pods-EFTools/Pods-EFTools.release.xcconfig"; sourceTree = "<group>"; };
 		F10EF1471B87E86B00182C78 /* IJReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IJReachability.swift; path = Basic/IJReachability.swift; sourceTree = "<group>"; };
 		F16968EF1B6935DE0068E3CB /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColorExtension.swift; path = Basic/UIColorExtension.swift; sourceTree = "<group>"; };
 		F177DFC71B68B25900E26B88 /* EFTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EFTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,7 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2EB789E5B86908905C7C4A9D /* Pods.framework in Frameworks */,
+				D4C6693B059D09AEBAFCF1D5 /* Pods_EFTools.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,21 +73,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1520B3C1838A7C49B75AAC85 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A464FFDB5094FEFAF2F1F9A1 /* Pods-EFTools.debug.xcconfig */,
+				ABFEF3AB60C03529C7A969D3 /* Pods-EFTools.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		16623EC1FFC89305451BD6EA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				3FBEA59F284AE1F87782DDB3 /* Pods.framework */,
+				48D357E9498FFE6A4A8E69E5 /* Pods_EFTools.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D9C655AB99D6E1CE12E70E53 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				940C68F2DD5B776D95421373 /* Pods.debug.xcconfig */,
-				1E7B35BB6DACC00C02268C99 /* Pods.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		F177DFBD1B68B25900E26B88 = {
@@ -96,8 +98,8 @@
 				F177DFC91B68B25900E26B88 /* EFTools */,
 				F177DFD61B68B25900E26B88 /* EFToolsTests */,
 				F177DFC81B68B25900E26B88 /* Products */,
-				D9C655AB99D6E1CE12E70E53 /* Pods */,
 				16623EC1FFC89305451BD6EA /* Frameworks */,
+				1520B3C1838A7C49B75AAC85 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -194,12 +196,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F177DFDD1B68B25900E26B88 /* Build configuration list for PBXNativeTarget "EFTools" */;
 			buildPhases = (
-				E4B5B5690D35B82C6788F342 /* Check Pods Manifest.lock */,
+				1D104E8C3840D817BB69B0F6 /* [CP] Check Pods Manifest.lock */,
 				F177DFC21B68B25900E26B88 /* Sources */,
 				F177DFC31B68B25900E26B88 /* Frameworks */,
 				F177DFC41B68B25900E26B88 /* Headers */,
 				F177DFC51B68B25900E26B88 /* Resources */,
-				374B090DEA7229068D619541 /* Copy Pods Resources */,
+				CB9AFE68C8912A2D3FEBB4F6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -240,9 +242,13 @@
 				TargetAttributes = {
 					F177DFC61B68B25900E26B88 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = REU9X5P35V;
+						LastSwiftMigration = 0800;
 					};
 					F177DFD11B68B25900E26B88 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = REU9X5P35V;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -282,34 +288,34 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		374B090DEA7229068D619541 /* Copy Pods Resources */ = {
+		1D104E8C3840D817BB69B0F6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E4B5B5690D35B82C6788F342 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CB9AFE68C8912A2D3FEBB4F6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EFTools/Pods-EFTools-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -443,12 +449,14 @@
 		};
 		F177DFDE1B68B25900E26B88 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 940C68F2DD5B776D95421373 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = A464FFDB5094FEFAF2F1F9A1 /* Pods-EFTools.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = REU9X5P35V;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -464,17 +472,19 @@
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
 		F177DFDF1B68B25900E26B88 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1E7B35BB6DACC00C02268C99 /* Pods.release.xcconfig */;
+			baseConfigurationReference = ABFEF3AB60C03529C7A969D3 /* Pods-EFTools.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = REU9X5P35V;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -489,12 +499,14 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
 		F177DFE11B68B25900E26B88 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = REU9X5P35V;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -507,12 +519,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.elevenfifty.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
 		F177DFE21B68B25900E26B88 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = REU9X5P35V;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -521,6 +535,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.elevenfifty.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
