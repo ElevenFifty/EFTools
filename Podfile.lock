@@ -7,9 +7,9 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
-  - FBSDKCoreKit (4.15.0):
+  - FBSDKCoreKit (4.15.1):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.15.0):
+  - FBSDKLoginKit (4.15.1):
     - FBSDKCoreKit
   - Instabug (5.3.2)
   - MBProgressHUD (0.9.2)
@@ -29,12 +29,12 @@ PODS:
     - Parse (~> 1.9)
   - SCLAlertView (0.6.0)
   - SnapKit (0.40.0.beta4)
-  - SwiftKeychainWrapper (2.0.0)
+  - SwiftKeychainWrapper (2.2.0)
   - SwiftyJSON (2.3.2)
   - TPKeyboardAvoiding (1.3)
 
 DEPENDENCIES:
-  - AFDateHelper
+  - AFDateHelper (from `https://github.com/CalQL8ed-K-OS/AFDateHelper`, branch `swift-3`)
   - Alamofire (from `https://github.com/Alamofire/Alamofire.git`, branch `swift3`)
   - Instabug
   - MBProgressHUD (~> 0.9.1)
@@ -43,11 +43,14 @@ DEPENDENCIES:
   - ParseUI
   - SCLAlertView (from `https://github.com/vikmeup/SCLAlertView-Swift.git`, branch `swift3`)
   - SnapKit (from `https://github.com/SnapKit/SnapKit.git`, branch `feature/0.40.0`)
-  - SwiftKeychainWrapper
+  - SwiftKeychainWrapper (from `https://github.com/jrendel/SwiftKeychainWrapper.git`, branch `swift3.0_unstable`)
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`, branch `swift3`)
   - TPKeyboardAvoiding
 
 EXTERNAL SOURCES:
+  AFDateHelper:
+    :branch: swift-3
+    :git: https://github.com/CalQL8ed-K-OS/AFDateHelper
   Alamofire:
     :branch: swift3
     :git: https://github.com/Alamofire/Alamofire.git
@@ -57,11 +60,17 @@ EXTERNAL SOURCES:
   SnapKit:
     :branch: feature/0.40.0
     :git: https://github.com/SnapKit/SnapKit.git
+  SwiftKeychainWrapper:
+    :branch: swift3.0_unstable
+    :git: https://github.com/jrendel/SwiftKeychainWrapper.git
   SwiftyJSON:
     :branch: swift3
     :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
 CHECKOUT OPTIONS:
+  AFDateHelper:
+    :commit: 0b004055cbba668573134ae6aba35db7ed071ec4
+    :git: https://github.com/CalQL8ed-K-OS/AFDateHelper
   Alamofire:
     :commit: 680690beaa7abf9578487688de4d24d038f679b5
     :git: https://github.com/Alamofire/Alamofire.git
@@ -71,6 +80,9 @@ CHECKOUT OPTIONS:
   SnapKit:
     :commit: 2e4cebf41d8bd0833487381590ed90c38b9a2491
     :git: https://github.com/SnapKit/SnapKit.git
+  SwiftKeychainWrapper:
+    :commit: 39de3326ef2d2af50bcca88d8ca27c2a1c3b1d7e
+    :git: https://github.com/jrendel/SwiftKeychainWrapper.git
   SwiftyJSON:
     :commit: 1a9755949a652967dc2986cd7f4653496e556715
     :git: https://github.com/SwiftyJSON/SwiftyJSON.git
@@ -79,8 +91,8 @@ SPEC CHECKSUMS:
   AFDateHelper: aecee6bb264d6531795649f4ebac47783d2bab74
   Alamofire: 7f837be535fe424db2b87d9117f13836939719ca
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
-  FBSDKCoreKit: 6680cbd33a4243d80700f182d0af36b3fa7f3118
-  FBSDKLoginKit: 96d9b70b5784490f02ab86119e542a1f182017a8
+  FBSDKCoreKit: fc7fa53d16b095ee3fd53f0cd59f1df8bcbb634d
+  FBSDKLoginKit: 073f79b3b2e762fc6f54a283fe15f45372d59f5f
   Instabug: 035bf24475ffac1bcb81f8c542774487bc72f528
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   Parse: 4335d65f40cb3d43190d723144bbe1afb9c38230
@@ -89,10 +101,10 @@ SPEC CHECKSUMS:
   ParseUI: af2eba584799da4a9fbdac0e178662d7438b502e
   SCLAlertView: 0f6b3c23a48b4993564ff1dd3c065782e4b2b687
   SnapKit: 2eb32fcdca2206e611ef40d2650fe19b7469c91b
-  SwiftKeychainWrapper: 3575838215fa36c816899c301a7afe370bd94814
+  SwiftKeychainWrapper: a61d8ec21f07ba70e393f8572b2d46a25effc7b3
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   TPKeyboardAvoiding: a5138f318c06fb3e151f886e18ce4a72695d9cbe
 
-PODFILE CHECKSUM: fb78bf7697900996f36dd8140ccb55b74468ca51
+PODFILE CHECKSUM: 6c187c5a77eb8a04ba878bcad6c164344fa3bafa
 
 COCOAPODS: 1.0.1
