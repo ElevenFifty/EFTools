@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SCLAlertView
 
 open class EFUtils {
     open class func isValidEmail(_ testStr:String) -> Bool {
@@ -26,11 +25,11 @@ open class EFUtils {
     }
     
     open class func showError(title: String = "Error", message: String = "An error occurred with your request.", closeButton: String = "Dismiss", useBasic: Bool = true) {
-        if useBasic {
+//        if useBasic {
             showBasicError(title, message: message, closeButton: closeButton)
-        } else {
-            showSCLError(title, message: message, closeButton: closeButton)
-        }
+//        } else {
+//            showSCLError(title, message: message, closeButton: closeButton)
+//        }
     }
     
     class func showBasicError(_ title: String, message: String, closeButton: String) {
@@ -39,17 +38,17 @@ open class EFUtils {
         presentBasicAlert(alert)
     }
     
-    class func showSCLError(_ title: String, message: String, closeButton: String) {
-        let alert = SCLAlertView()
-        alert.showError(title, subTitle: message, closeButtonTitle: closeButton, duration: 0, colorStyle: 0xC1272D, colorTextButton: 0xFFFFFF, circleIconImage: nil)
-    }
+//    class func showSCLError(_ title: String, message: String, closeButton: String) {
+//        let alert = SCLAlertView()
+//        alert.showError(title, subTitle: message, closeButtonTitle: closeButton, duration: 0, colorStyle: 0xC1272D, colorTextButton: 0xFFFFFF, circleIconImage: nil)
+//    }
     
     open class func showTextFieldAlert(title: String, message: String, defaultButton: String = "Continue", cancelButton: String = "Cancel", useBasic: Bool = true, completion: @escaping (String) -> Void) {
-        if useBasic {
+//        if useBasic {
             showBasicTextFieldAlert(title, message: message, defaultButton: defaultButton, cancelButton: cancelButton, completion: completion)
-        } else {
-            showSCLTextFieldAlert(title, message: message, defaultButton: defaultButton, cancelButton: cancelButton, completion: completion)
-        }
+//        } else {
+//            showSCLTextFieldAlert(title, message: message, defaultButton: defaultButton, cancelButton: cancelButton, completion: completion)
+//        }
     }
     
     class func showBasicTextFieldAlert(_ title: String, message: String, defaultButton: String, cancelButton: String, completion: @escaping (String) -> Void) {
@@ -63,14 +62,14 @@ open class EFUtils {
         presentBasicAlert(alert)
     }
     
-    class func showSCLTextFieldAlert(_ title: String, message: String, defaultButton: String, cancelButton: String, completion: @escaping (String) -> Void) {
-        let alert = SCLAlertView()
-        let textfield = alert.addTextField()
-        alert.addButton(defaultButton) { () -> Void in
-            completion(textfield.text ?? "")
-        }
-        alert.showNotice(title, subTitle: message, closeButtonTitle: cancelButton, duration: 0, colorStyle: 0xC1272D, colorTextButton: 0xFFFFFF, circleIconImage: nil)
-    }
+//    class func showSCLTextFieldAlert(_ title: String, message: String, defaultButton: String, cancelButton: String, completion: @escaping (String) -> Void) {
+//        let alert = SCLAlertView()
+//        let textfield = alert.addTextField()
+//        alert.addButton(defaultButton) { () -> Void in
+//            completion(textfield.text ?? "")
+//        }
+//        alert.showNotice(title, subTitle: message, closeButtonTitle: cancelButton, duration: 0, colorStyle: 0xC1272D, colorTextButton: 0xFFFFFF, circleIconImage: nil)
+//    }
     
     class func presentBasicAlert(_ alert: UIAlertController) {
         if let rootVC = UIApplication.shared.keyWindow?.rootViewController {

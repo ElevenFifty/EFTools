@@ -8,8 +8,8 @@
 
 import UIKit
 import Alamofire
-import SwiftyJSON
-import SwiftKeychainWrapper
+import Freddy
+import Valet
 
 /// EFWebProtocol - used to assure adherence to required and optional properties of EFWebServices
 ///
@@ -45,6 +45,12 @@ import SwiftKeychainWrapper
     /// self.shared.baseURL = "http://test.com"
     static func setBaseURL(_ url: String)
     
+    /// Send in the keychainIdentifier for your app - do before making any network calls
+    ///
+    /// Example method body:
+    /// self.shared.keychainIdentifier = "MyAppIdentifier"
+    static func setKeychainIdentifier(_ keychainIdentifier: String)
+    
     /// Used to change from the default "Authorization" header when sending an auth token
     ///
     /// Example method body:
@@ -68,6 +74,20 @@ import SwiftKeychainWrapper
     /// Example method body:
     /// self.shared.queries = ["searchterm": "test", "page": 1]
     @objc optional static func addQueries(_ queries: [String: String])
+    
+    /// Send in the date Format for your app - do before making any network calls
+    /// Default is "YYYY-MM-DD'T'hh:mm:ssZ"
+    ///
+    /// Example method body:
+    /// self.shared.dateFormat = "http://test.com"
+    @objc optional static func setDateFormat(_ dateFormat: String)
+    
+    /// Send whether to auto parse json - do before making any network calls
+    /// Default is true
+    ///
+    /// Example method body:
+    /// self.shared.autoParse = false
+    @objc optional static func setAutoParse(_ autoParse: Bool)
 }
 
 /// EFWebServices - subclass this to use Alamofire with a built-in AuthRouter
@@ -80,6 +100,9 @@ open class EFWebServices: NSObject {
     fileprivate var _authPrefix = "Bearer "
     fileprivate var _headers: [String: AnyObject]?
     fileprivate var _queries: [String: String]?
+    fileprivate var _dateFormat = "YYYY-MM-DD'T'hh:mm:ssZ"
+    fileprivate var _autoParse = true
+    fileprivate var _keychainIdentifier = "EFToolsID"
     
     open var baseURL: String {
         get {
@@ -126,19 +149,50 @@ open class EFWebServices: NSObject {
         }
     }
     
+    open var dateFormat: String {
+        get {
+            return _dateFormat
+        }
+        set {
+            _dateFormat = newValue
+        }
+    }
+    
+    open var autoParse: Bool {
+        get {
+            return _autoParse
+        }
+        set {
+            _autoParse = newValue
+        }
+    }
+    
+    open var keychainIdentifier: String {
+        get {
+            return _keychainIdentifier
+        }
+        set {
+            _keychainIdentifier = newValue
+        }
+    }
+    
     fileprivate var authToken: String? {
         get {
-            if let authTokenString:String = KeychainWrapper.defaultKeychainWrapper().stringForKey("authToken") {
+            let myValet = VALValet(identifier: _keychainIdentifier, accessibility: .whenUnlocked)
+            
+            if let authTokenString = myValet?.string(forKey: EFConstants.authToken) {
                 return authTokenString
             } else {
                 return nil
             }
         }
         set {
-            if newValue != nil {
-                KeychainWrapper.defaultKeychainWrapper().setString(newValue!, forKey: "authToken")
+            let myValet = VALValet(identifier: _keychainIdentifier, accessibility: .whenUnlocked)
+            
+            if let newValue = newValue {
+                myValet?.setString(newValue, forKey: EFConstants.authToken)
             } else {
-                KeychainWrapper.defaultKeychainWrapper().removeObjectForKey("authToken")
+                myValet?.removeObject(forKey: EFConstants.authToken)
             }
         }
     }
@@ -146,17 +200,20 @@ open class EFWebServices: NSObject {
     fileprivate var authTokenExpireDate: String? {
         // Storing in the iOS Keychain (for security purposes).
         get {
-            if let authExpireDate:String = KeychainWrapper.defaultKeychainWrapper().stringForKey("authTokenExpireDate") {
+            let myValet = VALValet(identifier: _keychainIdentifier, accessibility: .whenUnlocked)
+            
+            if let authExpireDate = myValet?.string(forKey: EFConstants.authTokenExpireDate) {
                 return authExpireDate
             } else {
                 return nil
             }
         } set {
-            if newValue != nil {
-                KeychainWrapper.defaultKeychainWrapper().setString(newValue!, forKey: "authTokenExpireDate")
-            }
-            else {
-                KeychainWrapper.defaultKeychainWrapper().removeObjectForKey("authTokenExpireDate")
+            let myValet = VALValet(identifier: _keychainIdentifier, accessibility: .whenUnlocked)
+            
+            if let newValue = newValue {
+                myValet?.setString(newValue, forKey: EFConstants.authTokenExpireDate)
+            } else {
+                myValet?.removeObject(forKey: EFConstants.authTokenExpireDate)
             }
         }
     }
@@ -179,8 +236,7 @@ open class EFWebServices: NSObject {
         if self.authTokenExpireDate != nil {
             
             let dateFormatter = DateFormatter()
-            // "Tue, 17 Mar 2015 20:04:53 GMT"
-            dateFormatter.dateFormat = "EEE, dd MMM yyyy HH:mm:ss Z"
+            dateFormatter.dateFormat = _dateFormat
             
             let dateString = self.authTokenExpireDate!
             let expireDate = dateFormatter.date(from: dateString)!
@@ -211,52 +267,52 @@ open class EFWebServices: NSObject {
         
         case efRequest(EFNetworkModel)
         
-        public var URLRequest: NSMutableURLRequest {
+        public func asURLRequest() throws -> URLRequest {
+            let URL = try AuthRouter.baseURLString.asURL()
+            var urlRequest: URLRequest
             
             switch self {
             case .efRequest(let model):
-                let URL = Foundation.URL(string: AuthRouter.baseURLString)!
+                urlRequest = URLRequest(url: URL.appendingPathComponent(model.path()))
                 
-                let mutableURLRequest = NSMutableURLRequest(URL: URL.appendingPathComponent(model.path()))
-                
-                mutableURLRequest.HTTPMethod = model.method().rawValue
+                urlRequest.httpMethod = model.method().rawValue
                 
                 if let token = EFWebServices.shared.authToken {
-                    mutableURLRequest.setValue("\(AuthRouter.authPrefix)\(token)", forHTTPHeaderField: AuthRouter.authHeader)
+                    urlRequest.setValue("\(AuthRouter.authPrefix) \(token)", forHTTPHeaderField: AuthRouter.authHeader)
                 }
                 
                 if let headers = EFWebServices.shared.headers {
                     for header in headers {
-                        mutableURLRequest.addValue("\(header.1)", forHTTPHeaderField: "\(header.0)")
+                        urlRequest.addValue("\(header.1)", forHTTPHeaderField: "\(header.0)")
                     }
                 }
                 
                 if let headers = model.headers() {
                     for header in headers {
-                        mutableURLRequest.addValue("\(header.1)", forHTTPHeaderField: "\(header.0)")
+                        urlRequest.addValue("\(header.1)", forHTTPHeaderField: "\(header.0)")
                     }
                 }
                 
                 if let queries = EFWebServices.shared.queries {
-                    return ParameterEncoding.URL.encode(mutableURLRequest, parameters: queries).0
+                    return try! URLEncoding.default.encode(urlRequest, with: queries)
                 }
                 
                 if let params = model.patches() {
-                    mutableURLRequest.httpBody = try! JSONSerialization.data(withJSONObject: params, options: [])
-                    mutableURLRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                    urlRequest.httpBody = try! JSONSerialization.data(withJSONObject: params, options: [])
+                    urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
                 }
                 
                 if let params = model.toDictionary() {
                     if let encoding = model.encoding {
-                        return encoding.encode(mutableURLRequest, parameters: params).0
-                    } else if model.method() == .GET {
-                        return ParameterEncoding.URL.encode(mutableURLRequest, parameters: params).0
+                        return try! encoding.encode(urlRequest, with: params)
+                    } else if model.method() == .get {
+                        return try! URLEncoding.default.encode(urlRequest, with: params)
                     } else {
-                        return ParameterEncoding.JSON.encode(mutableURLRequest, parameters: params).0
+                        return try! JSONEncoding.default.encode(urlRequest, with: params)
                     }
                 }
                 
-                return mutableURLRequest
+                return urlRequest
             }
         }
     }
@@ -268,332 +324,171 @@ open class EFWebServices: NSObject {
     }
     
     
-    // MARK: - Auth methods
-    open func authenticateUser<T: EFNetworkModel>(_ user: T, completion:@escaping (_ user: T?, _ error: String?) -> Void) {
+    // MARK: - Auth method
+    open func authenticateUser<T: EFNetworkModel>(_ user: T, autoParse: Bool = EFWebServices.shared._autoParse, completion:@escaping (_ response: DataResponse<Any>?, _ user: T?, _ error: String?) -> Void) {
         if !networkCheck() {
-            completion(nil, EFConstants.noInternetConnection)
+            completion(nil, nil, EFConstants.noInternetConnection)
             return
         }
         
-        request(user.method(), EFWebServices.shared._baseURL + user.path(), parameters: user.toDictionary(), encoding: .URL)
-            .response { (request, response, jsonObject, error) in
-                EFWebServices.processResponse(response, jsonObject: jsonObject, error: error, completion: completion)
-        }
-    }
-    
-    open func authenticateUser<T: EFNetworkModel>(_ user: T, completion:@escaping (_ request: URLRequest?, _ response: HTTPURLResponse?, _ data: Data?, _ error: NSError?) -> Void) {
-        if !networkCheck() {
-            completion(nil, nil, nil, NSError(domain: EFConstants.noInternetConnection, code: 0, userInfo: nil))
-            return
-        }
-        
-        request(user.method(), EFWebServices.shared._baseURL + user.path(), parameters: user.toDictionary(), encoding: .URL)
-            .response { (request, response, jsonObject, error) in
-                completion(request: request, response: response, data: jsonObject, error: error)
+        request(EFWebServices.shared._baseURL + user.path(), method: user.method(), parameters: user.toDictionary(), encoding: URLEncoding.default)
+            .responseJSON { (response) -> Void in
+                if autoParse {
+                    EFWebServices.parseResponseObject(response, completion: completion)
+                } else {
+                    completion(response, nil, nil)
+                }
         }
     }
     
     
     // MARK: - Register methods
-    open func registerUser<T: EFNetworkModel>(_ user: T, completion:@escaping (_ user: T?, _ error: String?) -> Void) {
+    open func registerUser<T: EFNetworkModel>(_ user: T, autoParse: Bool = EFWebServices.shared._autoParse, completion:@escaping (_ response: DataResponse<Any>?, _ user: T?, _ error: String?) -> Void) {
         if !networkCheck() {
-            completion(nil, EFConstants.noInternetConnection)
+            completion(nil, nil, EFConstants.noInternetConnection)
             return
         }
         
-        request(user.method(), EFWebServices.shared._baseURL + user.path(), parameters: user.toDictionary(), encoding: .URL)
-            .response { (request, response, jsonObject, error) in
-                EFWebServices.processResponse(response, jsonObject: jsonObject, error: error, completion: completion)
-        }
-    }
-    
-    open func registerUser<T: EFNetworkModel>(_ user: T, completion:@escaping (_ request: URLRequest?, _ response: HTTPURLResponse?, _ data: Data?, _ error: NSError?) -> Void) {
-        if !networkCheck() {
-            completion(nil, nil, nil, NSError(domain: EFConstants.noInternetConnection, code: 0, userInfo: nil))
-            return
-        }
-        
-        request(user.method(), EFWebServices.shared._baseURL + user.path(), parameters: user.toDictionary(), encoding: .URL)
-            .response { (request, response, jsonObject, error) in
-                completion(request: request, response: response, data: jsonObject, error: error)
-        }
-    }
-    
-    
-    // MARK: - Reset Password methods
-    open func resetPassword<T: EFNetworkModel>(_ user: T, completion: @escaping (_ success: Bool, _ error: String?) -> Void) {
-        if !networkCheck() {
-            completion(false, EFConstants.noInternetConnection)
-            return
-        }
-        
-        request(user.method(), EFWebServices.shared.baseURL + user.path(), parameters: user.toDictionary(), encoding: .URL)
-            .response { (request, response, jsonObject, error) in
-                var success = false
-                var errorString: String?
-                if let status = response?.statusCode {
-                    switch status {
-                    case 200:
-                        success = true
-                    case 400:
-                        if let json = jsonObject, let string = String(data: json, encoding: NSUTF8StringEncoding) {
-                            errorString = string
-                        } else {
-                            errorString = EFConstants.objectNotFound
-                        }
-                    case 500:
-                        errorString = EFConstants.internalError
-                    default:
-                        errorString = EFConstants.unknownError
-                    }
+        request(EFWebServices.shared._baseURL + user.path(), method: user.method(), parameters: user.toDictionary(), encoding: URLEncoding.default)
+            .responseJSON { (response) -> Void in
+                if autoParse {
+                    EFWebServices.parseResponseObject(response, completion: completion)
                 } else {
-                    errorString = EFConstants.unknownError
+                    completion(response, nil, nil)
                 }
-                completion(success: success, error: errorString)
-        }
-    }
-    
-    open func resetPassword<T: EFNetworkModel>(_ user: T, completion:@escaping (_ request: URLRequest?, _ response: HTTPURLResponse?, _ data: Data?, _ error: NSError?) -> Void) {
-        if !networkCheck() {
-            completion(nil, nil, nil, NSError(domain: EFConstants.noInternetConnection, code: 0, userInfo: nil))
-            return
-        }
-        
-        request(user.method(), EFWebServices.shared.baseURL + user.path(), parameters: user.toDictionary(), encoding: .URL)
-            .response { (request, response, jsonObject, error) in
-                completion(request: request, response: response, data: jsonObject, error: error)
         }
     }
     
     
     // MARK: - Generic Post Methods
-    open func postObject<T: EFNetworkModel>(_ newObject: T, completion:@escaping (_ object: T?, _ error: String?) -> Void) {
+    open func postObject<T: EFNetworkModel>(_ newObject: T, autoParse: Bool = EFWebServices.shared._autoParse, completion:@escaping (_ response: DataResponse<Any>?, _ object: T?, _ error: String?) -> Void) {
         if !networkCheck() {
-            completion(nil, EFConstants.noInternetConnection)
+            completion(nil, nil, EFConstants.noInternetConnection)
             return
         }
-        request(AuthRouter.EFRequest(newObject)).response { (request, response, jsonObject, error) -> Void in
-            EFWebServices.processResponse(response, jsonObject: jsonObject, error: error, completion: completion)
-        }
-    }
-    
-    open func postObject<T: EFNetworkModel>(_ newObject: T, completion:@escaping (_ request: URLRequest?, _ response: HTTPURLResponse?, _ data: Data?, _ error: NSError?) -> Void) {
-        if !networkCheck() {
-            completion(nil, nil, nil, NSError(domain: EFConstants.noInternetConnection, code: 0, userInfo: nil))
-            return
-        }
-        
-        request(AuthRouter.EFRequest(newObject)).response { (request, response, jsonObject, error) in
-            completion(request: request, response: response, data: jsonObject, error: error)
+        request(AuthRouter.efRequest(newObject)).responseJSON { (response) -> Void in
+            EFWebServices.parseResponseObject(response, completion: completion)
         }
     }
     
     
     // MARK: - Generic Delete Methods
-    open func deleteObject<T: EFNetworkModel>(_ newObject: T, completion:@escaping (_ success: Bool, _ error: String?) -> Void) {
+    open func deleteObject<T: EFNetworkModel>(_ newObject: T, autoParse: Bool = EFWebServices.shared._autoParse, completion:@escaping (_ response: DataResponse<Any>?, _ object: T?, _ error: String?) -> Void) {
         if !networkCheck() {
-            completion(false, EFConstants.noInternetConnection)
+            completion(nil, nil, EFConstants.noInternetConnection)
             return
         }
-        request(AuthRouter.EFRequest(newObject)).response { (request, response, jsonObject, error) -> Void in
-            var errorString: String?
-            var success = false
-            if let status = response?.statusCode {
-                switch status {
-                case 200:
-                    success = true
-                case 400:
-                    if let json = jsonObject, let string = String(data: json, encoding: NSUTF8StringEncoding) {
-                        errorString = string
-                    } else {
-                        errorString = EFConstants.badRequest
-                    }
-                case 500:
-                    if let json = jsonObject, let string = String(data: json, encoding: NSUTF8StringEncoding) {
-                        errorString = string
-                    } else {
-                        errorString = EFConstants.internalError
-                    }
-                default:
-                    errorString = error?.description ?? EFConstants.unknownError
-                }
-            } else {
-                errorString = error?.description ?? EFConstants.unknownError
-            }
-            
-            completion(success: success, error: errorString)
-        }
-    }
-    
-    open func deleteObject<T: EFNetworkModel>(_ newObject: T, completion:@escaping (_ request: URLRequest?, _ response: HTTPURLResponse?, _ data: Data?, _ error: NSError?) -> Void) {
-        if !networkCheck() {
-            completion(nil, nil, nil, NSError(domain: EFConstants.noInternetConnection, code: 0, userInfo: nil))
-            return
-        }
-        
-        request(AuthRouter.EFRequest(newObject)).response { (request, response, jsonObject, error) in
-            completion(request: request, response: response, data: jsonObject, error: error)
+        request(AuthRouter.efRequest(newObject)).responseJSON { (response) -> Void in
+            EFWebServices.parseResponseObject(response, completion: completion)
         }
     }
     
     
     // MARK: - Generic Get Methods
-    open func getObject<T: EFNetworkModel>(_ newObject: T, completion: @escaping (_ object: T?, _ error: String?) -> Void) {
+    open func getObject<T: EFNetworkModel>(_ newObject: T, autoParse: Bool = EFWebServices.shared._autoParse, completion: @escaping (_ response: DataResponse<Any>?, _ object: T?, _ error: String?) -> Void) {
         if !networkCheck() {
-            completion(nil, EFConstants.noInternetConnection)
+            completion(nil, nil, EFConstants.noInternetConnection)
             return
         }
-        request(AuthRouter.EFRequest(newObject)).response { (request, response, jsonObject, error) -> Void in
-            EFWebServices.processResponse(response, jsonObject: jsonObject, error: error, completion: completion)
+        request(AuthRouter.efRequest(newObject)).responseJSON { (response) -> Void in
+            EFWebServices.parseResponseObject(response, completion: completion)
         }
     }
     
-    open func getObject<T: EFNetworkModel>(_ newObject: T, completion:@escaping (_ request: URLRequest?, _ response: HTTPURLResponse?, _ data: Data?, _ error: NSError?) -> Void) {
+    open func getObjects<T: EFNetworkModel>(_ object: T, autoParse: Bool = EFWebServices.shared._autoParse, completion: @escaping (_ response: DataResponse<Any>?, _ objects: [T]?, _ error: String?) -> Void) {
         if !networkCheck() {
-            completion(nil, nil, nil, NSError(domain: EFConstants.noInternetConnection, code: 0, userInfo: nil))
+            completion(nil, nil, EFConstants.noInternetConnection)
             return
         }
         
-        request(AuthRouter.EFRequest(newObject)).response { (request, response, jsonObject, error) in
-            completion(request: request, response: response, data: jsonObject, error: error)
-        }
-    }
-    
-    open func getObjects<T: EFNetworkModel>(_ object: T, completion: @escaping (_ objects: [T]?, _ error: String?) -> Void) {
-        if !networkCheck() {
-            completion(nil, EFConstants.noInternetConnection)
-            return
-        }
-        
-        request(AuthRouter.EFRequest(object)).response { (request, response, jsonObject, error) -> Void in
-            EFWebServices.processResponse(response, jsonObject: jsonObject, error: error, completion: completion)
-        }
-    }
-    
-    open func getObjects<T: EFNetworkModel>(_ newObject: T, completion:@escaping (_ request: URLRequest?, _ response: HTTPURLResponse?, _ data: Data?, _ error: NSError?) -> Void) {
-        if !networkCheck() {
-            completion(nil, nil, nil, NSError(domain: EFConstants.noInternetConnection, code: 0, userInfo: nil))
-            return
-        }
-        
-        request(AuthRouter.EFRequest(newObject)).response { (request, response, jsonObject, error) in
-            completion(request: request, response: response, data: jsonObject, error: error)
+        request(AuthRouter.efRequest(object)).responseJSON { (response) -> Void in
+            EFWebServices.parseResponseObjects(response, completion: completion)
         }
     }
     
     
     // MARK: - Generic Response Processing Methods
-    class func processResponse<T: EFNetworkModel>(_ response: HTTPURLResponse?, jsonObject: Data?, error: NSError?, completion: (_ object: T?, _ error: String?) -> Void) {
-        var errorString: String?
+    class func parseResponseObject<T: EFNetworkModel>(_ response: DataResponse<Any>, completion: (_ response: DataResponse<Any>?, _ object: T?, _ error: String?) -> Void) {
         var object: T?
-        if let status = response?.statusCode {
-            switch status {
-            case 200:
-                if let json = jsonObject {
-                    object = T(json: JSON(data: json))
-                } else {
-                    errorString = EFConstants.unknownError
-                }
-            case 201:
-                if let json = jsonObject {
-                    object = T(json: JSON(data: json))
-                } else {
-                    errorString = EFConstants.unknownError
-                }
-            case 400:
-                if let json = jsonObject, let string = String(data: json, encoding: String.Encoding.utf8) {
-                    errorString = string
-                } else {
-                    errorString = EFConstants.badRequest
-                }
-            case 402:
-                if let json = jsonObject, let string = String(data: json, encoding: String.Encoding.utf8) {
-                    errorString = string
-                } else {
-                    errorString = EFConstants.badUsernamePassword
-                }
-            case 403:
-                if let json = jsonObject, let string = String(data: json, encoding: String.Encoding.utf8) {
-                    errorString = string
-                } else {
-                    errorString = EFConstants.unauthorized
-                }
-            case 404:
-                if let json = jsonObject, let string = String(data: json, encoding: String.Encoding.utf8) {
-                    errorString = string
-                } else {
-                    errorString = EFConstants.objectNotFound
-                }
-            case 500:
-                if let json = jsonObject, let string = String(data: json, encoding: String.Encoding.utf8) {
-                    errorString = string
-                } else {
-                    errorString = EFConstants.internalError
-                }
-            default:
-                errorString = error?.description ?? EFConstants.unknownError
-            }
-        } else {
-            errorString = error?.description ?? EFConstants.unknownError
+        
+        guard case .success(_) = response.result, let data = response.data else {
+            completion(response, nil, parseError(response: response))
+            return
         }
         
-        completion(object, errorString)
+        do {
+            let json = try JSON(data: data)
+            object = try T(json: json)
+            
+            completion(response, object, nil)
+        } catch {
+            completion(response, nil, EFConstants.processingError)
+        }
     }
     
-    class func processResponse<T: EFNetworkModel>(_ response: HTTPURLResponse?, jsonObject: Data?, error: NSError?, completion: (_ objects: [T]?, _ error: String?) -> Void) {
+    class func parseResponseObjects<T: EFNetworkModel>(_ response: DataResponse<Any>, completion: (_ response: DataResponse<Any>?, _ objects: [T]?, _ error: String?) -> Void) {
         var errorString: String?
         var objects: [T]?
-        if let status = response?.statusCode {
-            switch status {
-            case 200, 201:
-                if let json = jsonObject {
-                    let jsonArray = JSON(data:json)
-                    objects = []
-                    if let array = jsonArray.array {
-                        for object in array {
-                            objects?.append(T(json: object))
-                        }
-                    }
-                } else {
-                    objects = []
-                }
-            case 400:
-                if let json = jsonObject, let string = String(data: json, encoding: String.Encoding.utf8) {
-                    errorString = string
-                } else {
-                    errorString = EFConstants.badRequest
-                }
-            case 402:
-                if let json = jsonObject, let string = String(data: json, encoding: String.Encoding.utf8) {
-                    errorString = string
-                } else {
-                    errorString = EFConstants.badUsernamePassword
-                }
-            case 403:
-                if let json = jsonObject, let string = String(data: json, encoding: String.Encoding.utf8) {
-                    errorString = string
-                } else {
-                    errorString = EFConstants.unauthorized
-                }
-            case 404:
-                if let json = jsonObject, let string = String(data: json, encoding: String.Encoding.utf8) {
-                    errorString = string
-                } else {
-                    errorString = EFConstants.objectNotFound
-                }
-            case 500:
-                if let json = jsonObject, let string = String(data: json, encoding: String.Encoding.utf8) {
-                    errorString = string
-                } else {
-                    errorString = EFConstants.internalError
-                }
-            default:
-                errorString = error?.description ?? EFConstants.unknownError
-            }
-        } else {
-            errorString = error?.description ?? EFConstants.unknownError
+        
+        guard case .success(_) = response.result, let data = response.data else {
+            completion(response, nil, parseError(response: response))
+            return
         }
         
-        completion(objects, errorString)
+        do {
+            let json = try JSON(data: data)
+            let people = try json.getArray(at: "").map(T.init)
+            objects = people
+        } catch {
+            errorString = EFConstants.processingError
+        }
+        
+        completion(response, objects, errorString)
+    }
+    
+    class func parseError(response: DataResponse<Any>) -> String? {
+        guard case let .failure(error) = response.result else {
+            return EFConstants.unknownError
+        }
+        
+        var errorString: String?
+        
+        if let error = error as? AFError {
+            switch error {
+            case .invalidURL(let url):
+                errorString = "Invalid URL: \(url) - \(error.localizedDescription)"
+            case .parameterEncodingFailed(let reason):
+                errorString = "Parameter encoding failed: \(error.localizedDescription)"
+                errorString = "Failure Reason: \(reason)"
+            case .multipartEncodingFailed(let reason):
+                errorString = "Multipart encoding failed: \(error.localizedDescription)"
+                errorString = "Failure Reason: \(reason)"
+            case .responseValidationFailed(let reason):
+                errorString = "Response validation failed: \(error.localizedDescription)"
+                errorString = "Failure Reason: \(reason)"
+                
+                switch reason {
+                case .dataFileNil, .dataFileReadFailed:
+                    errorString = "Downloaded file could not be read"
+                case .missingContentType(let acceptableContentTypes):
+                    errorString = "Content Type Missing: \(acceptableContentTypes)"
+                case .unacceptableContentType(let acceptableContentTypes, let responseContentType):
+                    errorString = "Response content type: \(responseContentType) was unacceptable: \(acceptableContentTypes)"
+                case .unacceptableStatusCode(let code):
+                    errorString = "Response status code was unacceptable: \(code)"
+                }
+            case .responseSerializationFailed(let reason):
+                errorString = "Response serialization failed: \(error.localizedDescription)"
+                errorString = "Failure Reason: \(reason)"
+            }
+            
+            errorString = "Underlying error: \(error.underlyingError)"
+        } else if let error = error as? URLError {
+            errorString = "URLError occurred: \(error)"
+        } else {
+            errorString = "Unknown error: \(error)"
+        }
+        
+        return errorString
     }
 }

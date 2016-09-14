@@ -8,7 +8,7 @@
 
 import Foundation
 import Alamofire
-import SwiftyJSON
+import Freddy
 
 /// Requires the following:
 ///
@@ -31,10 +31,10 @@ import SwiftyJSON
 /// - Returns nil for requests not using Patch, returns Array of Patch items otherwise
 public protocol EFNetworkModel {
     /// init method that takes in JSON data to initialize the model instance
-    init(json: JSON)
+    init(json value: JSON) throws
     
     /// Returns .GET, .POST, etc.
-    func method() -> Alamofire.Method
+    func method() -> Alamofire.HTTPMethod
     
     /// Returns endpoint subpath, e.g. /api/user
     func path() -> String
@@ -67,10 +67,10 @@ extension EFNetworkModel {
         if let newValue = newValue {
             if let oldValue = oldValue {
                 if oldValue != newValue {
-                    patchAds?[key] = newValue as? AnyObject
+                    patchAds?[key] = newValue as AnyObject
                 }
             } else {
-                patchAds?[key] = newValue as? AnyObject
+                patchAds?[key] = newValue as AnyObject
             }
             patchRemoves?.remove(key)
         }
