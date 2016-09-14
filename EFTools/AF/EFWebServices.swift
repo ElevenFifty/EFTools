@@ -217,7 +217,7 @@ public class EFWebServices: NSObject {
             case .EFRequest(let model):
                 let URL = NSURL(string: AuthRouter.baseURLString)!
                 
-                let mutableURLRequest = NSMutableURLRequest(URL: URL.URLByAppendingPathComponent(model.path()))
+                let mutableURLRequest = NSMutableURLRequest(URL: URL.URLByAppendingPathComponent(model.path())!)
                 
                 mutableURLRequest.HTTPMethod = model.method().rawValue
                 
