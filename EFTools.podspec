@@ -6,7 +6,7 @@ spec.homepage = "https://github.com/ElevenFifty/EFTools"
 spec.author = { "Brett Keck" => "bkeck@elevenfiftyconsulting.com" }
 spec.author = 'ElevenFifty Consulting'
 spec.source = { :git => "https://github.com/ElevenFifty/EFTools.git", :tag => spec.version }
-spec.platform = :ios, '8.0'
+spec.platform = :ios, '9.0'
 spec.requires_arc = true
 
 spec.dependency 'MBProgressHUD', '~> 0.9.2'
