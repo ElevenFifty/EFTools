@@ -52,7 +52,7 @@ public protocol EFNetworkModel {
     var encoding: ParameterEncoding? { get set }
     
     /// Used for keeping track of what items to patch
-    var patchAds: [String: AnyObject]? { get set }
+    var patchAdds: [String: AnyObject]? { get set }
     var patchRemoves: Set<String>? { get set }
 }
 
@@ -60,24 +60,24 @@ extension EFNetworkModel {
     public mutating func patchItem<T: Comparable>(_ key: String, oldValue: T?, newValue: T?) {
         if oldValue != nil && newValue == nil {
             patchRemoves?.insert(key)
-            patchAds?.removeValue(forKey: key)
+            patchAdds?.removeValue(forKey: key)
             return
         }
         
         if let newValue = newValue {
             if let oldValue = oldValue {
                 if oldValue != newValue {
-                    patchAds?[key] = newValue as AnyObject
+                    patchAdds?[key] = newValue as AnyObject
                 }
             } else {
-                patchAds?[key] = newValue as AnyObject
+                patchAdds?[key] = newValue as AnyObject
             }
             patchRemoves?.remove(key)
         }
     }
     
     public mutating func resetPatch() {
-        patchAds = [:]
+        patchAdds = [:]
         patchRemoves = []
     }
 }
