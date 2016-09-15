@@ -198,7 +198,6 @@ open class EFWebServices: NSObject {
     }
     
     fileprivate var authTokenExpireDate: String? {
-        // Storing in the iOS Keychain (for security purposes).
         get {
             let myValet = VALValet(identifier: _keychainIdentifier, accessibility: .whenUnlocked)
             
@@ -437,8 +436,8 @@ open class EFWebServices: NSObject {
         
         do {
             let json = try JSON(data: data)
-            let people = try json.getArray(at: "").map(T.init)
-            objects = people
+            let theObjects = try json.getArray().map(T.init)
+            objects = theObjects
         } catch {
             errorString = EFConstants.processingError
         }
