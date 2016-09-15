@@ -93,7 +93,7 @@ import Valet
 /// EFWebServices - subclass this to use Alamofire with a built-in AuthRouter
 /// Use in concert with the EFNetworkModel protocol
 open class EFWebServices: NSObject {
-    open static let shared = EFWebServices()
+    public static let shared = EFWebServices()
     
     fileprivate var _baseURL = ""
     fileprivate var _authHeader = "Authorization"
@@ -104,7 +104,7 @@ open class EFWebServices: NSObject {
     fileprivate var _autoParse = true
     fileprivate var _keychainIdentifier = "EFToolsID"
     
-    open var baseURL: String {
+    public var baseURL: String {
         get {
             return _baseURL
         }
@@ -113,7 +113,7 @@ open class EFWebServices: NSObject {
         }
     }
     
-    open var authHeader: String {
+    public var authHeader: String {
         get {
             return _authHeader
         }
@@ -122,7 +122,7 @@ open class EFWebServices: NSObject {
         }
     }
     
-    open var authPrefix: String {
+    public var authPrefix: String {
         get {
             return _authPrefix
         }
@@ -131,7 +131,7 @@ open class EFWebServices: NSObject {
         }
     }
     
-    open var headers: [String: AnyObject]? {
+    public var headers: [String: AnyObject]? {
         get {
             return _headers
         }
@@ -140,7 +140,7 @@ open class EFWebServices: NSObject {
         }
     }
     
-    open var queries: [String: String]? {
+    public var queries: [String: String]? {
         get {
             return _queries
         }
@@ -149,7 +149,7 @@ open class EFWebServices: NSObject {
         }
     }
     
-    open var dateFormat: String {
+    public var dateFormat: String {
         get {
             return _dateFormat
         }
@@ -158,7 +158,7 @@ open class EFWebServices: NSObject {
         }
     }
     
-    open var autoParse: Bool {
+    public var autoParse: Bool {
         get {
             return _autoParse
         }
@@ -167,7 +167,7 @@ open class EFWebServices: NSObject {
         }
     }
     
-    open var keychainIdentifier: String {
+    public var keychainIdentifier: String {
         get {
             return _keychainIdentifier
         }
@@ -217,12 +217,12 @@ open class EFWebServices: NSObject {
         }
     }
     
-    open func setAuthToken(_ token: String?, expiration: String?) {
+    public func setAuthToken(_ token: String?, expiration: String?) {
         authToken = token
         authTokenExpireDate = expiration
     }
     
-    open func userAuthTokenExists() -> Bool {
+    public func userAuthTokenExists() -> Bool {
         if self.authToken != nil {
             return true
         }
@@ -231,7 +231,7 @@ open class EFWebServices: NSObject {
         }
     }
     
-    open func userAuthTokenExpired() -> Bool {
+    public func userAuthTokenExpired() -> Bool {
         if self.authTokenExpireDate != nil {
             
             let dateFormatter = DateFormatter()
@@ -252,7 +252,7 @@ open class EFWebServices: NSObject {
         }
     }
     
-    open func clearUserAuthToken() -> Void {
+    public func clearUserAuthToken() -> Void {
         if self.userAuthTokenExists() {
             self.authToken = nil
         }
