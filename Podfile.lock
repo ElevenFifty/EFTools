@@ -24,7 +24,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Freddy:
-    :commit: 2952d306cbab3f5be9e64065527d9e15b68ee7dc
+    :commit: e596158d0918fae1dc50bcdfd521d435ce9da18a
     :git: https://github.com/bignerdranch/Freddy.git
   Valet:
     :commit: 60ce261e32f19ad732863ae313be4859c9fc8fe6
@@ -32,7 +32,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: fef59f00388f267e52d9b432aa5d93dc97190f14
-  Freddy: bbdca013977db29638b24baf6572ce94452bec29
+  Freddy: 228bed65ecdef44fc492cdc2f61a78a0c7a59453
   Instabug: 035bf24475ffac1bcb81f8c542774487bc72f528
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   TPKeyboardAvoiding: a5138f318c06fb3e151f886e18ce4a72695d9cbe

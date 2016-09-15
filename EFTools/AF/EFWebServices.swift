@@ -411,7 +411,7 @@ open class EFWebServices: NSObject {
         var object: T?
         
         guard case .success(_) = response.result, let data = response.data else {
-            completion(response, nil, parseError(response: response))
+            completion(response, nil, parseError(response))
             return
         }
         
@@ -430,7 +430,7 @@ open class EFWebServices: NSObject {
         var objects: [T]?
         
         guard case .success(_) = response.result, let data = response.data else {
-            completion(response, nil, parseError(response: response))
+            completion(response, nil, parseError(response))
             return
         }
         
