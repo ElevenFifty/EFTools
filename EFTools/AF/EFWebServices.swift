@@ -445,7 +445,7 @@ open class EFWebServices: NSObject {
         completion(response, objects, errorString)
     }
     
-    class func parseError(response: DataResponse<Any>) -> String? {
+    class func parseError(_ response: DataResponse<Any>) -> String? {
         guard case let .failure(error) = response.result else {
             return EFConstants.unknownError
         }

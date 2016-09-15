@@ -24,7 +24,7 @@ open class EFUtils {
             (!specialCharacter || password.rangeOfCharacter(from: CharacterSet.symbols) != nil)
     }
     
-    open class func showError(title: String = "Error", message: String = "An error occurred with your request.", closeButton: String = "Dismiss", useBasic: Bool = true) {
+    open class func showError(_ title: String = "Error", message: String = "An error occurred with your request.", closeButton: String = "Dismiss", useBasic: Bool = true) {
 //        if useBasic {
             showBasicError(title, message: message, closeButton: closeButton)
 //        } else {
@@ -43,7 +43,7 @@ open class EFUtils {
 //        alert.showError(title, subTitle: message, closeButtonTitle: closeButton, duration: 0, colorStyle: 0xC1272D, colorTextButton: 0xFFFFFF, circleIconImage: nil)
 //    }
     
-    open class func showTextFieldAlert(title: String, message: String, defaultButton: String = "Continue", cancelButton: String = "Cancel", useBasic: Bool = true, completion: @escaping (String) -> Void) {
+    open class func showTextFieldAlert(_ title: String, message: String, defaultButton: String = "Continue", cancelButton: String = "Cancel", useBasic: Bool = true, completion: @escaping (String) -> Void) {
 //        if useBasic {
             showBasicTextFieldAlert(title, message: message, defaultButton: defaultButton, cancelButton: cancelButton, completion: completion)
 //        } else {
