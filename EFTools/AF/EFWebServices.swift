@@ -457,31 +457,23 @@ open class EFWebServices: NSObject {
             case .invalidURL(let url):
                 errorString = "Invalid URL: \(url) - \(error.localizedDescription)"
             case .parameterEncodingFailed(let reason):
-                errorString = "Parameter encoding failed: \(error.localizedDescription)"
-                errorString = "Failure Reason: \(reason)"
+                errorString = "Parameter encoding failed: \(error.localizedDescription).  Failure Reason: \(reason)"
             case .multipartEncodingFailed(let reason):
-                errorString = "Multipart encoding failed: \(error.localizedDescription)"
-                errorString = "Failure Reason: \(reason)"
+                errorString = "Multipart encoding failed: \(error.localizedDescription).  Failure Reason: \(reason)"
             case .responseValidationFailed(let reason):
-                errorString = "Response validation failed: \(error.localizedDescription)"
-                errorString = "Failure Reason: \(reason)"
-                
                 switch reason {
                 case .dataFileNil, .dataFileReadFailed:
-                    errorString = "Downloaded file could not be read"
+                    errorString = "Response validation failed: \(error.localizedDescription).  Downloaded file could not be read"
                 case .missingContentType(let acceptableContentTypes):
-                    errorString = "Content Type Missing: \(acceptableContentTypes)"
+                    errorString = "Response validation failed: \(error.localizedDescription).  Content Type Missing: \(acceptableContentTypes)"
                 case .unacceptableContentType(let acceptableContentTypes, let responseContentType):
-                    errorString = "Response content type: \(responseContentType) was unacceptable: \(acceptableContentTypes)"
+                    errorString = "Response validation failed: \(error.localizedDescription).  Response content type: \(responseContentType) was unacceptable: \(acceptableContentTypes)"
                 case .unacceptableStatusCode(let code):
-                    errorString = "Response status code was unacceptable: \(code)"
+                    errorString = "Response validation failed: \(error.localizedDescription).  Response status code was unacceptable: \(code)"
                 }
             case .responseSerializationFailed(let reason):
-                errorString = "Response serialization failed: \(error.localizedDescription)"
-                errorString = "Failure Reason: \(reason)"
+                errorString = "Response serialization failed: \(error.localizedDescription).  Failure Reason: \(reason)"
             }
-            
-            errorString = "Underlying error: \(error.underlyingError)"
         } else if let error = error as? URLError {
             errorString = "URLError occurred: \(error)"
         } else {
