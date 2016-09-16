@@ -411,7 +411,11 @@ open class EFWebServices: NSObject {
         var object: T?
         
         guard case .success(_) = response.result, let data = response.data else {
-            completion(response, nil, parseError(response))
+            if let statusCode = response.response?.statusCode, statusCode >= 200, statusCode < 300 {
+                completion(response, T(), nil)
+            } else {
+                completion(response, nil, parseError(response: response))
+            }
             return
         }
         

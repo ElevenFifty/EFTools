@@ -33,6 +33,9 @@ public protocol EFNetworkModel {
     /// init method that takes in JSON data to initialize the model instance
     init(json value: JSON) throws
     
+    /// required basic init method
+    init()
+    
     /// Returns .GET, .POST, etc.
     func method() -> Alamofire.HTTPMethod
     
