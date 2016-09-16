@@ -9,9 +9,9 @@ spec.source       = { :git => "https://barryllium@github.com/ElevenFifty/EFTools
 spec.platform     = :ios, '8.0'
 spec.requires_arc = true
 
-spec.dependency 'SnapKit'
+spec.dependency 'SnapKit', '~> 0.22'
 spec.dependency 'MBProgressHUD', '~> 0.9.1'
-spec.dependency 'AFDateHelper'
+spec.dependency 'AFDateHelper', '~> 3.4.2'
 spec.dependency 'Instabug'
 spec.dependency 'TPKeyboardAvoiding'
 
@@ -30,8 +30,8 @@ end
 
 spec.subspec 'Alamofire' do |afspec|
     afspec.dependency 'Alamofire', '~> 3.5'
-    afspec.dependency 'SwiftyJSON'
-    afspec.dependency 'SwiftKeychainWrapper'
+    afspec.dependency 'SwiftyJSON', '~> 2.3'
+    afspec.dependency 'SwiftKeychainWrapper', '~> 1.0'
     afspec.source_files = 'EFTools/AF', 'EFTools/Basic'
 end
 
@@ -40,8 +40,8 @@ spec.subspec 'Everything' do |allspec|
     allspec.dependency 'ParseFacebookUtilsV4'
     allspec.dependency 'ParseTwitterUtils'
     allspec.dependency 'Alamofire', '~> 3.5'
-    allspec.dependency 'SwiftyJSON'
-    allspec.dependency 'SwiftKeychainWrapper'
+    allspec.dependency 'SwiftyJSON', '~> 2.3'
+    allspec.dependency 'SwiftKeychainWrapper', '~> 1.0'
     allspec.source_files = 'EFTools/Parse', 'EFTools/AF', 'EFTools/Basic'
 end
 

@@ -28,21 +28,21 @@ PODS:
     - Bolts/Tasks (~> 1.3)
     - Parse (~> 1.9)
   - SnapKit (0.22.0)
-  - SwiftKeychainWrapper (2.0.0)
+  - SwiftKeychainWrapper (1.0.11)
   - SwiftyJSON (2.3.2)
   - TPKeyboardAvoiding (1.3)
 
 DEPENDENCIES:
-  - AFDateHelper
+  - AFDateHelper (~> 3.4.2)
   - Alamofire (~> 3.5)
   - Instabug
   - MBProgressHUD (~> 0.9.1)
   - ParseFacebookUtilsV4
   - ParseTwitterUtils
   - ParseUI
-  - SnapKit
-  - SwiftKeychainWrapper
-  - SwiftyJSON
+  - SnapKit (~> 0.22)
+  - SwiftKeychainWrapper (~> 1.0)
+  - SwiftyJSON (~> 2.3)
   - TPKeyboardAvoiding
 
 SPEC CHECKSUMS:
@@ -58,10 +58,10 @@ SPEC CHECKSUMS:
   ParseTwitterUtils: 0dde9689565e7012d83f892c64aed2ebe69f2ea9
   ParseUI: af2eba584799da4a9fbdac0e178662d7438b502e
   SnapKit: 0dd2fd157330f1ea11fd84da13e6be8a7a22bae0
-  SwiftKeychainWrapper: 3575838215fa36c816899c301a7afe370bd94814
+  SwiftKeychainWrapper: 011a6946923948ffa49708014dd691164d7621d1
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   TPKeyboardAvoiding: a5138f318c06fb3e151f886e18ce4a72695d9cbe
 
-PODFILE CHECKSUM: 1b90c13f724a46a16abbe438bbfeba2b6312e248
+PODFILE CHECKSUM: 12cd1840df9d1642c850ac111ffa68710cf1a1e2
 
 COCOAPODS: 1.0.1
