@@ -21,14 +21,14 @@ end
 
 spec.subspec 'Alamofire' do |afspec|
     afspec.dependency 'Alamofire', '~> 4.0'
-    afspec.dependency 'Freddy'
+    afspec.dependency 'Freddy', '~> 3.0'
     afspec.dependency 'Valet'
     afspec.source_files = 'EFTools/AF', 'EFTools/Basic'
 end
 
 spec.subspec 'Everything' do |allspec|
     allspec.dependency 'Alamofire', '~> 4.0'
-    allspec.dependency 'Freddy'
+    allspec.dependency 'Freddy', '~> 3.0'
     allspec.dependency 'Valet'
     allspec.source_files = 'EFTools/AF', 'EFTools/Basic'
 end

@@ -81,13 +81,6 @@ import Valet
     /// Example method body:
     /// self.shared.dateFormat = "http://test.com"
     @objc optional static func setDateFormat(_ dateFormat: String)
-    
-    /// Send whether to auto parse json - do before making any network calls
-    /// Default is true
-    ///
-    /// Example method body:
-    /// self.shared.autoParse = false
-    @objc optional static func setAutoParse(_ autoParse: Bool)
 }
 
 /// EFWebServices - subclass this to use Alamofire with a built-in AuthRouter
@@ -101,7 +94,6 @@ open class EFWebServices: NSObject {
     fileprivate var _headers: [String: AnyObject]?
     fileprivate var _queries: [String: String]?
     fileprivate var _dateFormat = "YYYY-MM-DD'T'hh:mm:ssZ"
-    fileprivate var _autoParse = true
     fileprivate var _keychainIdentifier = "EFToolsID"
     
     public var baseURL: String {
@@ -155,15 +147,6 @@ open class EFWebServices: NSObject {
         }
         set {
             _dateFormat = newValue
-        }
-    }
-    
-    public var autoParse: Bool {
-        get {
-            return _autoParse
-        }
-        set {
-            _autoParse = newValue
         }
     }
     
@@ -324,7 +307,7 @@ open class EFWebServices: NSObject {
     
     
     // MARK: - Auth method
-    open func authenticateUser<T: EFNetworkModel>(_ user: T, autoParse: Bool = EFWebServices.shared._autoParse, completion:@escaping (_ response: DataResponse<Any>?, _ user: T?, _ error: String?) -> Void) {
+    open func authenticateUser<T: EFNetworkModel>(_ user: T, autoParse: Bool = true, completion:@escaping (_ response: DataResponse<Any>?, _ user: T?, _ error: String?) -> Void) {
         if !networkCheck() {
             completion(nil, nil, EFConstants.noInternetConnection)
             return
@@ -342,7 +325,7 @@ open class EFWebServices: NSObject {
     
     
     // MARK: - Register methods
-    open func registerUser<T: EFNetworkModel>(_ user: T, autoParse: Bool = EFWebServices.shared._autoParse, completion:@escaping (_ response: DataResponse<Any>?, _ user: T?, _ error: String?) -> Void) {
+    open func registerUser<T: EFNetworkModel>(_ user: T, autoParse: Bool = true, completion:@escaping (_ response: DataResponse<Any>?, _ user: T?, _ error: String?) -> Void) {
         if !networkCheck() {
             completion(nil, nil, EFConstants.noInternetConnection)
             return
@@ -360,7 +343,7 @@ open class EFWebServices: NSObject {
     
     
     // MARK: - Generic Post Methods
-    open func postObject<T: EFNetworkModel>(_ newObject: T, autoParse: Bool = EFWebServices.shared._autoParse, completion:@escaping (_ response: DataResponse<Any>?, _ object: T?, _ error: String?) -> Void) {
+    open func postObject<T: EFNetworkModel>(_ newObject: T, autoParse: Bool = true, completion:@escaping (_ response: DataResponse<Any>?, _ object: T?, _ error: String?) -> Void) {
         if !networkCheck() {
             completion(nil, nil, EFConstants.noInternetConnection)
             return
@@ -372,7 +355,7 @@ open class EFWebServices: NSObject {
     
     
     // MARK: - Generic Delete Methods
-    open func deleteObject<T: EFNetworkModel>(_ newObject: T, autoParse: Bool = EFWebServices.shared._autoParse, completion:@escaping (_ response: DataResponse<Any>?, _ object: T?, _ error: String?) -> Void) {
+    open func deleteObject<T: EFNetworkModel>(_ newObject: T, autoParse: Bool = true, completion:@escaping (_ response: DataResponse<Any>?, _ object: T?, _ error: String?) -> Void) {
         if !networkCheck() {
             completion(nil, nil, EFConstants.noInternetConnection)
             return
@@ -384,7 +367,7 @@ open class EFWebServices: NSObject {
     
     
     // MARK: - Generic Get Methods
-    open func getObject<T: EFNetworkModel>(_ newObject: T, autoParse: Bool = EFWebServices.shared._autoParse, completion: @escaping (_ response: DataResponse<Any>?, _ object: T?, _ error: String?) -> Void) {
+    open func getObject<T: EFNetworkModel>(_ newObject: T, autoParse: Bool = true, completion: @escaping (_ response: DataResponse<Any>?, _ object: T?, _ error: String?) -> Void) {
         if !networkCheck() {
             completion(nil, nil, EFConstants.noInternetConnection)
             return
@@ -394,7 +377,7 @@ open class EFWebServices: NSObject {
         }
     }
     
-    open func getObjects<T: EFNetworkModel>(_ object: T, autoParse: Bool = EFWebServices.shared._autoParse, completion: @escaping (_ response: DataResponse<Any>?, _ objects: [T]?, _ error: String?) -> Void) {
+    open func getObjects<T: EFNetworkModel>(_ object: T, autoParse: Bool = true, completion: @escaping (_ response: DataResponse<Any>?, _ objects: [T]?, _ error: String?) -> Void) {
         if !networkCheck() {
             completion(nil, nil, EFConstants.noInternetConnection)
             return
@@ -414,7 +397,7 @@ open class EFWebServices: NSObject {
             if let statusCode = response.response?.statusCode, statusCode >= 200, statusCode < 300 {
                 completion(response, T(), nil)
             } else {
-                completion(response, nil, parseError(response: response))
+                completion(response, nil, parseError(response))
             }
             return
         }

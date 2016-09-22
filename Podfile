@@ -4,8 +4,8 @@ use_frameworks!
 project 'EFTools.xcodeproj'
 
 target 'EFTools' do
-    pod 'Alamofire', '~>4.0'
-    pod 'Freddy', :git => 'https://github.com/bignerdranch/Freddy.git', :branch => 'swift3'
+    pod 'Alamofire', '~> 4.0'
+    pod 'Freddy', '~> 3.0'
     pod 'MBProgressHUD', '~> 0.9.1'
     pod 'Instabug'
     pod 'TPKeyboardAvoiding'
