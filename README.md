@@ -22,32 +22,31 @@ platform :ios, '8.0'
 use_frameworks!
 xcodeproj 'testapp.xcodeproj'
 
-pod 'EFTools', :git => 'https://github.com/ElevenFifty/EFTools.git', :tag => '1.0.1'
+pod 'EFTools', :git => 'https://github.com/ElevenFifty/EFTools.git', :tag => '3.0'
+pod 'Valet', :git => 'https://github.com/square/Valet.git', :branch => 'develop/3.0'
 ```
-
-**You will use tag 0.1 for any projects still building in Xcode 6.4**
+**Until Valet moves their Swift 3 branch to master, you must override what EFTools points to in your Podfile**
+**You will use tag 1.0.3 for any projects still Using Swift 2.3**
 
 EFTools has many dependencies that will be pulled down for you.  They are as follows:
-* AFDateHelper (https://github.com/melvitax/AFDateHelper)
 * AlamoFire (https://github.com/Alamofire/Alamofire)
+* Freddy (https://github.com/bignerdranch/Freddy)
 * Instabug (https://instabug.com)
 * MBProgressHUD (https://github.com/jdg/MBProgressHUD)
+* TPKeyboardAvoiding (https://github.com/michaeltyson/tpkeyboardavoiding)
+* Valet (https://github.com/square/Valet)
+
+The following are libraries that used to be included in EFTools, but no longer are - projects that you build with previous versions of EFTools may require you to add these libraries:
+* AFDateHelper (https://github.com/melvitax/AFDateHelper)
 * ParseFacebookUtils
 * ParseTwitterUtils
 * ParseUI (by default this also pulls in Parse)
 * SCLAlertView (https://github.com/vikmeup/SCLAlertView-Swift)
-* SnapKit (http://snapkit.io/docs/)
 * SwiftyJSON (https://github.com/SwiftyJSON/SwiftyJSON)
-* TPKeyboardAvoiding (https://github.com/michaeltyson/tpkeyboardavoiding)
+* SwiftKeychainWrapper (https://github.com/jrendel/SwiftKeychainWrapper)
+* SnapKit (http://snapkit.io/docs/)
 
-By default, EFTools pulls down all of these.  You can also pull down subsets with the following Podfile lines:
-
-1. pod 'EFTools/Basic', :git => 'https://github\.com/ElevenFifty/EFTools.git', :tag => '1.0'
-  * pulls down AFDateHelper, Instabug, MBProgressHUD, SCLAlertView, SnapKit, and TPKeyboardAvoiding
-2. pod 'EFTools/Parse', :git => 'https://github\.com/ElevenFifty/EFTools.git', :tag => '1.0'
-  * pulls down ParseUI/Parse, ParseFacebookUtils, ParseTwitterUtils, and everything that "Basic" pulls down
-3. pod 'EFTools/Alamofire', :git => 'https://github\.com/ElevenFifty/EFTools.git', :tag => '1.0'
-  * pulls down Alamofire, SwiftyJSON, and everything that "Basic" pulls down
+**EFTools no longer has a Parse branch, so there are no longer subsets to be pulled down as there was in previous versions**
 
 
 ##Features
@@ -60,9 +59,13 @@ To use these, we first start with the EFNetworkModel protocol.  This will drive 
 import UIKit
 import EFTools
 import Alamofire
-import SwiftyJSON
+import Freddy
 
 class Model: EFNetworkModel {
+    public var patchRemoves: Set<String>?
+    public var patchAdds: [String : AnyObject]?
+    public var encoding: ParameterEncoding?
+
     var id: Int?
     var name: String?
     var amount: Double?
@@ -79,10 +82,10 @@ class Model: EFNetworkModel {
     init() {}
     
     required init(json: JSON) { // REQUIRED METHOD, USED TO PARSE RETURNED JSON
-        id = json[Constants.Model.id].intValue
-        name = json[Constants.Model.name].stringValue
-        amount = json[Constants.Expense.amount].double
-        count = json[Constants.Expense.count].int
+        id = try? json.getInt(at: Constants.Model.id)
+        name = try? json.getString(at: Constants.Model.name)
+        amount = try? json.getDouble(at: Constants.Expense.amount)
+        count = try? json.getInt(at: Constants.Expense.count)
     }
     
     func method() -> Alamofire.Method { // REQUIRED METHOD, USED TO BUILD NETWORK REQUEST
@@ -122,11 +125,11 @@ class Model: EFNetworkModel {
         }
     }
     
-    func patches() -> [[String: AnyObject]]? { // REQUIRED METHOD, USED TO BUILD NETWORK REQUEST - SHOULD ALMOST ALWAYS RETURN NIL
+    func patches() -> [[String: AnyObject]]? { // REQUIRED METHOD, USED TO BUILD PATCH NETWORK REQUEST - SHOULD ALMOST ALWAYS RETURN NIL
         return nil
     }
     
-    func headers() -> [String: AnyObject]? { // REQUIRED METHOD, USED TO BUILD NETWORK REQUEST - SHOULD ALMOST ALWAYS RETURN NIL
+    func headers() -> [String: AnyObject]? { // REQUIRED METHOD, USED TO BUILD PATCH NETWORK REQUEST - SHOULD ALMOST ALWAYS RETURN NIL
         return nil
     }
 }
