@@ -51,7 +51,7 @@ The following are libraries that used to be included in EFTools, but no longer a
 
 ##Features
 ####Working with a REST Backend
-EFTools greatly simplifies the process of interacting with a REST backend service by giving you the following: EFWebServices, EFWebProtocol, and EFNetworkModel.
+EFTools greatly simplifies the process of interacting with a REST backend service by giving you the following: EFWebServices and EFNetworkModel (EFWebProtocol is no more!).
 
 To use these, we first start with the EFNetworkModel protocol.  This will drive the connection process.  Here is an example class:
 
@@ -79,7 +79,7 @@ class Model: EFNetworkModel {
         case Recent
     }
     
-    init() {}
+    required ****init() {}
     
     required init(json: JSON) { // REQUIRED METHOD, USED TO PARSE RETURNED JSON
         id = try? json.getInt(at: Constants.Model.id)
@@ -149,72 +149,52 @@ EFWebServices.shared.postObject(expense) { (object, error) -> Void in
 	}
 ```
 
-A few setup steps are required as well.  The following steps must be taken:
-* Implement the EFWebProtocol, preferably in an EFWebServices subclass
-* Setup the base settings for EFWebServices
-
-An example of step 1 is as follows:
-
-```
-import Foundation
-import EFTools
-import Alamofire
-import SwiftyJSON
-
-class WebServices: EFWebServices, EFWebProtocol {
-    static func setBaseURL(url: String) {
-        self.shared.baseURL = url
-    }
-    
-    static func addHeaders(headers: [String: AnyObject]) {
-        self.shared.headers = headers
-    }
-    
-    static func addQueries(queries: [String: String]) {
-        self.shared.queries = queries
-    }
-    
-    static func setAuthHeader(headerName: String) {
-        self.shared.authHeader = headerName
-    }
-    
-    static func setAuthPrefix(headerPrefix: String) {
-        self.shared.authPrefix = headerPrefix
-    }
-}
-```
-
-And you would then setup the base setting for EFWebServices by calling this (preferrably in the AppDelegate in didFinishLaunchingWithOptions):
+You then begin use of EFWebServices by calling this (preferrably in the AppDelegate in didFinishLaunchingWithOptions):
 
 ```
 WebServices.setBaseURL("https://www.server.com") // Minimum required setting, others can optionally be called as needed.
 ```
 
-**A Few Notes**
-* By default, errors are handled by checking if the returned json can be converted to a string.  If it cannot, a generic string (from EFConstants) is returned.  Possible future functionality includes a method for providing your own parsing completion block.
-* You can use your own methods for making requests, you are not limited to the functions in EFWebServices.  To do so, put something like the following in your EFWebServices subclass (which we'll call WebServices):
+**By default, errors are handled by checking the status code of the response, and then a default error string is returned.**
+
+When making calls using the default functions, there are a few things to note:
+* By default, all calls now return the DataResponse, so you can parse the return however you want without overriding the default functions
+* There is now an optional autoParse parameter in all calls that you can use to bypass EFTools parsing the json.  By default, this is set to true.
+
+Here is an example network call where you are relying on EFTools to parse the response:
 
 ```
-class func getStuff(newObject: OtherModel, completion:(release: GARelease?, error: String?) -> Void) {
-    // It would be a good idea to check if you have a network connection here
-    // Also, the OtherModel class above must conform to the EFNetworkModel protocol
-    request(AuthRouter.EFRequest(newObject)).response { (request, response, jsonObject, error) -> Void in
-        // Parse the response here
+let getTest = TestModel(1)
+EFWebServices.shared.getObject(getTest) { (response, object, errorString) in
+    if let object = object {
+        // Success
+    } else {
+        // Error
     }
 }
 ```
 
-And then you can call your custom function like this:
+If you want to explicitely have EFTools not parse the json, you can do so with the following:
 
 ```
-WebServices.getStuff(otherModelInstance, completion: { (object, error) -> Void in
-	if let object = object as? OtherModel {
-		// Success
-	} else {
-		// Failed
-	}
+let getTest = TestModel()
+EFWebServices.shared.getObjects(getTest, autoParse: false) { (response, objects, errorString) in
+    if let response = response {
+        guard case .success(_) = response.result, let data = response.data else {
+            if case .failure(error) = response.result {
+                // Failure with status code
+            } else {
+                // Failure with data
+            }
+            return
+         }
+                
+         // Success
+     }
 }
 ```
+
+If you choose to not use the default functions provided by EFTools (or want to create additional ones), it is recommended that you create an Extension to EFWebServices instead of subclassing EFWebServices.
 
 ####Better Segues
 Error-proof your segues by eliminating using simple strings.  Instead, comply to the SegueHandlerType prototype (a full writeup of this process can be found at https://www.natashatherobot.com/protocol-oriented-segue-identifiers-swift/).
@@ -324,7 +304,7 @@ EFUtils.showError(title: _title_, message: _message_, useBasic: true)
 All parameters in this function are optional.  By default, the following will happen:
 * title will be "Error"
 * message will be "An error occurred with your request."
-* useBasic will be true, which means UIAlertController will be used.  If you set this value to false, [SCLAlertView](https://github.com/vikmeup/SCLAlertView-Swift) will be used.
+* useBasic is deprecated and optional, it has no effect.
 
 To display an alert with a textField, call the following:
 
@@ -339,19 +319,17 @@ The parameters are as follows:
 * message is required, will be the message of the alert
 * defaultButton is optional, will be the text of the default button, and by default is "Continue"
 * cancelButton is optional, will be the text of the cancel button, and by default is "Cancel"
-* useBasic is optional, will be true by default and will use UIAlertController.  False will use SCLAlertView.
+* useBasic is deprecated, as SCLAlertView has been removed from EFTools.
 * completion block: required, and will return the text of the textfield when the defaultButton is tapped.  Do with this what you will.
 
 ####Table View Controllers
-Depending on whether you are using Parse or not, EFTools contains two different kinds of table view controllers:
-* EFTableViewController - subclasses UITableViewController
-* EFQueryTableViewController - subclasses PFQueryTableViewController
+EFTools contains EFTableViewController which subclasses UITableViewController.
 
-These subclasses do two things:
+This subclass does two things:
 * Document specific methods of each subclass you may want to override and why
 * Provide quick access to animated cells
 
-After subclassing either of these classes for your own use, you can Option-click on each class to view their documentation and see important methods to override.
+After subclassing EFTableViewController for your own use, you can Option-click on your class to view its documentation and see important methods to override.
 
 Here's a quick code example, which you would set up in viewDidLoad, to show how to set up cell animations.  Further details can be seen by looking at each class's documentation:
 

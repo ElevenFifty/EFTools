@@ -11,7 +11,7 @@ import Alamofire
 import Freddy
 import Valet
 
-/// EFWebServices - subclass this to use Alamofire with a built-in AuthRouter
+/// EFWebServices - extend this to use Alamofire with a built-in AuthRouter
 /// Use in concert with the EFNetworkModel protocol
 open class EFWebServices: NSObject {
     public static let shared = EFWebServices()
@@ -24,6 +24,10 @@ open class EFWebServices: NSObject {
     fileprivate var _dateFormat = "YYYY-MM-DD'T'hh:mm:ssZ"
     fileprivate var _keychainIdentifier = "EFToolsID"
     
+    /// Send in the baseURL for your app - do before making any network calls
+    ///
+    /// Example call:
+    /// EFWebservices.shared.baseURL = "http://test.com"
     public var baseURL: String {
         get {
             return _baseURL
@@ -33,6 +37,10 @@ open class EFWebServices: NSObject {
         }
     }
     
+    /// Used to change from the default "Authorization" header when sending an auth token
+    ///
+    /// Example call:
+    /// EFWebServices.shared.authHeader = "Token "
     public var authHeader: String {
         get {
             return _authHeader
@@ -42,6 +50,10 @@ open class EFWebServices: NSObject {
         }
     }
     
+    /// Used to change from the default "Bearer " prefix before the token
+    ///
+    /// Example call:
+    /// EFWebServices.shared.authHeader = "token="
     public var authPrefix: String {
         get {
             return _authPrefix
@@ -51,6 +63,10 @@ open class EFWebServices: NSObject {
         }
     }
     
+    /// Used to add headers to all calls
+    ///
+    /// Example call:
+    /// EFWebServices.shared.headers = ["apiKey": "12345", "userID": 1]
     public var headers: [String: AnyObject]? {
         get {
             return _headers
@@ -60,6 +76,10 @@ open class EFWebServices: NSObject {
         }
     }
     
+    /// Used to add queries to all calls
+    ///
+    /// Example call:
+    /// EFWebServices.shared.queries = ["searchterm": "test", "page": 1]
     public var queries: [String: String]? {
         get {
             return _queries
@@ -69,6 +89,11 @@ open class EFWebServices: NSObject {
         }
     }
     
+    /// Define the date format for your app
+    /// Default is "YYYY-MM-DD'T'hh:mm:ssZ"
+    ///
+    /// Example call:
+    /// EFWebServices.shared.dateFormat = "YYYY-MM-DD'T'hh:mmZ"
     public var dateFormat: String {
         get {
             return _dateFormat
@@ -78,6 +103,11 @@ open class EFWebServices: NSObject {
         }
     }
     
+    /// Send in the date Format for your app - do before making any network calls
+    /// Default is "EFToolsID"
+    ///
+    /// Example call:
+    /// EFWebServices.shared.keychainIdentifier = "MYAppID"
     public var keychainIdentifier: String {
         get {
             return _keychainIdentifier
