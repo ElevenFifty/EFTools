@@ -1,5 +1,5 @@
 # EFTools
-iOS Tools for ElevenFifty
+iOS Tools for ElevenFifty.  Requires Xcode 8 and Swift 3.
 
 ## Table of Contents
 
@@ -14,7 +14,7 @@ iOS Tools for ElevenFifty
   * [Table View Controllers](#table-view-controllers)
 
 ## How to use EFTools
-If you are already using Cocoapods, this is easy. If you aren't - then start!  Here's a sample Podfile that uses EFTools in Xcode 7:
+If you are already using Cocoapods, this is easy. If you aren't - then start!  Here's a sample Podfile that uses EFTools in Xcode 8:
 
 ```
 source 'https://github.com/CocoaPods/Specs.git'
@@ -26,6 +26,7 @@ pod 'EFTools', :git => 'https://github.com/ElevenFifty/EFTools.git', :tag => '3.
 pod 'Valet', :git => 'https://github.com/square/Valet.git', :branch => 'develop/3.0'
 ```
 **Until Valet moves their Swift 3 branch to master, you must override what EFTools points to in your Podfile**
+
 **You will use tag 1.0.3 for any projects still Using Swift 2.3**
 
 EFTools has many dependencies that will be pulled down for you.  They are as follows:
