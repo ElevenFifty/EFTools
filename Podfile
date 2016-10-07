@@ -1,19 +1,13 @@
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '8.0'
+platform :ios, '9.3'
 use_frameworks!
 project 'EFTools.xcodeproj'
 
 target 'EFTools' do
-    pod 'ParseUI'
-    pod 'ParseFacebookUtilsV4'
-    pod 'ParseTwitterUtils'
-    pod 'Alamofire', '~>3.1'
-    pod 'SwiftyJSON', '~> 2.3'
-    pod 'SnapKit', '~> 0.22'
-    pod 'AFDateHelper', '~> 3.4.2'
+    pod 'Alamofire', '~> 4.0'
+    pod 'Freddy', '~> 3.0'
     pod 'MBProgressHUD', '~> 0.9.1'
     pod 'Instabug'
     pod 'TPKeyboardAvoiding'
-    pod 'SwiftKeychainWrapper', '~> 1.0'
-    pod 'SCLAlertView', '~> 0.5'
+    pod 'Valet', :git => 'https://github.com/square/Valet.git', :branch => 'develop/3.0'
 end

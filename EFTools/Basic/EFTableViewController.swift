@@ -13,11 +13,11 @@ import UIKit
 ///
 /// The following are important functions to use for cell animations:
 ///
-/// setTranslateDistance(distance : Int)
+/// setTranslateDistance(distance: Int)
 ///
 /// - Call this function to change the Translate Distance for a Translate animation.  Default is 50.
 ///
-/// setCellType(cellTypes : Set<CellType>)
+/// setCellType(cellTypes: Set<CellType>)
 ///
 /// - Call this function to change the cell presentation animation
 /// - None: Normal loading of cell, no effects
@@ -26,7 +26,7 @@ import UIKit
 /// - Scale: Cell scales from a larger or smaller size
 /// - Default is [.None]
 ///
-/// setShowType(showType : ShowType)
+/// setShowType(showType: ShowType)
 ///
 /// - Call this function to change when cells are animated
 /// - Always: Every time a cell becomes visible
@@ -34,17 +34,17 @@ import UIKit
 /// - Once: The first time a cell becomes visible, does not reset on reload
 /// - Default is .Reload
 ///
-/// setDuration(duration : Double)
+/// setDuration(duration: Double)
 ///
 /// - Call this function to change the cell presentation animation time.
 /// - Default is 0.4
 ///
-/// setInitialAlpha(alpha : Double)
+/// setInitialAlpha(alpha: Double)
 ///
 /// - Call this function to change the initial alpha value for any Fade animation.
 /// - Ranges from 0.0 to 1.0, defaults to 0.0
 ///
-/// setInitialScale(xscale : Double, yscale : Double)
+/// setInitialScale(xscale: Double, yscale: Double)
 ///
 /// - Call this function to change the initial scale value for any Scale animation.
 /// - Default is for each is 0.8
@@ -53,21 +53,21 @@ import UIKit
 ///
 /// - Call this function any time you are reloading your tableView; e.g. when you call tableView.reloadData()
 
-public class EFTableViewController: UITableViewController {
+open class EFTableViewController: UITableViewController {
     let efCellAnimation = EFCellAnimation()
     
-    override public func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
     }
 
-    override public func didReceiveMemoryWarning() {
+    override open func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
     /// Call this function to change the Translate Distance for a Translate animation
     ///
     /// Default is 50
-    public func setTranslateDistance(distance : Int) {
+    open func setTranslateDistance(_ distance: Int) {
         efCellAnimation.setTranslateDistance(distance)
     }
     
@@ -79,7 +79,7 @@ public class EFTableViewController: UITableViewController {
     /// - Scale: Cell scales from a larger or smaller size
     ///
     /// Default is [.None]
-    public func setCellType(cellTypes : Set<CellType>) {
+    open func setCellType(_ cellTypes: Set<CellType>) {
         efCellAnimation.setCellType(cellTypes)
     }
     
@@ -90,37 +90,37 @@ public class EFTableViewController: UITableViewController {
     /// - Once: The first time a cell becomes visible, does not reset on reload
     ///
     /// Default is .Reload
-    public func setShowType(showType : ShowType) {
+    open func setShowType(_ showType: ShowType) {
         efCellAnimation.setShowType(showType)
     }
     
     /// Call this function to change the cell presentation animation time
     ///
     /// Default is 0.4
-    public func setDuration(duration : Double) {
+    open func setDuration(_ duration: Double) {
         efCellAnimation.setDuration(duration)
     }
     
     /// Call this function to change the initial alpha value for any Fade animation
     ///
     /// Ranges from 0.0 to 1.0, defaults to 0.0
-    public func setInitialAlpha(alpha : Double) {
+    open func setInitialAlpha(_ alpha: Double) {
         efCellAnimation.setInitialAlpha(alpha)
     }
     
     /// Call this function to change the initial scale for Scale effects
     ///
     /// Default for each is 0.8
-    public func setInitialScale(xscale : Double, yscale : Double) {
+    open func setInitialScale(_ xscale: Double, yscale: Double) {
         efCellAnimation.setInitialScale(xscale, yscale: yscale)
     }
     
     /// This function will need to be called any time a tableview is reloaded UNLESS you don't want the cells to rerun any animations
-    public func resetCellAnimations() {
+    open func resetCellAnimations() {
         efCellAnimation.resetPrevIndexes()
     }
     
-    override public func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    override open func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         efCellAnimation.setupAnimation(indexPath, cell: cell)
     }
 }

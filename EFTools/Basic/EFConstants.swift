@@ -9,6 +9,10 @@
 import Foundation
 
 public struct EFConstants {
+    public static let authTokenExpireDate = "authTokenExpireDate"
+    public static let authToken = "authToken"
+    public static let processingError = "There was an error processing the response"
+    
     public static let noInternetConnection = "This operation requires an active internet connection"
     public static let objectNotFound = "Object Not Found"
     public static let badRequest = "Bad Request"
